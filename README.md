@@ -1,20 +1,20 @@
-![Repo1](https://raw.githubusercontent.com/OgnitorenKs/Toolbox/main/.github/Repo-SS/Title.png)
+![Repo1](https://raw.githubusercontent.com/OgnitorenKs12/Toolbox/main/.github/Repo-SS/Title.png)
 
 #### Prepared by: Hüseyin UZUNYAYLA / OgnitorenKs
 - ► Discord: [https://discord.gg/zwCDKnAKSw](https://discord.gg/cx3rHb4Zjg)
 - ► Mail: ognitorenks@gmail.com
 - ► Site: [https://ognitorenks.blospot.com](https://ognitorenks.blospot.com)
 - Supported languages = English │ Turkish
-- Toolbox hakkında (Türkçe): [https://github.com/OgnitorenKs/Toolbox/blob/main/README-TR.md](README-TR.md)
+- Toolbox hakkında (Türkçe): [https://github.com/OgnitorenKs12/Toolbox/blob/main/README-TR.md](README-TR.md)
 
-- Update notes [Superficial]: https://github.com/OgnitorenKs/Toolbox/blob/main/Release.Notes.md
-- Update notes [Detailed]: https://github.com/OgnitorenKs/Toolbox/commits/main/
+- Update notes [Superficial]: https://github.com/OgnitorenKs12/Toolbox/blob/main/Release.Notes.md
+- Update notes [Detailed]: https://github.com/OgnitorenKs12/Toolbox/commits/main/
 
 All rights of the work belong to Hüseyin UZUNYAYLA. It is forbidden to develop, copy, change the content of the work. If you want to share the application on different platforms, you need to get permission from me.
 
 # OGNİTORENKS TOOLBOX
 
-![Tool0](https://raw.githubusercontent.com/OgnitorenKs/Toolbox/main/.github/EN-SS/0.png)
+![Tool0](https://raw.githubusercontent.com/OgnitorenKs12/Toolbox/main/.github/EN-SS/0.png)
 
 - OgnitorenKs Toolbox runs on x64 architectures of Windows 10 - 11 versions. It is synchronized with the latest Windows version.
 - The Windows screen scaling setting may interfere with Toolbox's window setting. Scaling should be turned off when using Toolbox for smooth operation.
@@ -35,7 +35,7 @@ All rights of the work belong to Hüseyin UZUNYAYLA. It is forbidden to develop,
 The programs in this section are selected among free applications. The All in One Runtimes section includes C++ 2005-2022 / Java / XNA Framework / OpenAL / DirectX. Other programs are detailed by categories.
 o. If the program does not install, there is a problem with the UAC settings. To solve this, activate the setting in the 'Control Panel' ► 'UAC' section and restart the system. After the system is turned on, you can turn off 'UAC'.
 
-![Tool1](https://raw.githubusercontent.com/OgnitorenKs/Toolbox/main/.github/EN-SS/1.png)
+![Tool1](https://raw.githubusercontent.com/OgnitorenKs12/Toolbox/main/.github/EN-SS/1.png)
 
 </details>
 <details>
@@ -43,7 +43,7 @@ o. If the program does not install, there is a problem with the UAC settings. To
 
 You can turn the services off and on according to your needs. Detailed information about services is available in the Toolbox. You cannot reactivate uninstalled services. Operation 26 is a service for Windows 11 system.
 
-![Tool2.1](https://raw.githubusercontent.com/OgnitorenKs/Toolbox/main/.github/EN-SS/2.png)
+![Tool2.1](https://raw.githubusercontent.com/OgnitorenKs12/Toolbox/main/.github/EN-SS/2.png)
 
 </details>
 <details>
@@ -51,8 +51,8 @@ You can turn the services off and on according to your needs. Detailed informati
 
 You can check the status of components on the system. You can easily delete components you don't need. There is no section in Toolbox to recover deleted components. Therefore, be careful with the components you remove. The necessary information is given in the section.
 
-![Tool2](https://raw.githubusercontent.com/OgnitorenKs/Toolbox/main/.github/EN-SS/3.1.png)
-![Tool3](https://raw.githubusercontent.com/OgnitorenKs/Toolbox/main/.github/EN-SS/3.2.png)
+![Tool2](https://raw.githubusercontent.com/OgnitorenKs12/Toolbox/main/.github/EN-SS/3.1.png)
+![Tool3](https://raw.githubusercontent.com/OgnitorenKs12/Toolbox/main/.github/EN-SS/3.2.png)
 
 </details>
 <details>
@@ -60,8 +60,8 @@ You can check the status of components on the system. You can easily delete comp
 
 In this section you need to enter the shutdown time in minutes. It will inform you if there is a shutdown process. When you dial this section again, it gives you the option to close the shutdown you have done.
 
-![Tool4.1](https://raw.githubusercontent.com/OgnitorenKs/Toolbox/main/.github/EN-SS/4.1.png)
-![Tool4.2](https://raw.githubusercontent.com/OgnitorenKs/Toolbox/main/.github/EN-SS/4.2.png)
+![Tool4.1](https://raw.githubusercontent.com/OgnitorenKs12/Toolbox/main/.github/EN-SS/4.1.png)
+![Tool4.2](https://raw.githubusercontent.com/OgnitorenKs12/Toolbox/main/.github/EN-SS/4.2.png)
 
 </details>
 <details>
@@ -69,7 +69,7 @@ In this section you need to enter the shutdown time in minutes. It will inform y
 
 Shows the ping time of specific pages and DNS addresses. You can also measure the ping of a different page.
 
-![Tool5](https://raw.githubusercontent.com/OgnitorenKs/Toolbox/main/.github/EN-SS/5.png)
+![Tool5](https://raw.githubusercontent.com/OgnitorenKs12/Toolbox/main/.github/EN-SS/5.png)
 
 </details>
 <details>
@@ -77,7 +77,7 @@ Shows the ping time of specific pages and DNS addresses. You can also measure th
 
 Provides detailed management and viewing of user accounts and licenses.
 
-![Tool6](https://raw.githubusercontent.com/OgnitorenKs/Toolbox/main/.github/EN-SS/6.png)
+![Tool6](https://raw.githubusercontent.com/OgnitorenKs12/Toolbox/main/.github/EN-SS/6.png)
 
 </details>
 <details>
@@ -85,7 +85,7 @@ Provides detailed management and viewing of user accounts and licenses.
 
 Shows basic information about the installed Windows system and your hardware.
 
-![Tool7](https://raw.githubusercontent.com/OgnitorenKs/Toolbox/main/.github/EN-SS/7.png)
+![Tool7](https://raw.githubusercontent.com/OgnitorenKs12/Toolbox/main/.github/EN-SS/7.png)
 
 </details>
 <details>
@@ -93,7 +93,7 @@ Shows basic information about the installed Windows system and your hardware.
 
 Lists WiFi information that has already been used in the system.
 
-![Tool8](https://raw.githubusercontent.com/OgnitorenKs/Toolbox/main/.github/EN-SS/8.png)
+![Tool8](https://raw.githubusercontent.com/OgnitorenKs12/Toolbox/main/.github/EN-SS/8.png)
 
 </details>
 <details>
@@ -112,19 +112,19 @@ On Windows systems, it checks and applies repair options for conditions that Mic
 <details>
 <B><summary> 11 - System optimization [Playbook]</B></summary>
 
-![Playbook](https://raw.githubusercontent.com/OgnitorenKs/Toolbox/main/.github/TR-SS/playbook.png)
+![Playbook](https://raw.githubusercontent.com/OgnitorenKs12/Toolbox/main/.github/TR-SS/playbook.png)
 
 Streamlines Windows 10/11 22H2+ systems by performing system tuning.
 Adjusts privacy and performance settings. All settings have been tested.
 For detailed information about the subject, you can review my blog page; https://ognitorenks.blogspot.com/2023/08/windows-10-11-performans-duzenlemesi.html
 
-![Tool11](https://raw.githubusercontent.com/OgnitorenKs/Toolbox/main/.github/EN-SS/11.png)
+![Tool11](https://raw.githubusercontent.com/OgnitorenKs12/Toolbox/main/.github/EN-SS/11.png)
 
 Once you get past the warnings and prompts section, you can quickly change a few settings in the toolbox that may differ for different users.
 You can also choose to edit the pattern file from the routing information for more extensive customization.
 WARNING: The content of the pattern file is in Turkish.
 
-![Tool11.2](https://raw.githubusercontent.com/OgnitorenKs/Toolbox/main/.github/EN-SS/11.2.png)
+![Tool11.2](https://raw.githubusercontent.com/OgnitorenKs12/Toolbox/main/.github/EN-SS/11.2.png)
 
 </details>
 
@@ -133,7 +133,7 @@ WARNING: The content of the pattern file is in Turkish.
 
 The Toolbox language is automatically selected on the first launch of the application according to the system default language. If you want to use a different language option, you can change it here.
 
-![ToolZ](https://raw.githubusercontent.com/OgnitorenKs/Toolbox/main/.github/EN-SS/Z.png)
+![ToolZ](https://raw.githubusercontent.com/OgnitorenKs12/Toolbox/main/.github/EN-SS/Z.png)
 
 </details>
 

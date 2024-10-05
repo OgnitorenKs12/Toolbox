@@ -1,4 +1,4 @@
-![Repo1](https://raw.githubusercontent.com/OgnitorenKs/Toolbox/main/.github/Repo-SS/Title.png)
+![Repo1](https://raw.githubusercontent.com/OgnitorenKs12/Toolbox/main/.github/Repo-SS/Title.png)
 
 ### Hazırlayan: Hüseyin UZUNYAYLA / OgnitorenKs
 - ► Discord: [https://discord.gg/zwCDKnAKSw](https://discord.gg/cx3rHb4Zjg)
@@ -6,14 +6,14 @@
 - ► Site: [https://ognitorenks.blospot.com](https://ognitorenks.blospot.com)
 - ► Desteklenen diller = Turkish │ English
 
-- Güncelleme notları [Yüzeysel]: https://github.com/OgnitorenKs/Toolbox/blob/main/Release.Notes.md
-- Güncelleme notları [Detaylı]: https://github.com/OgnitorenKs/Toolbox/commits/main/
+- Güncelleme notları [Yüzeysel]: https://github.com/OgnitorenKs12/Toolbox/blob/main/Release.Notes.md
+- Güncelleme notları [Detaylı]: https://github.com/OgnitorenKs12/Toolbox/commits/main/
 
 Çalışmanın tüm hakları Hüseyin UZUNYAYLA’ya aittir. Çalışma üzerinde geliştirme, kopyalama, içeriğini değiştirmek yasaktır. Uygulamayı farklı platformlar üzerinde paylaşmak isterseniz tarafımdan izin almanız gerekmektedir.
 
 # OGNİTORENKS TOOLBOX
 
-![Tool0](https://raw.githubusercontent.com/OgnitorenKs/Toolbox/main/.github/TR-SS/0.png)
+![Tool0](https://raw.githubusercontent.com/OgnitorenKs12/Toolbox/main/.github/TR-SS/0.png)
 
 - OgnitorenKs Toolbox Windows 10 - 11 sürümlerinin x64 mimarilerinde çalışmaktadır. En güncel olan Windows sürümü ile senkronize olarak gelişmektedir.
 - Windows ekran ölçeklendirme ayarı Toolbox'ın pencere ayarını bozabilir. Sorunsuz kullanım için Toolbox'ı kullanırken ölçeklendirme kapatılmalıdır.
@@ -34,7 +34,7 @@
 Bu bölümdeki programlar ücretsiz uygulamalar arasında seçilmiştir. All in One Runtimes bölümü içinde C++ 2005-2022 / Java / XNA Framework / OpenAL / DirectX yer almaktadır. Diğer programlar kategorilere ayrılarak detaylandırılmıştır. 
 - Bazı programları yüklerken yönetici yetkisi olmadan yükleme işlemi yapmamız gerekebiliyor.Bu yetki işlemini NSudo ile yapıyoruz. Program yüklenmez ise UAC ayarlarında bir sorun vardır. Bunu çözmek için 'Denetim masası' ► 'UAC' bölümününde ayarı aktifleştirin ve sistemi yeniden başlatın. Sistem açıldıktan sonra 'UAC' kapatabilirsiniz.
 
-![Tool1](https://raw.githubusercontent.com/OgnitorenKs/Toolbox/main/.github/TR-SS/1.png)
+![Tool1](https://raw.githubusercontent.com/OgnitorenKs12/Toolbox/main/.github/TR-SS/1.png)
 
 </details>
 <details>
@@ -42,7 +42,7 @@ Bu bölümdeki programlar ücretsiz uygulamalar arasında seçilmiştir. All in 
 
 Hizmetleri ihtiyacınıza göre kapatıp açabilirsiniz. Hizmetler hakkında detaylı bilgi Toolbox içinde yer almaktadır. Kaldırılmış hizmetleri yeniden aktifleştiremezsiniz. 26 numaralı işlem Windows 11 sisteme ait hizmettir.
 
-![Tool2.1](https://raw.githubusercontent.com/OgnitorenKs/Toolbox/main/.github/TR-SS/2.png)
+![Tool2.1](https://raw.githubusercontent.com/OgnitorenKs12/Toolbox/main/.github/TR-SS/2.png)
 
 </details>
 <details>
@@ -50,8 +50,8 @@ Hizmetleri ihtiyacınıza göre kapatıp açabilirsiniz. Hizmetler hakkında det
 
 Sistem üzerinde bileşenlerin durumunu kontrol edebilirsiniz. İhtiyacınız olmayan bileşenleri kolayca silebilirsiniz. Toolbox içinde silinen bileşenleri geri getirme bölümü bulunmamaktadır. Bundan dolayı kaldırdığınız bileşenlere dikkat edin. Gerekli bilgiler bölüm içinde verilmiştir.
 
-![Tool2](https://raw.githubusercontent.com/OgnitorenKs/Toolbox/main/.github/TR-SS/3.1.png)
-![Tool3](https://raw.githubusercontent.com/OgnitorenKs/Toolbox/main/.github/TR-SS/3.2.png)
+![Tool2](https://raw.githubusercontent.com/OgnitorenKs12/Toolbox/main/.github/TR-SS/3.1.png)
+![Tool3](https://raw.githubusercontent.com/OgnitorenKs12/Toolbox/main/.github/TR-SS/3.2.png)
 
 </details>
 <details>
@@ -59,8 +59,8 @@ Sistem üzerinde bileşenlerin durumunu kontrol edebilirsiniz. İhtiyacınız ol
 
 Bu bölümde kapatma süresini dakika cinsinden girmeniz gerekiyor. Kapatma işlemi varsa sizi bilgilendirecektir. Yaptığınız kapatma işlemini bu bölümü tekrar tuşladığınızda size kapatma seçeneği sunar.
 
-![Tool4.1](https://raw.githubusercontent.com/OgnitorenKs/Toolbox/main/.github/TR-SS/4.1.png)
-![Tool4.2](https://raw.githubusercontent.com/OgnitorenKs/Toolbox/main/.github/TR-SS/4.2.png)
+![Tool4.1](https://raw.githubusercontent.com/OgnitorenKs12/Toolbox/main/.github/TR-SS/4.1.png)
+![Tool4.2](https://raw.githubusercontent.com/OgnitorenKs12/Toolbox/main/.github/TR-SS/4.2.png)
 
 </details>
 <details>
@@ -68,7 +68,7 @@ Bu bölümde kapatma süresini dakika cinsinden girmeniz gerekiyor. Kapatma işl
 
 Belirli sayfa ve DNS adreslerinin ping süresini gösterir. Dilerseniz farklı bir sayfanın ping ölçümünü de yapabilirsiniz.
 
-![Tool5](https://raw.githubusercontent.com/OgnitorenKs/Toolbox/main/.github/TR-SS/5.png)
+![Tool5](https://raw.githubusercontent.com/OgnitorenKs12/Toolbox/main/.github/TR-SS/5.png)
 
 </details>
 <details>
@@ -76,7 +76,7 @@ Belirli sayfa ve DNS adreslerinin ping süresini gösterir. Dilerseniz farklı b
 
 Kullanıcı hesapları ve lisans konusunda detaylı yönetim ve görüntüleme imkanı sağlar.
 
-![Tool6](https://raw.githubusercontent.com/OgnitorenKs/Toolbox/main/.github/TR-SS/6.png)
+![Tool6](https://raw.githubusercontent.com/OgnitorenKs12/Toolbox/main/.github/TR-SS/6.png)
 
 </details>
 <details>
@@ -84,7 +84,7 @@ Kullanıcı hesapları ve lisans konusunda detaylı yönetim ve görüntüleme i
 
 Kurulu Windows sistemi ve donanımınız hakkında temel bilgileri gösterir.
 
-![Tool7](https://raw.githubusercontent.com/OgnitorenKs/Toolbox/main/.github/TR-SS/7.png)
+![Tool7](https://raw.githubusercontent.com/OgnitorenKs12/Toolbox/main/.github/TR-SS/7.png)
 
 </details>
 <details>
@@ -92,7 +92,7 @@ Kurulu Windows sistemi ve donanımınız hakkında temel bilgileri gösterir.
 
 Sistemde daha önceden kullanılmış WiFi bilgilerini listeler.
 
-![Tool8](https://raw.githubusercontent.com/OgnitorenKs/Toolbox/main/.github/TR-SS/8.png)
+![Tool8](https://raw.githubusercontent.com/OgnitorenKs12/Toolbox/main/.github/TR-SS/8.png)
 
 </details>
 <details>
@@ -111,19 +111,19 @@ Windows sistemlerinde Microsoft'un önerdiği ve benim tespit ettiğim durumlar�
 <details>
 <B><summary> 11 - Sistem optimizasyonu [Playbook]</B></summary>
 
-![Playbook](https://raw.githubusercontent.com/OgnitorenKs/Toolbox/main/.github/TR-SS/playbook.png)
+![Playbook](https://raw.githubusercontent.com/OgnitorenKs12/Toolbox/main/.github/TR-SS/playbook.png)
 
 Sistem üzerinde düzenleme işlemi yaparak Windows 10/11 22H2+ sistemleri akıcı bir hale getirir.
 Gizlilik ve performans ayarlarını yapar. Tüm ayarlar test edilmiştir.
 Konu hakkında detaylı bilgi için blogsayfamdaki konumu inceleyebilirsiniz; https://ognitorenks.blogspot.com/2023/08/windows-10-11-performans-duzenlemesi.html
 
-![Tool11](https://raw.githubusercontent.com/OgnitorenKs/Toolbox/main/.github/TR-SS/11.png)
+![Tool11](https://raw.githubusercontent.com/OgnitorenKs12/Toolbox/main/.github/TR-SS/11.png)
 
 Uyarılar ve yönledirmeler bölümünü geçtikten sonra toolbox üzerinden kullanıcılar için farklılık gösterebilecek bir kaç ayarı hızlıca değiştirebilirsiniz.
 Dilerseniz yönlendirme bilgilerinden kalıp dosyasını düzenlemeyi seçerek daha kapsamlı bir özelleştirme yapabilirsiniz.
 UYARI: Kalıp dosyasının içeriği Türkçedir.
 
-![Tool11.2](https://raw.githubusercontent.com/OgnitorenKs/Toolbox/main/.github/TR-SS/11.2.png)
+![Tool11.2](https://raw.githubusercontent.com/OgnitorenKs12/Toolbox/main/.github/TR-SS/11.2.png)
 
 
 </details>
@@ -133,7 +133,7 @@ UYARI: Kalıp dosyasının içeriği Türkçedir.
 
 Toolbox dili uygulamanın ilk açılışında sistem varsayılan diline göre otomatik seçilir. Farklı bir dil seçeneği kullanmak isterseniz buradan değiştirebilirsiniz.
 
-![ToolZ](https://raw.githubusercontent.com/OgnitorenKs/Toolbox/main/.github/TR-SS/Z.png)
+![ToolZ](https://raw.githubusercontent.com/OgnitorenKs12/Toolbox/main/.github/TR-SS/Z.png)
 
 </details>
 
