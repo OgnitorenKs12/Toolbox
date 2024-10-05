@@ -13,7 +13,7 @@ MD "C:\OgnitorenKs.Toolbox" > NUL 2>&1
 :: =============================================================
 :: Güncelleme dosyası indirilir
 cls&Call :Panel "[■■■■■■■■■■■■                                    ]" "%R%[92m   Installing OgnitorenKs Toolbox...%R%[0m"
-Call :Powershell "& { iwr https://raw.githubusercontent.com/OgnitorenKs/Toolbox/main/.github/Toolbox.zip -OutFile %temp%\OgnitorenKs_Toolbox.zip }"
+Call :Powershell "& { iwr https://raw.githubusercontent.com/OgnitorenKs12/Toolbox/main/.github/Toolbox.zip -OutFile %temp%\OgnitorenKs_Toolbox.zip }"
 
 :: İndirilen güncelleme zip dosyası klasörü çıkarılır.
 cls&Call :Panel "[■■■■■■■■■■■■■■■■■■■■■■■■                        ]" "%R%[92m   Installing OgnitorenKs Toolbox...%R%[0m"
