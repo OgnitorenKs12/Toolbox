@@ -207,13 +207,13 @@ cls&echo.&echo  ►%R%[36m !LA2!:%R%[0m !Value_M!
 REM İndirme listesinden bir değişiklik olursa bu değeri değişmen yeterli olacaktır. OgnitorenKs uygulamaların başlangıç numarasını yazman gerekiyor.
 set OgniApp=70
 FOR %%a in (!Value_M!) do (
-    if %%a EQU !OgniApp! (Call :OgniApp_Installer %%a https://raw.githubusercontent.com/OgnitorenKs/EasyDism/main/.github/EasyDism.zip)
+    if %%a EQU !OgniApp! (Call :OgniApp_Installer %%a https://raw.githubusercontent.com/OgnitorenKs12/EasyDism/main/.github/EasyDism.zip)
     set /a OgniApp+=1
-    if %%a EQU !OgniApp! (Call :OgniApp_Installer %%a https://raw.githubusercontent.com/OgnitorenKs/SSD_Optimizer/main/.github/SSD_Optimizer.zip)
+    if %%a EQU !OgniApp! (Call :OgniApp_Installer %%a https://raw.githubusercontent.com/OgnitorenKs12/SSD_Optimizer/main/.github/SSD_Optimizer.zip)
     set /a OgniApp+=1
-    if %%a EQU !OgniApp! (Call :OgniApp_Installer %%a https://raw.githubusercontent.com/OgnitorenKs/Multiboot_Manager/main/.github/Multiboot_Manager.zip)
+    if %%a EQU !OgniApp! (Call :OgniApp_Installer %%a https://raw.githubusercontent.com/OgnitorenKs12/Multiboot_Manager/main/.github/Multiboot_Manager.zip)
     set /a OgniApp+=1
-    if %%a EQU !OgniApp! (Call :OgniApp_Installer %%a https://raw.githubusercontent.com/OgnitorenKs/Component_Manager/main/.github/Component_Manager.zip)
+    if %%a EQU !OgniApp! (Call :OgniApp_Installer %%a https://raw.githubusercontent.com/OgnitorenKs12/Component_Manager/main/.github/Component_Manager.zip)
     set /a OgniApp-=3
 )
 REM Seçilen programları yüklemek için 'Winget.txt' içerisinden veriyi çeker ve yükletir.
