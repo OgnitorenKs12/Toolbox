@@ -18,7 +18,6 @@
 ::
 ::  ► İletişim - Contact;
 ::  --------------------------------------
-::  • Discord: ognitorenks
 ::  •    Mail: ognitorenks@gmail.com
 ::  •    Site: https://ognitorenks.blogspot.com
 ::

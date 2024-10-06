@@ -1,6 +1,5 @@
 #  Hazırlayan: Hüseyin UZUNYAYLA / OgnitorenKs
 ###  İletişim;
--   Discord: https://discord.gg/7hbzSGTYeZ
 -   Mail: ognitorenks@gmail.com
 -   Site: [https://ognitorenks.blospot.com](https://ognitorenks.blospot.com)
 
