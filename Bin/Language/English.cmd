@@ -12,7 +12,7 @@ echo        %R%[90m│%R%[32m 1%R%[90m-[📥]%R%[33mApplication Installer %R%[90
 echo        %R%[90m│%R%[32m 2%R%[90m-[⚓]%R%[33mService management %R%[90m[M]           │%R%[32m  9%R%[90m-[🧽]%R%[33mSystem cleaning                    %R%[90m│%R%[0m
 echo        %R%[90m│%R%[32m 3%R%[90m-[🧰]%R%[33mFeature management %R%[90m[M]           │%R%[32m 10%R%[90m-[🔧]%R%[33mWindows-Store Repair               %R%[90m│%R%[0m
 echo        %R%[90m│%R%[32m 4%R%[90m-[🧭]%R%[33mPC timed shutdown %R%[90m               │%R%[32m 11%R%[90m-[🚀]%R%[33mSystem optimization [Playbook]     %R%[90m│%R%[0m
-echo        %R%[90m│%R%[32m 5%R%[90m-[🪃]%R%[33mPing meter %R%[90m                      │%R%[32m  %R%[33m%R%[90m                                         │%R%[0m
+echo        %R%[90m│%R%[32m 5%R%[90m-[🪃]%R%[33mPing meter/DNS switcher %R%[90m         │%R%[32m  %R%[33m%R%[90m                                         │%R%[0m
 echo        %R%[90m│%R%[32m 6%R%[90m-[🔏]%R%[33mLicense-Account Management %R%[90m      │%R%[32m  Z%R%[90m-%R%[90m Language setting                      %R%[90m│%R%[0m
 echo        %R%[90m│%R%[32m 7%R%[90m-[💎]%R%[33mAbout the system %R%[90m                │%R%[32m  X%R%[90m-%R%[90m Close                                 %R%[90m│%R%[0m
 echo        %R%[90m└────────────────────────────────────────┴───────────────────────────────────────────┘%R%[0m
@@ -24,7 +24,7 @@ echo        %R%[90m│%R%[32m 1%R%[90m-%R%[33m Application Installer %R%[90m[M] 
 echo        %R%[90m│%R%[32m 2%R%[90m-%R%[33m Service management %R%[90m[M]              │%R%[32m  9%R%[90m-%R%[33m System cleaning                       %R%[90m│%R%[0m
 echo        %R%[90m│%R%[32m 3%R%[90m-%R%[33m Feature management %R%[90m[M]              │%R%[32m 10%R%[90m-%R%[33m Windows-Store Repair                  %R%[90m│%R%[0m
 echo        %R%[90m│%R%[32m 4%R%[90m-%R%[33m PC timed shutdown %R%[90m                  │%R%[32m 11%R%[90m-%R%[33m System optimization [Playbook]        %R%[90m│%R%[0m
-echo        %R%[90m│%R%[32m 5%R%[90m-%R%[33m Ping meter %R%[90m                         │%R%[32m  %R%[33m%R%[90m                                         │%R%[0m
+echo        %R%[90m│%R%[32m 5%R%[90m-%R%[33m Ping meter/DNS switcher %R%[90m            │%R%[32m  %R%[33m%R%[90m                                         │%R%[0m
 echo        %R%[90m│%R%[32m 6%R%[90m-%R%[33m License-Account Management %R%[90m         │%R%[32m  Z%R%[90m-%R%[37m Language Setting                      %R%[90m│%R%[0m
 echo        %R%[90m│%R%[32m 7%R%[90m-%R%[33m About the system %R%[90m                   │%R%[32m  X%R%[90m-%R%[37m Close                                 %R%[90m│%R%[0m
 echo        %R%[90m└────────────────────────────────────────┴───────────────────────────────────────────┘%R%[0m
@@ -56,7 +56,7 @@ echo   %R%[90m│%R%[32m 16%R%[90m-%R%[36m Microsoft Edge           %R%[90m│%R
 echo   %R%[90m│%R%[32m 17%R%[90m-%R%[36m Brave                    %R%[90m│%R%[32m 45%R%[90m-%R%[33m Qbittorrent              %R%[90m│%R%[32m 71%R%[90m-%R%[36m SSD Optimizer            %R%[90m│%R%[0m
 echo   %R%[90m│%R%[32m 18%R%[90m-%R%[36m Cent                     %R%[90m│%ogniogniogniogniognio% Documents                  %R%[90m│%R%[32m 72%R%[90m-%R%[36m Multiboot Manager        %R%[90m│%R%[0m
 echo   %R%[90m│%R%[32m 19%R%[90m-%R%[36m Vivaldi                  %R%[90m│%R%[32m 46%R%[90m-%R%[36m Libre Office             %R%[90m│%R%[32m 73%R%[90m-%R%[36m Component Manager        %R%[90m│%R%[0m
-echo   %R%[90m│%R%[32m 20%R%[90m-%R%[36m Maxthon                  %R%[90m│%R%[32m 47%R%[90m-%R%[36m Only Office              %R%[90m│%R%[32m%R%[32m%R%[37m                              %R%[90m│%R%[0m
+echo   %R%[90m│%R%[32m 20%R%[90m-%R%[36m Maxthon                  %R%[90m│%R%[32m 47%R%[90m-%R%[36m Only Office              %R%[90m│%R%[32m 74%R%[90m-%R%[36m AppxRemoved              %R%[90m│%R%[0m
 echo   %R%[90m│%R%[32m 21%R%[90m-%R%[36m Opera                    %R%[90m│%R%[32m 48%R%[90m-%R%[36m Acrobat Reader           %R%[90m│%R%[32m%R%[32m%R%[37m                              %R%[90m│%R%[0m
 echo   %R%[90m│%R%[32m 22%R%[90m-%R%[36m Opera-GX                 %R%[90m│%R%[32m 49%R%[90m-%R%[36m PDF X-Change Editor      %R%[90m│%R%[32m%R%[32m%R%[37m                              %R%[90m│%R%[0m
 echo   %R%[90m│%R%[32m 23%R%[90m-%R%[36m Mozilla Firefox          %R%[90m│%R%[32m 50%R%[90m-%R%[36m Calibre                  %R%[90m│%R%[32m%R%[32m%R%[37m                              %R%[90m│%R%[0m
@@ -111,7 +111,7 @@ T0006>Main Menu>
 T0007>Deletes only>
 T0008>removing>
 T0009>You can type the site address you want to measure ping>
-T0010>On>Off>Removed>Partly open>Closed service>Incomplete service>Incomplete and closed service>
+T0010>On>Off>Removed>Partly open>Closed>Deficient/Incompatible>Deficient/Incompatible and closed>
 T0011>installing>
 T0012>is being organized>
 T0013>Checking the Winget system>
@@ -139,6 +139,11 @@ T0034>General settings and repairing DLL files>
 T0035>Hardware data received via WMI may have a margin of error>
 T0036>Playbook Update>
 T0037>Application Installer information screen>
+T0038>To make all services default: DEFAULT>
+T0039>To apply the DNS addresses in the menu, simply dial the number to the left of it>
+T0040>DNS address change process completed>
+T0041>Reset DNS setting>
+T0042>DNS settings made default>
 ::██████████████████████████████████████████████████████████████████
 P1001>Removing components>
 P1002>Uninstalling apps>
@@ -201,11 +206,11 @@ P7_18_>Turn off reduce power usage of apps running in the background>
 SL_1_>Bluetooth> >
 SL_2_>Phone>Need: Bluetooth>
 SL_3_>Printer> >
-SL_4_>Scanner and Camera> >
+SL_4_>Scanner and Camera>Need: OBS>
 SL_5_>Pen and Touch> >
 SL_6_>Bitlocker Drive Encryption> >
 SL_7_>Tariffed Networks>Quota manager for limited internet>
-SL_8_>IP Assistant [IPV6]> >
+SL_8_>IP Assistant [IPV6]>If your ISP offers IPV6 infrastructure, don't turn it off>
 SL_9_>Mobile Hotspot>Internet sharing │ Need: Miracast>
 SL_10_>Radio and Airplane Mode> >
 SL_11_>Windows Connect Now [WPS]>Need: WiFi>
@@ -222,22 +227,30 @@ SL_21_>Biometric>Need: Fingerprint │ HelloFace>
 SL_22_>Disk Defragmentation>Need: SSD│HDD, Trim>
 SL_23_>Router>Near devices [Smart home devices]>
 SL_24_>Smart Card>Need: Chip card reader [Not SD card]>
-SL_25_>Enterprise App Management>Enterprise package management for Microsoft Store>
+SL_25_>Enterprise>Need: Kiosk mod, Microsoft Intune, , AppLocker>
 SL_26_>Now Playing Session Manager>Need: Notification area media player, FN media keys>
-SL_27_>Graphics performance monitoring>Need: Game mode>
+SL_27_>Performance logs>Need: Enterprise>
 SL_28_>Game DVR and Broadcast User>Need: Xbox screen recording>
 SL_29_>System Restore>Connected: File History>
 SL_30_>Mixed reality>Connected: Virtual reality glasses, VR>
 SL_31_>Xbox> >
 SL_32_>Delivery optimization>Connected: Store, Xbox, Update>
-SL_33_>Remote desktop> >
+SL_33_>Remote desktop>Need: Enterprise>
 SL_34_>Screen capture>Connected: Screen excerpt>
 SL_35_>Parental controls> >
-SL_36_>Assigned access>Connected: Kiosk mode>
+SL_36_>Voice Command>Need: Speech Modes, Dictation>
 SL_37_>RetailDemo>Used for display products in stores>
-SL_38_>Contacts> >
+SL_38_>Contacts>Need: Synchronize host>
 SL_39_>Telemetry>Microsoft collects user data>
 SL_40_>Troubleshooting>Redirects to compatibility setting in case of driver installation errors for older hardware>
+SL_41_>Sensors>Need: Router service, Laptop>
+SL_42_>Time zone> >
+SL_43_>Mobile data >Need: 3G,4G,5G, Sim Card>
+SL_44_>Synchronize host>Connected: Calendar and contacts synchronization>
+SL_45_>Themes> >
+SL_46_>Downloaded maps manager>Need: Maps>
+SL_47_>Wallet> >
+SL_48_>Autoplay>Connected: Automatic driver installation>
 ::███████████████████████████████████████████████████████████████████
 SR_1_>Fax> >
 SR_2_>Wordpad>Windows built-in office application>
@@ -348,3 +361,9 @@ EE_20_>Display Card>
 EE_21_>Driver>
 EE_22_>Date>
 EE_23_>VRAM>
+::███████████████████████████████████████████████████████████████████
+DD001>Unfiltered>
+DD002>Advertising Filter>
+DD003>Family Filter>
+DD004>AntiMalware>
+DD005>AntiMalware+ECS>

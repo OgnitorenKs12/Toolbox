@@ -12,7 +12,7 @@ echo        %R%[90m│%R%[32m 1%R%[90m-[📥]%R%[33mUygulama Yükleyici %R%[90m[
 echo        %R%[90m│%R%[32m 2%R%[90m-[⚓]%R%[33mHizmet yönetimi %R%[90m[M]              │%R%[32m  9%R%[90m-[🧽]%R%[33mSistem temizliği                   %R%[90m│%R%[0m
 echo        %R%[90m│%R%[32m 3%R%[90m-[🧰]%R%[33mÖzellik Yönetimi %R%[90m[M]             │%R%[32m 10%R%[90m-[🔧]%R%[33mWindows-Market Onar                %R%[90m│%R%[0m
 echo        %R%[90m│%R%[32m 4%R%[90m-[🧭]%R%[33mPC zaman ayarlı kapat %R%[90m           │%R%[32m 11%R%[90m-[🚀]%R%[33mSistem optimizasyonu [Playbook]    %R%[90m│%R%[0m
-echo        %R%[90m│%R%[32m 5%R%[90m-[🪃]%R%[33mPing ölçer %R%[90m                      │%R%[32m  %R%[33m%R%[90m                                         │%R%[0m
+echo        %R%[90m│%R%[32m 5%R%[90m-[🪃]%R%[33mPing ölçer/DNS değiştirici %R%[90m      │%R%[32m  %R%[33m%R%[90m                                         │%R%[0m
 echo        %R%[90m│%R%[32m 6%R%[90m-[🔏]%R%[33mLisans-Hesap Yönetimi %R%[90m           │%R%[32m  Z%R%[90m-%R%[90m Dil ayarı                             %R%[90m│%R%[0m
 echo        %R%[90m│%R%[32m 7%R%[90m-[💎]%R%[33mSistem hakkında %R%[90m                 │%R%[32m  X%R%[90m-%R%[90m Kapat                                 %R%[90m│%R%[0m
 echo        %R%[90m└────────────────────────────────────────┴───────────────────────────────────────────┘%R%[0m
@@ -24,7 +24,7 @@ echo        %R%[90m│%R%[32m 1%R%[90m-%R%[33m Uygulama Yükleyici %R%[90m[M]   
 echo        %R%[90m│%R%[32m 2%R%[90m-%R%[33m Hizmet yönetimi %R%[90m[M]                 │%R%[32m  9%R%[90m-%R%[33m Sistem temizliği                      %R%[90m│%R%[0m
 echo        %R%[90m│%R%[32m 3%R%[90m-%R%[33m Özellik Yönetimi %R%[90m[M]                │%R%[32m 10%R%[90m-%R%[33m Windows-Market Onar                   %R%[90m│%R%[0m
 echo        %R%[90m│%R%[32m 4%R%[90m-%R%[33m PC zaman ayarlı kapat %R%[90m              │%R%[32m 11%R%[90m-%R%[33m Sistem optimizasyonu [Playbook]       %R%[90m│%R%[0m
-echo        %R%[90m│%R%[32m 5%R%[90m-%R%[33m Ping ölçer %R%[90m                         │%R%[32m  %R%[33m%R%[90m                                         │%R%[0m
+echo        %R%[90m│%R%[32m 5%R%[90m-%R%[33m Ping ölçer/DNS değiştirici %R%[90m         │%R%[32m  %R%[33m%R%[90m                                         │%R%[0m
 echo        %R%[90m│%R%[32m 6%R%[90m-%R%[33m Lisans-Hesap Yönetimi %R%[90m              │%R%[32m  Z%R%[90m-%R%[37m Dil ayarı                             %R%[90m│%R%[0m
 echo        %R%[90m│%R%[32m 7%R%[90m-%R%[33m Sistem hakkında %R%[90m                    │%R%[32m  X%R%[90m-%R%[37m Kapat                                 %R%[90m│%R%[0m
 echo        %R%[90m└────────────────────────────────────────┴───────────────────────────────────────────┘%R%[0m
@@ -56,7 +56,7 @@ echo   %R%[90m│%R%[32m 16%R%[90m-%R%[36m Microsoft Edge           %R%[90m│%R
 echo   %R%[90m│%R%[32m 17%R%[90m-%R%[36m Brave                    %R%[90m│%R%[32m 45%R%[90m-%R%[33m Qbittorrent              %R%[90m│%R%[32m 71%R%[90m-%R%[36m SSD Optimizer            %R%[90m│%R%[0m
 echo   %R%[90m│%R%[32m 18%R%[90m-%R%[36m Cent                     %R%[90m│%ogniogniogniogniognio% Belgeler                   %R%[90m│%R%[32m 72%R%[90m-%R%[36m Multiboot Manager        %R%[90m│%R%[0m
 echo   %R%[90m│%R%[32m 19%R%[90m-%R%[36m Vivaldi                  %R%[90m│%R%[32m 46%R%[90m-%R%[36m Libre Office             %R%[90m│%R%[32m 73%R%[90m-%R%[36m Component Manager        %R%[90m│%R%[0m
-echo   %R%[90m│%R%[32m 20%R%[90m-%R%[36m Maxthon                  %R%[90m│%R%[32m 47%R%[90m-%R%[36m Only Office              %R%[90m│%R%[32m%R%[32m%R%[37m                              %R%[90m│%R%[0m
+echo   %R%[90m│%R%[32m 20%R%[90m-%R%[36m Maxthon                  %R%[90m│%R%[32m 47%R%[90m-%R%[36m Only Office              %R%[90m│%R%[32m 74%R%[90m-%R%[36m AppxRemoved              %R%[90m│%R%[0m
 echo   %R%[90m│%R%[32m 21%R%[90m-%R%[36m Opera                    %R%[90m│%R%[32m 48%R%[90m-%R%[36m Acrobat Reader           %R%[90m│%R%[32m%R%[32m%R%[37m                              %R%[90m│%R%[0m
 echo   %R%[90m│%R%[32m 22%R%[90m-%R%[36m Opera-GX                 %R%[90m│%R%[32m 49%R%[90m-%R%[36m PDF X-Change Editor      %R%[90m│%R%[32m%R%[32m%R%[37m                              %R%[90m│%R%[0m
 echo   %R%[90m│%R%[32m 23%R%[90m-%R%[36m Mozilla Firefox          %R%[90m│%R%[32m 50%R%[90m-%R%[36m Calibre                  %R%[90m│%R%[32m%R%[32m%R%[37m                              %R%[90m│%R%[0m
@@ -111,7 +111,7 @@ T0006>Ana Menü>
 T0007>Yalnızca silme işlemi yapar>
 T0008>kaldırılıyor>
 T0009>Ping ölçümü yapmak istediğiniz site adresini yazabilirsiniz>
-T0010>Açık>Kapalı>Kaldırılmış>Kısmen açık>Kapalı hizmet>Eksik hizmet>Eksik ve kapalı hizmet>
+T0010>Açık>Kapalı>Kaldırılmış>Kısmen açık>Kapalı>Eksik/Uyumsuz>Eksik/Uyumsuz ve kapalı>
 T0011>yükleniyor>
 T0012>düzenleniyor>
 T0013>Winget sistemi kontrol ediliyor>
@@ -139,6 +139,11 @@ T0034>Genel ayarlar ve DLL dosyaları onarılıyor>
 T0035>WMI ile alınan donanım verilerinde hata payı olabilir>
 T0036>Playbook Güncelleme>
 T0037>Uygulama Yükleyici bilgi ekranı>
+T0038>Bütün hizmetleri varsayılan hale getirmek için: DEFAULT>
+T0039>Menüdeki DNS adreslerini uygulamak için solunda yer alan numarayı tuşlamanız yeterlidir>
+T0040>DNS adresi değiştirme işlemi tamamlandı>
+T0041>DNS ayarını sıfırla>
+T0042>DNS ayarları varsayılan hale getirildi>
 ::██████████████████████████████████████████████████████████████████
 P1001>Bileşenler kaldırılıyor...>
 P1002>Uygulamalar kaldırılıyor...>
@@ -201,7 +206,7 @@ P7_18_>Arkaplanda çalışan uygulamaların güç kullanımını azalt işlemini
 SL_1_>Bluetooth> >
 SL_2_>Telefon>İhtiyaç: Bluetooth>
 SL_3_>Yazıcı> >
-SL_4_>Tarayıcı ve Kamera> >
+SL_4_>Tarayıcı ve Kamera>İhtiyaç: OBS>
 SL_5_>Kalem ve Dokunmatik> >
 SL_6_>Bitlocker Sürücü Şifreleme> >
 SL_7_>Tarifeli Ağlar>Sınırlı internetler için kota yönetici>
@@ -222,22 +227,30 @@ SL_21_>Biyometrik>İhtiyaç: Parmak izi │ HelloFace>
 SL_22_>Disk Birleştirme>İhtiyaç: SSD│HDD, Trim>
 SL_23_>Yönlendirici>Yakındaki cihazlar [Akıllı ev cihazları]>
 SL_24_>Akıllı Kart>İhtiyaç: Çipli kart okuyucu [SDkart değil]>
-SL_25_>Kurumsal uygulama>Microsoft Store için kurumsal paket yönetimi>
+SL_25_>Kurumsal>İhtiyaç: Kiosk mod, Microsoft Intune, AppLocker>
 SL_26_>Şimdi Yürütülüyor Oturum Yöneticisi>İhtiyaç: Bildirim alanı medya oynatıcı, FN medya tuşları>
-SL_27_>Grafik perfromansı izleme>İhtiyaç: Oyun modu>
+SL_27_>Performans günlükleri>İhtiyaç: Kurumsal>
 SL_28_>Oyun DVR ve Yayın Kullanıcı>İhtiyaç: Xbox ekran kayıt>
 SL_29_>Sistem Geri Yükleme>Bağlı: Dosya geçmişi>
 SL_30_>Karma gerçeklik>Bağlı: Sanal gerçeklik gözlükleri, VR>
 SL_31_>Xbox> >
 SL_32_>Teslim en iyileştirme>Bağlı: Market, Xbox, Güncelleştirmeler>
-SL_33_>Uzak masaüstü> >
+SL_33_>Uzak masaüstü>İhtiyaç: Kurumsal>
 SL_34_>Ekran yakalama>Bağlı: Ekran alıntısı>
 SL_35_>Ebeveyn denetimleri> >
-SL_36_>Atanmış erişim>Bağlı: Kiosk mod>
+SL_36_>Sesli Komut>İhtiyaç: Konuşma modları, Dikte>
 SL_37_>Perakende gösteri [RetailDemo]>Mağazalarda teşhir ürünlerde kullanılır>
-SL_38_>Kişiler> >
+SL_38_>Kişiler>İhtiyaç: Ana bilgisayarı eşitle>
 SL_39_>Telemetri>Microsoft kullanıcı verilerini toplar>
 SL_40_>Sorun giderme>Eski donanımların sürücü kurulum hatalarında uyumluluk ayarına yönlendirir>
+SL_41_>Sensörler>İhtiyaç: Yönlendirici hizmet, Laptop>
+SL_42_>Otomatik Saat Dilimi Güncelleştirici> >
+SL_43_>Mobil veri>İhtiyaç: 3G,4G,5G, Sim Kart>
+SL_44_>Ana bilgisayarı eşitle>Bağlı: Takvim ve kişiler senkronizyonu>
+SL_45_>Temalar> >
+SL_46_>İndirilen haritalar yöneticisi>İhtiyaç: Haritalar>
+SL_47_>Cüzdan> >
+SL_48_>Otomatik oynat>Bağlı: Otomatik sürücü yükleme>
 ::███████████████████████████████████████████████████████████████████
 SR_1_>Fax> >
 SR_2_>Wordpad>Windows yerleşik office uygulaması>
@@ -348,3 +361,9 @@ EE_20_>Ekran Kartı>
 EE_21_>Sürücü>
 EE_22_>Tarihi>
 EE_23_>VRAM>
+::███████████████████████████████████████████████████████████████████
+DD001>Filtresiz>
+DD002>Reklam Filtreli>
+DD003>Aile Filtreli>
+DD004>AntiMalware>
+DD005>AntiMalware+ECS>

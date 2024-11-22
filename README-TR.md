@@ -39,7 +39,7 @@ Bu bölümdeki programlar ücretsiz uygulamalar arasında seçilmiştir. All in 
 <details>
 <B><summary> 2 - Hizmet Yönetimi</B></summary>
 
-Hizmetleri ihtiyacınıza göre kapatıp açabilirsiniz. Hizmetler hakkında detaylı bilgi Toolbox içinde yer almaktadır. Kaldırılmış hizmetleri yeniden aktifleştiremezsiniz. 26 numaralı işlem Windows 11 sisteme ait hizmettir.
+Hizmetleri ihtiyacınıza göre kapatıp açabilirsiniz. Hizmetler hakkında detaylı bilgi Toolbox içinde yer almaktadır.
 
 ![Tool2.1](https://raw.githubusercontent.com/OgnitorenKs12/Toolbox/main/.github/TR-SS/2.png)
 
@@ -63,9 +63,9 @@ Bu bölümde kapatma süresini dakika cinsinden girmeniz gerekiyor. Kapatma işl
 
 </details>
 <details>
-<B><summary> 5 - Ping ölçer</B></summary>
+<B><summary> 5 - Ping ölçer/DNS değiştirici</B></summary>
 
-Belirli sayfa ve DNS adreslerinin ping süresini gösterir. Dilerseniz farklı bir sayfanın ping ölçümünü de yapabilirsiniz.
+Belirli internet sayfasının veya IP adresinin ping süresini ölçebilirsiniz. Kayıtlı DNS adreslerini tek tuşlama ile değiştirebilirsiniz.
 
 ![Tool5](https://raw.githubusercontent.com/OgnitorenKs12/Toolbox/main/.github/TR-SS/5.png)
 

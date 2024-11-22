@@ -3,7 +3,81 @@
 -   Mail: ognitorenks@gmail.com
 -   Site: [https://ognitorenks.blospot.com](https://ognitorenks.blospot.com)
 
-<details><B><summary> Versiyon 4.5.1 ► 18.09.2024 </B></summary>
+<details><B><summary> Versiyon 4.5.2 ► 23.11.2024 </B></summary>
+
+    ▼ Genel değişiklikler;
+        • Bazı renk ayarları düzenlendi.
+        • Windows - Market onar bölümüne yeni eklemeler yapıldı.
+        • "Uygulama Yükleyici" - All in One Runtimes bölümüne DotNet.DesktopRuntime.9 sürümü eklendi.
+        • "Uygulama Yükleyici" - AppxRemoved uygulaması eklendi.
+    ▼ Playbook bölümündeki değişiklikler;
+        • "Explorer_Setting_35_" ayarı eklendi. (Dosya Gezgini'nin Gezinme Bölmesinden Ana Sayfayı Kaldır)
+        • "Explorer_Setting_36_" ayarı eklendi. (Dosya gezgini hızlı erişim bölümünde Galeri butonunu kaldır)
+        • "Security_Setting_10_" ayarı eklendi. (Microsoft hesapları için paralosız açılışı aktifleştir)
+        • Playbook kalıbında uygulama kaldırma bölümüne yeni eklemeler yapıldı. BingSearch, CrossDevice, MSTeams, Client.AIX
+        • Playbook kalıbında "Telemetry" hizmeti "IntelPMT" olarak güncellendi.
+        • Kalıpta bulunan uygulama listesine eklemeler yapıldı. "Windows ve Mail" uygulaması varsayılan olarak kaldırılacak şekilde ayarlandı. "Outlook for Windows" uygulaması varsayılan olarak bırakıldı.
+    ▼ Ping metre bölümündeki değişiklikler;
+        • DNS adresleri güncellendi. Bazıları kaldırıldı detaylı eklemeler yapıldı.
+        • DNS adreslerini hızlıca değiştirmek için seçimlik menüsü eklendi.
+        • Herhangi bir tuşlama sonrası ana menüye dönme durumu kaldırıldı, ping metre menüsüne geri dönecek şekilde ayarlandı.
+        • DNS ayarlarını varsayılan hale getirmek için özel bir tuşlama eklendi.
+        • Ping metre bölümü artık "Ping ölçer/DNS değiştirici" olarak düzenlendi.
+    ▼ Hizmet Yönetimi bölümündeki değişiklikler;
+        • Hizmetlerin durumunu gösteren bölümde kapalı durum için belirtilen bir tanım hatası giderildi.
+        • Bu bölümde yer alan bütün hizmetleri varsayılan hale getirmek için özel bir tanım ekledim. DEFAULT tuşladıktan sonra bütün hizmetleri açacak şekilde ayarladım.
+        • Kurumsal hizmet grubuna yeni servisler eklendi. 
+            • Aygıt Yönetimi Kayıt Hizmeti = DmEnrollmentSvc 
+            • Ekli Mod = embeddedmode 
+            • Microsoft iSCSI Başlatıcısı Hizmet = MSiSCSI 
+            • Uygulama Kimliği = AppIDSvc
+            • Atanmış Erişim = AssignedAccessManagerSvc (Atanmış erişim hizmeti bu bölüme dahil edildi. Yerine Sesli komut hizmeti eklendi)
+            • Dağıtılmış İşlem Düzenleyicisi = MSDTC
+            • Dağıtılmış İşlem Düzenleyicisi için KtmRm = KtmRm
+            • WMI Performans Bağdaştırıcısı = wmiApSrv
+            • Grup İlkesi İstemcisi = gpsvc
+        • Sesli Komut hizmeti eklendi.
+            • Agent Activation Runtime = AarSvc
+        • "Uzak masaüstü hizmetine" yeni hizmetler eklendi.
+            • IPsec İlke Aracısı = PolicyAgent
+            • Windows Uzaktan Yönetim = WinRM
+        • "Grafik performansı hizmeti" "Performans Günlükleri" olarak adlandırıldı. Yeni hizmet eklendi.
+            • Performans Günlükleri ve Uyarıları = pla
+        • "Yazıcı" hizmetine yeni servisler eklendi.
+            • PrintScanBrokerService = Yazdırma Tarama Aracısı Hizmeti
+            • PrintDeviceConfigurationService = Yazıcı Yapılandırma Hizmeti
+        • "Uzak masaüstüne" hizmetine yeni servisler eklendi.
+            • Windows Uzaktan Yönetim = WinRM 
+            • IPsec İlke Aracısı = PolicyAgent
+        • "Akış" hizmetine yeni servisler eklendi.
+            • WebClient = WebClient
+            • Bağlantı Katmanı Topoloji Bulma Eşleyicisi = lltdsvc
+            • Ağ Bağlantılı Cihazların Otomatik Kurulumu = NcdAutoSetup
+            • Windows Media Player Ağ Paylaşımı Hizmeti = WMPNetworkSvc
+            • Çalışma Klasörleri = workfolderssvc
+            • Brancache = PeerDistSvc
+        • "Sensörler" hizmeti eklendi. 
+            • Algılayıcı Hizmeti = SensorService
+            • Algılayıcı İzleme Hizmeti = SensrSvc
+            • Algılayıcı Veri Hizmeti = SensorDataService
+        • "Saat dilimi güncelleştirici" hizmeti eklendi. 
+            • Hücresel Saat = autotimesvc
+            • Otomatik Saat Dilimi Güncelleştirici = tzautoupdate"
+        • "Mobil Veri" hizmeti eklendi.
+            • WWAN Otomatik Yapılandırma = WwanSvc
+        • "Ana bilgisayarı eşitle" hizmeti eklendi.
+            • Ana Bilgisayarı Eşitle = OneSyncSvc
+            • Kullanıcı Veri Depolama = UnistoreSvc
+            • Kullanıcı Verilerine Erişim = UserDataSvc
+            • Bulut Yedekleme ve Geri Yükleme Hizmeti = CloudBackupRestoreSvc
+        • "Temalar" hizmeti eklendi.
+            • Temalar = Themes
+        • "İndirilen haritalar yöneticisi" hizmeti eklendi.
+            • İndirilen Haritalar Yöneticisi = MapsBroker
+        • "Cüzdan" hizmeti eklendi.
+            • Cüzdan hizmet = WalletService
+
+</details><details><B><summary> Versiyon 4.5.1 ► 18.09.2024 </B></summary>
 
     ▼ Genel değişiklikler;
         • Playbook sonrası yeniden başlatma komutunu bir önceki güncellemede yorum satırı olarak bırakmıştım. Bu sorun giderilmiştir.
@@ -12,7 +86,7 @@
 
     ▼ Genel değişiklikler;
         • Ana menüde boş girişlerde belli işlemlerin dönüşünde gösterilen işlem başarılı ekranı kaldırıldı.
-        • Playbook - "Optimization_Setting_21/22/23/24/25/26" ve "Special_Setting_4_" ayarları  araçtan kaldırıldı. "Feature_Setting_5_" ayarındaki dosya yolu hatası giderildi.
+        • Playbook - "Optimization_Setting_21/22/23/24/25/26" ve "Special_Setting_4_" ayarları araçtan kaldırıldı. "Feature_Setting_5_" ayarındaki dosya yolu hatası giderildi.
         • Playbook - Kalıp ayar menüsünde yer alan önemli bazı ayarlar kalıp dosyasında üst bölüme taşındı.
 
 </details><details><B><summary> Versiyon 4.4.9 ► 04.09.2024 - Playbook </B></summary>

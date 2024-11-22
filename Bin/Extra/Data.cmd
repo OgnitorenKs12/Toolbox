@@ -12,6 +12,8 @@ _0_3_>Spooler>Yazdırma Biriktiricisi>2>Auto>
 _0_3_>PrintWorkflowUserSvc>PrintWorkflowUserSvc>3>Demand>
 _0_3_>McpManagementService>Evrensel Yazdırma Yönetimi Hizmeti>3>Demand>
 _0_3_>PrintNotify>Yazıcı Uzantıları ve Bildirimleri>3>Demand>
+_11_3_>PrintScanBrokerService>PrintScanBrokerService>3>Demand>
+_11_3_>PrintDeviceConfigurationService>Yazıcı Yapılandırma Hizmeti>3>Demand>
 :: Tarayıcı ve Kamera
 _0_4_>FrameServer>Windows Kamera Çerçeve Sunucusu>3>Demand>
 _11_4_>FrameServerMonitor>Windows Kamera Çerçeve Sunucusu İzleyicisi>3>Demand>
@@ -64,13 +66,19 @@ _0_15_>LanmanServer>Sunucu>2>Auto>
 _0_15_>lmhosts>TCP/IP NetBIOS Yardımcısı>3>Demand>
 _0_15_>TrkWks>Dağıtılmış Bağlantı İzleme İstemcisi>2>Auto>
 _0_15_>IKEEXT>IKE ve AuthIP IPsec Anahtarlama Modülleri>3>Demand>
+_0_15_>lltdsvc>Bağlantı Katmanı Topoloji Bulma Eşleyicisi>3>Demand>
+_0_15_>WebClient>WebClient>3>Demand>
+_0_15_>NcdAutoSetup>Ağ Bağlantılı Cihazların Otomatik Kurulumu>3>Demand>
+_0_15_>WMPNetworkSvc>Windows Media Player Ağ Paylaşımı Hizmeti>3>Demand>
+_0_15_>workfolderssvc>Çalışma Klasörleri>3>Demand>
+_0_15_>PeerDistSvc>Brancache>3>Demand>
 :: Hızlı getir
 _0_16_>SysMain>Hızlı getir>2>Auto>
 :: Windows Search
 _0_17_>WSearch>Windows Search>2>Auto>
 :: Hızlı kullanıcı değiştir
 _0_18_>seclogon>İkincil Oturum Açma>3>Demand>
-::
+:: Yazı tipi önbelleği
 _0_19_>FontCache>Windows Yazı Tipi Önbelleği>2>Auto>
 _0_19_>FontCache3.0.0.0>Windows Sunum Vakfı Yazı Tipi Önbelleği 3.0.0.0>3>Demand>
 :: Windows Insider
@@ -89,13 +97,23 @@ _0_24_>SCPolicySvc>Akıllı Kart Kaldırma İlkesi>3>Demand>
 _0_24_>CertPropSvc>Sertifa yayma>3>Demand>
 :: Kurumsal
 _0_25_>EntAppSvc>Kurumsal uygulama yönetimi>3>Demand>
+_0_25_>DmEnrollmentSvc>Aygıt Yönetimi Kayıt Hizmeti>3>Demand>
+_0_25_>AssignedAccessManagerSvc>Atanmış Erişim>3>Demand>
+_0_25_>embeddedmode>Ekli Mod>3>Demand>
+_0_25_>MSiSCSI>Microsoft iSCSI Başlatıcısı Hizmet>3>Demand>
+_0_25_>AppIDSvc>Uygulama Kimliği>3>Demand>
+_0_25_>MSDTC>Dağıtılmış İşlem Düzenleyicisi>3>Demand>Veritabanları, ileti kuyrukları ve dosya sistemleri gibi birden fazla kaynak yöneticisini kapsayan işlemleri koordine eder. Bu hizmet durdurulursa, bu işlemler başarısız olur. Bu hizmet devre dışı bırakılırsa, buna açıkça bağımlı olan tüm hizmetler başlatılamaz.>
+_0_25_>KtmRm>Dağıtılmış İşlem Düzenleyicisi için KtmRm>3>Demand>Dağıtılmış İşlem Koordinatörü (MSDTC) ile Çekirdek İşlem Yöneticisi (KTM) arasındaki işlemleri koordine eder. KtmRm hizmetinin yeniden yapılandırılması önerilmez. Hem MSDTC hem de KTM gerektiğinde bu hizmeti otomatik olarak başlatır. Bu hizmet devre dışı bırakılırsa, Çekirdek Kaynak Yöneticisi ile etkileşimde bulunan herhangi bir MSDTC işlemi başarısız olur ve buna açıkça bağımlı olan tüm hizmetler başlatılamaz.>
+_0_25_>wmiApSrv>WMI Performans Bağdaştırıcısı>3>Demand>Windows Yönetim Araçları (WMI) sağlayıcılarından ağdaki istemcilere performans kitaplığı bilgileri sağlar. Bu hizmet yalnızca Performans Veri Yardımcısı etkinleştirildiğinde çalışır>
+_0_25_>gpsvc>Grup İlkesi İstemcisi>2>Auto>Yöneticiler tarafından bilgisayar ve kullanıcılar için Grup İlkesi bileşeni aracılığıyla yapılandırılan ayarları uygulamaktan sorumludur>
 :: NPSMSvc
 _0_26_>NPSMSvc>Şimdi Yürütülüyor Oturum Yöneticisi>3>Demand>
-:: GraphicsPerfSvc
+:: Performans Günlükleri
 _0_27_>GraphicsPerfSvc>Grafik perfromansı izleme>3>Demand>
+_0_27_>pla>Performans Günlükleri ve Uyarıları>3>Demand>
 :: Oyun DVR kayıt hizmeti
 _0_28_>BcastDVRUserService>Oyun DVR ve Yayın Kullanıcı Hizmeti>3>Demand>
-:: Sistem geri yükleme
+:: Sistem geri yükleme [Burayı ayıkla ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼]
 _0_29_>SDRSVC>Windows Yedekleme>3>Demand>
 _0_29_>VSS>Birim Gölge Kopyası>3>Demand>
 _0_29_>swprv>Microsoft Yazılımı Gölge Kopya Sağlayıcısı>3>Demand>
@@ -126,12 +144,14 @@ _0_33_>RpcLocator>Uzaktan Yordam Çağrısı Konumlandırıcısı>3>Demand>
 _0_33_>lmhosts>TCP/IP NetBIOS Yardımcısı>3>Demand>
 _0_33_>tcpipreg>TCP/IP Kayıt Defteri Uyumluluğu>2>Auto>
 _0_33_>Netlogon>Netlogon>3>Demand>
+_0_33_>PolicyAgent>IPsec İlke Aracısı>3>Demand>
+_0_33_>WinRM>Windows Uzaktan Yönetim>3>Demand>
 :: Yakalama hizmeti
 _0_34_>CaptureService>Ekran yakalama>3>Demand>
 :: Ebeveyn Denetimleri
 _0_35_>WpcMonSvc>Ebeveyn Denetimleri>3>Demand>
-:: Atanmış erişim
-_0_36_>AssignedAccessManagerSvc>Atanmış Erişim>3>Demand>
+:: Sesli Komut hizmeti
+_0_36_>AarSvc>Agent Activation Runtime>3>Demand>
 :: Retail demo
 _0_37_>RetailDemo>Perakende gösteri>3>Demand>
 :: Kişiler
@@ -150,6 +170,30 @@ _0_40_>wercplsupport>Sorun Raporları Denetim Masası Desteği>3>Demand>
 _0_40_>WerSvc>Windows Hata Raporlama>3>Demand>
 _0_40_>PcaSvc>Program Uyumluluk Yardımcısı>3>Demand>
 _0_40_>TroubleshootingSvc>Önerilen Sorun Giderme Hizmeti>3>Demand>
+:: Sensörler
+_0_41_>SensorService>Algılayıcı Hizmeti>3>Demand>
+_0_41_>SensrSvc>Algılayıcı İzleme Hizmeti>3>Demand>
+_0_41_>SensorDataService>Algılayıcı Veri Hizmeti>3>Demand>
+:: Saat dilimi
+_0_42_>autotimesvc>Hücresel Saat>3>Demand>
+_0_42_>tzautoupdate>Otomatik Saat Dilimi Güncelleştirici>3>Demand>
+:: Mobil veri 
+_0_43_>WwanSvc>WWAN Otomatik Yapılandırma>3>Demand>
+:: Ana bilgisayarı eşitle
+_0_44_>OneSyncSvc>Ana Bilgisayarı Eşitle>2>Auto>
+_0_44_>UnistoreSvc>Kullanıcı Veri Depolama>3>Demand>
+_0_44_>UserDataSvc>Kullanıcı Verilerine Erişim>3>Demand>
+_11_44_>CloudBackupRestoreSvc>Bulut Yedekleme ve Geri Yükleme Hizmeti>3>Demand>
+:: Temalar
+_0_45_>Themes>Temalar>2>Auto>
+:: İndirilen haritalar yöneticisi
+_0_46_>MapsBroker>İndirilen Haritalar Yöneticisi>2>Auto>
+:: Cüzdan hizmeti
+_0_47_>WalletService>Cüzdan hizmet>3>Demand>
+:: Otomatik oynat [Bağlı: Otomatik sürücü yükleme]
+_0_48_>ShellHWDetection>Kabuk Donanım Algılaması>2>Auto>
+_0_48_>DeviceAssociationService>Aygıt İlişkisi Hizmeti>3>Demand>
+
 :: ██████████████████████████████████████████████████████████████████
 :: Fax
 COM_1_>Print.Fax.Scan>Capability>

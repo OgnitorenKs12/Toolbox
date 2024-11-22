@@ -40,7 +40,7 @@ o. If the program does not install, there is a problem with the UAC settings. To
 <details>
 <B><summary> 2 - Service Management</B></summary>
 
-You can turn the services off and on according to your needs. Detailed information about services is available in the Toolbox. You cannot reactivate uninstalled services. Operation 26 is a service for Windows 11 system.
+You can turn the services off and on according to your needs. Detailed information about services is available in the Toolbox. You cannot reactivate uninstalled services.
 
 ![Tool2.1](https://raw.githubusercontent.com/OgnitorenKs12/Toolbox/main/.github/EN-SS/2.png)
 
@@ -64,9 +64,9 @@ In this section you need to enter the shutdown time in minutes. It will inform y
 
 </details>
 <details>
-<B><summary> 5 - Ping meter</B></summary>
+<B><summary> 5 - Ping meter/DNS switcher</B></summary>
 
-Shows the ping time of specific pages and DNS addresses. You can also measure the ping of a different page.
+You can measure the ping time of a specific web page or IP address. You can change registered DNS addresses with a single click.
 
 ![Tool5](https://raw.githubusercontent.com/OgnitorenKs12/Toolbox/main/.github/EN-SS/5.png)
 

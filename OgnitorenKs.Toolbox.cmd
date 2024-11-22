@@ -32,7 +32,7 @@ setlocal enabledelayedexpansion
 REM Başlık
 title 🤖 OgnitorenKs Toolbox 🤖
 REM Toolbox versiyon
-set Version=4.5.1
+set Version=4.5.2
 REM Pencere ayarı
 mode con cols=100 lines=23
 
@@ -213,7 +213,9 @@ FOR %%a in (!Value_M!) do (
     if %%a EQU !OgniApp! (Call :OgniApp_Installer %%a https://raw.githubusercontent.com/OgnitorenKs12/Multiboot_Manager/main/.github/Multiboot_Manager.zip)
     set /a OgniApp+=1
     if %%a EQU !OgniApp! (Call :OgniApp_Installer %%a https://raw.githubusercontent.com/OgnitorenKs12/Component_Manager/main/.github/Component_Manager.zip)
-    set /a OgniApp-=3
+    set /a OgniApp+=1
+    if %%a EQU !OgniApp! (Call :OgniApp_Installer %%a https://raw.githubusercontent.com/OgnitorenKs12/AppxRemoved/main/.github/AppxRemoved.zip)
+    set /a OgniApp-=4
 )
 REM Seçilen programları yüklemek için 'Winget.txt' içerisinden veriyi çeker ve yükletir.
 cls&echo.&echo  ►%R%[36m !LA2!:%R%[0m !Value_M!
@@ -279,7 +281,9 @@ FOR %%a in (!Value_M!) do (
     if %%a EQU !OgniApp! (Call :OgniApp_Check %%a "Multiboot_Manager")
     set /a OgniApp+=1
     if %%a EQU !OgniApp! (Call :OgniApp_Check %%a "Component_Manager")
-    set /a OgniApp-=3
+    set /a OgniApp+=1
+    if %%a EQU !OgniApp! (Call :OgniApp_Check %%a "AppxRemoved")
+    set /a OgniApp-=4
 )
 Call :Dil A 2 T0028
 echo.&echo %R%[36m !LA2! %R%[0m
@@ -341,6 +345,7 @@ Oracle.JavaRuntimeEnvironment
 Microsoft.XNARedist
 OpenAL.OpenAL
 Microsoft.DotNet.DesktopRuntime.8
+Microsoft.DotNet.DesktopRuntime.9
 Microsoft.DirectX
 Microsoft.EdgeWebView2Runtime
 ) do (
@@ -355,10 +360,9 @@ goto :eof
 REM -------------------------------------------------------------
 :Service_Menu
 REM mode con cols=130 lines=39
-mode con cols=130 lines=50
+mode con cols=130 lines=57
 Call :DEL_Direct "%Konum%\Log\Services.txt"
 REM Servis menüsünün yönetimi hakkındaki bilgileri dil dosyasından çeker
-echo.
 Call :Dil A 2 B0001
 Call :Dil B 2 T0004
 Call :Dil B 3 T0004
@@ -373,11 +377,12 @@ Call :Dil A 7 T0010
 Call :Dil A 8 T0010
 echo %R%[92m  ♦%R%[90m = !LA2! │ !LA5! [%R%[91m ♦%R%[90m = !LA7! │%R%[95m ♦%R%[90m = !LA8! │%R%[96m ♦%R%[90m = !LA6!]%R%[0m
 echo %R%[90m  █ = !LA3! │%R%[91m █%R%[90m = !LA4! │%R%[95m █%R%[90m = !LA3! [!LA7!]%R%[0m
+Call :Dil A 2 T0038&echo %R%[90m  !LA2!%R%[0m
 REM Dil değişkenleri çok olduğu için kullanım sonrası içlerini boşaltıyoruz.
 FOR %%a in (LA2 LA3 LA4 LA5 LA6 LA7 LA8 LB2 LB3 LC2) do (set %%a=)
 REM Dil dosyasından hizmet verilerini alarak kontrolleri sağlıyoruz.
 echo   %R%[90m┌───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐%R%[0m
-FOR /L %%a in (1,1,40) do (
+FOR /L %%a in (1,1,48) do (
     Call :Dil A 2 SL_%%a_
     Call :Dil A 3 SL_%%a_
     Call :Service_Check %%a
@@ -394,6 +399,10 @@ Call :Upper "%Value_S%" Value_S
 REM Yönlendirmeleri yapıyorum.
 echo !Value_S! | Findstr /i "X" > NUL 2>&1
     if !errorlevel! EQU 0 (set Error=X&goto Main_Menu)
+echo !Value_S! | Findstr /i "DEFAULT" > NUL 2>&1
+    if !errorlevel! EQU 0 (set Value_S=E
+                           FOR /L %%a in (1,1,48) do (set Value_S=!Value_S!,%%a)
+                          )
 cls
 FOR %%a in (!Value_S!) do (
     Call :Service_Management %%a
@@ -453,7 +462,7 @@ FOR %%a in (!Value_S!) do (
     Call :Read_Features COM_%%a_
     echo ►%R%[32m "!LA2!" %R%[37m !LB2! %R%[0m  
     Call :Remove_!Value_C! "COM_%%a_"
-    if %%a EQU 12 (Call :Schtasks-Remove "\Microsoft\Windows\SystemRestore\SR")
+    if %%a EQU 12 (Call :Schtasks_Remove "\Microsoft\Windows\SystemRestore\SR")
 )
 goto Features_Menu
 
@@ -481,45 +490,73 @@ goto Main_Menu
 REM -------------------------------------------------------------
 :Ping_Metre
 REM Aşağıdaki DNS ve Web adreslerine ping atarak tepki süresini ölçer. 
-mode con cols=100 lines=30
+mode con cols=100 lines=35
 Call :Dil A 2 B0003&echo.&echo %R%[91m ► !LA2! %R%[0m
 echo.
-Call :Ping A www.youtube.com&echo  %R%[90m•%R%[33m    Youtube %R%[90m=%R%[37m !Value_A! %R%[90mMS%R%[0m
-Call :Ping A www.facebook.com&echo  %R%[90m•%R%[33m   Facebook %R%[90m=%R%[37m !Value_A! %R%[90mMS%R%[0m
-Call :Ping A www.twitter.com&echo  %R%[90m•%R%[33m    Twitter %R%[90m=%R%[37m !Value_A! %R%[90mMS%R%[0m
-Call :Ping A www.instagram.com&echo  %R%[90m•%R%[33m  Instagram %R%[90m=%R%[37m !Value_A! %R%[90mMS%R%[0m
-Call :Ping A www.reddit.com&echo  %R%[90m•%R%[33m     Reddit %R%[90m=%R%[37m !Value_A! %R%[90mMS%R%[0m
-Call :Ping A www.twitch.tv&echo  %R%[90m•%R%[33m     Twitch %R%[90m=%R%[37m !Value_A! %R%[90mMS%R%[0m
-echo %R%[36m ► DNS%R%[0m 
-Call :Ping A 1.1.1.1
-Call :Ping B 1.0.0.1
-echo  %R%[90m•%R%[33m     Claudflare %R%[90m=%R%[37m !Value_A! %R%[90m│%R%[37m !Value_B! %R%[90mMS ► [%R%[33m1.1.1.1 %R%[90m│%R%[33m 1.0.0.1%R%[90m]%R%[0m
-Call :Ping A 8.8.8.8
-Call :Ping B 8.8.4.4
-echo  %R%[90m•%R%[33m         Google %R%[90m=%R%[37m !Value_A! %R%[90m│%R%[37m !Value_B! %R%[90mMS ► [%R%[33m8.8.8.8 %R%[90m│%R%[33m 8.8.4.4%R%[90m]%R%[0m
-Call :Ping A 9.9.9.9
-Call :Ping B 149.112.112.112
-echo  %R%[90m•%R%[33m          Quad9 %R%[90m=%R%[37m !Value_A! %R%[90m│%R%[37m !Value_B! %R%[90mMS ► [%R%[33m9.9.9.9 %R%[90m│%R%[33m 149.112.112.112%R%[90m]%R%[0m
-Call :Ping A 208.67.222.222
-Call :Ping B 208.67.220.220
-echo  %R%[90m•%R%[33m        OpenDNS %R%[90m=%R%[37m !Value_A! %R%[90m│%R%[37m !Value_B! %R%[90mMS ► [%R%[33m208.67.222.222 %R%[90m│%R%[33m 208.67.220.220%R%[90m]%R%[0m
-Call :Ping A 156.154.70.2
-Call :Ping B 156.154.71.2
-echo  %R%[90m•%R%[33m UltraRecursive %R%[90m=%R%[37m !Value_A! %R%[90m│%R%[37m !Value_B! %R%[90mMS ► [%R%[33m156.154.70.2 %R%[90m│%R%[33m 156.154.71.2%R%[90m]%R%[0m
-Call :Ping A 94.140.14.14
-Call :Ping B 94.140.15.15
-echo  %R%[90m•%R%[33m        Adguard %R%[90m=%R%[37m !Value_A! %R%[90m│%R%[37m !Value_B! %R%[90mMS ► [%R%[33m94.140.14.14 %R%[90m│%R%[33m 94.140.15.15%R%[90m]%R%[0m
-Call :Dil A 2 T0006&echo.&echo  %R%[32m X%R%[90m-%R%[37m !LA2! %R%[0m
+Call :Ping A www.youtube.com&echo  %R%[90m •%R%[33m    Youtube %R%[90m=%R%[36m !Value_A! %R%[90mMS%R%[0m
+Call :Ping A www.facebook.com&echo  %R%[90m •%R%[33m   Facebook %R%[90m=%R%[36m !Value_A! %R%[90mMS%R%[0m
+Call :Ping A www.twitter.com&echo  %R%[90m •%R%[33m    Twitter %R%[90m=%R%[36m !Value_A! %R%[90mMS%R%[0m
+Call :Ping A www.instagram.com&echo  %R%[90m •%R%[33m  Instagram %R%[90m=%R%[36m !Value_A! %R%[90mMS%R%[0m
+Call :Ping A www.reddit.com&echo  %R%[90m •%R%[33m     Reddit %R%[90m=%R%[36m !Value_A! %R%[90mMS%R%[0m
+Call :Ping A www.twitch.tv&echo  %R%[90m •%R%[33m     Twitch %R%[90m=%R%[36m !Value_A! %R%[90mMS%R%[0m
+echo %R%[36m ► DNS%R%[0m
+Call :Dil A 2 T0039&echo %R%[90m ▼ !LA2! ▼ %R%[0m
+set Count=0
+FOR /F "delims=► tokens=2" %%a in ('Findstr /i "DNS_" %Konum%\Bin\Extra\DNS.txt 2^>NUL') do (set /a Count+=1)
+FOR /L %%a in (1,1,!Count!) do ( 
+    FOR /F "delims=► tokens=2" %%b in ('Findstr /i "DNS_%%a_" %Konum%\Bin\Extra\DNS.txt 2^>NUL') do (
+        FOR /F "delims=► tokens=3" %%c in ('Findstr /i "DNS_%%a_" %Konum%\Bin\Extra\DNS.txt 2^>NUL') do (
+            FOR /F "delims=► tokens=4" %%d in ('Findstr /i "DNS_%%a_" %Konum%\Bin\Extra\DNS.txt 2^>NUL') do (
+                FOR /F "delims=► tokens=5" %%e in ('Findstr /i "DNS_%%a_" %Konum%\Bin\Extra\DNS.txt 2^>NUL') do (
+				    set LC2=
+					Call :Dil C 2 %%c
+                    Call :Ping A %%d
+                    Call :Ping B %%e
+                    set Number=%%a
+                    if %%a LEQ 9 (set Number= %%a)
+                    echo %R%[32m !Number!%R%[90m-%R%[36m !Value_A! %R%[90m│%R%[36m !Value_B! %R%[90mMS ►%R%[33m %%b%R%[90m-[!LC2!]%R%[0m
+                )
+            )
+        )
+    )
+)
+Call :Dil A 2 T0041&echo.&echo  %R%[32m R%R%[90m-%R%[37m !LA2! %R%[0m
+Call :Dil A 2 T0006&echo  %R%[32m X%R%[90m-%R%[37m !LA2! %R%[0m
 Call :Dil A 2 T0009&echo  %R%[90m !LA2! %R%[0m
 Call :Dil A 2 D0001&echo.&set /p Value_M=%R%[92m ► !LA2!= %R%[0m
 FOR %%a in (x X) do (
     if !Value_M! EQU %%a (set Error=X&goto Main_Menu)
 )
+FOR /L %%a in (1,1,!Count!) do (
+    if %%a EQU !Value_M! (FOR /F "delims=► tokens=4" %%b in ('Findstr /i "DNS_!Value_M!_" %Konum%\Bin\Extra\DNS.txt 2^>NUL') do (
+                              FOR /F "delims=► tokens=5" %%c in ('Findstr /i "DNS_!Value_M!_" %Konum%\Bin\Extra\DNS.txt 2^>NUL') do (
+                                  Call :Powershell "Set-DnsClientServerAddress -InterfaceAlias 'Ethernet' -ServerAddresses ('%%b','%%c')" > NUL 2>&1
+                                  Call :Powershell "Set-DnsClientServerAddress -InterfaceAlias 'Wi-fi' -ServerAddresses ('%%b','%%c')" > NUL 2>&1
+                              )
+                          )
+                          FOR /F "delims=► tokens=6" %%b in ('Findstr /i "DNS_!Value_M!_" %Konum%\Bin\Extra\DNS.txt 2^>NUL') do (
+                              FOR /F "delims=► tokens=7" %%c in ('Findstr /i "DNS_!Value_M!_" %Konum%\Bin\Extra\DNS.txt 2^>NUL') do (
+                                  Call :Powershell "Set-DnsClientServerAddress -InterfaceAlias 'Ethernet' -ServerAddresses ('%%b','%%c')" > NUL 2>&1
+                                  Call :Powershell "Set-DnsClientServerAddress -InterfaceAlias 'Wi-fi' -ServerAddresses ('%%b','%%c')" > NUL 2>&1
+                              )
+                          )
+                          set Count=X
+    )
+)
+FOR %%a in (r R) do (
+    if !Value_M! EQU %%a (Call :Powershell "Set-DnsClientServerAddress -InterfaceAlias 'Ethernet' -ResetServerAddresses" > NUL 2>&1
+                          Call :Powershell "Set-DnsClientServerAddress -InterfaceAlias 'Wi-fi' -ResetServerAddresses" > NUL 2>&1
+                          set Count=R
+    )
+)
+if !Count! EQU X (Call :Dil A 2 T0040&echo %R%[33m ► !LA2! %R%[0m&Call :Bekle 2&goto Ping_Metre)
+if !Count! EQU R (Call :Dil A 2 T0042&echo %R%[33m ► !LA2! %R%[0m&Call :Bekle 2&goto Ping_Metre)
 Call :Ping A !Value_M!&echo.&echo  %R%[90m•%R%[33m !Value_M! %R%[90m=%R%[37m !Value_A! %R%[90mMS%R%[0m
 Call :Dil A 2 T0028&echo.&echo  %R%[32m !LA2! %R%[0m
 FOR %%a in (A B) do (set Value_%%a=)
 pause > NUL
-goto Main_Menu
+goto Ping_Metre
+
 
 REM -------------------------------------------------------------
 :User_Licence_Manager
@@ -717,7 +754,7 @@ Call :RegAdd "HKLM\SOFTWARE\Policies\Microsoft\WindowsStore" "RemoveWindowsStore
 REM BITS hizmeti varsayılan hale getiriliyor.
 Call :RegDel "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Config" /v "DODownloadMode"
 REM Microsoft Store için hizmetleri düzenler
-FOR %%a in (AppXSvc camsvc wuauserv StorSvc LicenseManager trustedinstaller ClipSVC UserDataSvc UnistoreSvc InstallService PushToInstall TimeBrokerSvc TokenBroker) do (
+FOR %%a in (AppXSvc camsvc wuauserv StorSvc LicenseManager TrustedInstaller ClipSVC UserDataSvc UnistoreSvc InstallService PushToInstall TimeBrokerSvc TokenBroker NcbService msiserver smphost) do (
     Call :Service_Admin "%%a" 3
 )
 FOR %%a in (cryptsvc bits OneSyncSvc UsoSvc DoSvc) do (
@@ -1114,7 +1151,7 @@ FOR %%g in (!Value_W!) do (
                                    if "!X!" EQU "ON" (if "!XS!" EQU "Off" (set Check=%R%[95m♦%R%[0m)
                                                       if "!XS!" EQU "NT" (set Check=%R%[91m♦%R%[0m)
                                                      )
-                                   if "!X!" EQU "NT" (if "!XS!" EQU "Off" (set Check=%R%[91m♦%R%[0m)
+                                   if "!X!" EQU "NT" (if "!XS!" EQU "Off" (set Check=%R%[95m█%R%[0m)
                                                       if "!XS!" EQU "NT" (set Check=%R%[91m█%R%[0m)
                                                      )
                                   )
@@ -1139,7 +1176,7 @@ if %~1 EQU D (set Value=D
               goto :eof
 )
 Call :Dil A 2 SL_%~1_
-echo %R%[96m "!LA2!" %R%[37m !LB2! %R%[0m
+echo %R%[90m► "%R%[96m!LA2!%R%[90m"%R%[33m !LB2! %R%[0m
 FOR %%j in (!Value_W!) do (
     FOR /F "delims=> tokens=2" %%g in ('Findstr /i "_%%j_%~1_" %Konum%\Bin\Extra\Data.cmd') do (
         reg query "HKLM\SYSTEM\CurrentControlSet\Services\%%g" /v "Start" > NUL 2>&1
@@ -1273,7 +1310,7 @@ FOR /F "tokens=*" %%v in ('dir /b "C:\Users\All Users\Microsoft\Windows\AppRepos
     %NSudo% RD /S /Q "C:\Users\All Users\Microsoft\Windows\AppRepository\Packages\%%v"
 )
 FOR /F "tokens=*" %%v in ('dir /b "%LocalAppData%\Packages\*%~1*" 2^>NUL') do (
-    echo Call :RD_Direct "%LocalAppData%\Packages\%%v" >> C:\Playbook.Reset.After.cmd
+    echo Call :RD_Direct "%%LocalAppData%%\Packages\%%v" >> C:\Playbook.Reset.After.cmd
     %NSudo% RD /S /Q "%LocalAppData%\Packages\%%v"
 )
 goto :eof
@@ -1300,9 +1337,9 @@ goto :eof
 
 REM -------------------------------------------------------------
 :RegDel
-if !Show! EQU 1 (echo %R%[90mReg delete%R%[33m %* %R%[90m/f%R%[0m)
-Reg delete %* /f > NUL 2>&1
-    if !errorlevel! NEQ 0 (%NSudo% Reg delete %* /f)
+if !Show! EQU 1 (echo %R%[90mReg delete%R%[33m "%~1" /v "%~2" %R%[90m/f%R%[0m)
+Reg delete "%~1" /v "%~2" /f > NUL 2>&1
+    if !errorlevel! NEQ 0 (%NSudo% Reg delete "%~1" /v "%~2" /f)
 goto :eof
 
 REM -------------------------------------------------------------
@@ -1364,7 +1401,7 @@ schtasks /change /TN "%~2" /%~1 > NUL 2>&1
 goto :eof
 
 REM -------------------------------------------------------------
-:Schtasks-Remove
+:Schtasks_Remove
 REM Görev zamanlayacısında silme işlemi yapar
 schtasks /Delete /TN "%~1" /F > NUL 2>&1
     if !errorlevel! NEQ 0 (%NSudo% schtasks /Delete /TN "%~1" /F)
@@ -2863,6 +2900,16 @@ Call :Playbook_Reader Explorer_Setting_34_
                              RunDll32 advpack.dll,LaunchINFSection %Temp%\Mouse_Playbook\Mouse2\Install.inf,DefaultInstall
                              Call :RD_Direct "%Temp%\Mouse_Playbook"
 )
+REM Dosya Gezgini'nin Gezinme Bölmesinden Ana Sayfayı Kaldır
+Call :Playbook_Reader Explorer_Setting_35_
+    if "!Playbook!" EQU "1" (if %Win% EQU 11 (Call :RegVeAdd "HKCU\Software\Classes\CLSID\{f874310e-b6b7-47dc-bc84-b9e6b38f5903}" REG_SZ "CLSID_MSGraphHomeFolder"
+                                              Call :RegAdd "HKCU\Software\Classes\CLSID\{f874310e-b6b7-47dc-bc84-b9e6b38f5903}" "System.IsPinnedToNameSpaceTree" REG_DWORD 0
+                                             )
+)
+REM Dosya gezgini hızlı erişim bölümünde Galeri butonunu kaldır
+Call :Playbook_Reader Explorer_Setting_36_
+    if "!Playbook!" EQU "1" (if %Win% EQU 11 (Call :RegAdd "HKCU\Software\Classes\CLSID\{e88865ea-0e1c-4e20-9aa6-edcd0212c87c}" "System.IsPinnedToNameSpaceTree" REG_DWORD 0)
+)
 REM Windows Search - Şifrelenmiş dosyaların indekslenmesini devre dışı bırak
 Call :Playbook_Reader Search_Setting_1_
     if "!Playbook!" EQU "1" (Call :RegAdd "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" "AllowIndexingEncryptedStoresOrItems" REG_DWORD 0
@@ -3107,6 +3154,10 @@ Call :Playbook_Reader Security_Setting_8_
 REM Uzak bilgisayardan regedit kayıt değişikliğini devre dışı bırak [Uzak masaüstü]
 Call :Playbook_Reader Security_Setting_9_
     if "!Playbook!" EQU "1" (Call :RegAdd_CCS "Control\SecurePipeServers\winreg" remoteregaccess REG_DWORD 1
+)
+REM Microsoft hesapları için paralosız açılışı aktifleştir
+Call :Playbook_Reader Security_Setting_10_
+    if "!Playbook!" EQU "1" (if "%Win%" EQU "11" (Call :RegAdd "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\PasswordLess\Device" "DevicePasswordLessBuildVersion" REG_DWORD 2)
 )
 REM Yapışkan tuşları kapat
 Call :Playbook_Reader Feature_Setting_1_
@@ -3445,7 +3496,7 @@ Call :Playbook_Reader "Task_Scheduler_Setting"
                              FOR /F "delims=► tokens=2" %%a in ('Findstr /i "Task_Scheduler_Setting" %PB%') do (
                                  FOR /F "tokens=2" %%b in ('Findstr /i "%%a" %PB%') do (
                                      if "%%b" EQU "1" (Call :Schtasks "Disable" "%%a")
-                                     if "%%b" EQU "2" (Call :Schtasks-Remove "%%a")
+                                     if "%%b" EQU "2" (Call :Schtasks_Remove "%%a")
                                 )
                             )
 )
