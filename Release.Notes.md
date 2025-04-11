@@ -3,7 +3,17 @@
 -   Mail: ognitorenks@gmail.com
 -   Site: [https://ognitorenks.blospot.com](https://ognitorenks.blospot.com)
 
-<details><B><summary> Versiyon 4.5.2 ► 23.11.2024 </B></summary>
+<details><B><summary> Versiyon 4.5.3 ► 11.04.2025 </B></summary>
+
+    ▼ Genel değişiklikler;
+	    • Hizmet Yönetimi - Bazı açıklamalar düzeltildi. 
+		• Hizmet Yönetimi - Log dosyası okunaklı hale getirildi. Hizmet gruplarında yer alan çoklu servisler düzenlendi.
+		• Hizmet Yönetimi - "WwanSvc" hizmeti WiFi bölümünden kaldırıldı.
+		• Hizmet Yönetimi - "lmhosts" hizmeti Uzak masaüstü bölümünden kaldırıldı.
+		• Playbook - "Optimization_Setting_5_" bölümüne Windows 11 için eklemeler yapıldı.
+		• Playbook - Kalıp dosyasında uygulamalar bölümüne "Copilot", "WidgetsPlatformRuntime" eklendiler. "Client.AIX" sistem uygulaması olduğu için listeden kaldırıldı.
+
+</details><details><B><summary> Versiyon 4.5.2 ► 23.11.2024 </B></summary>
 
     ▼ Genel değişiklikler;
         • Bazı renk ayarları düzenlendi.

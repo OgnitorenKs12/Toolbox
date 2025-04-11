@@ -217,7 +217,7 @@ SL_11_>Windows Connect Now [WPS]>Need: WiFi>
 SL_12_>Wifi>Need: Claudflare WARP>
 SL_13_>Location> >
 SL_14_>Miracast>Wireless screen sharing │ Need: Settings ► Devices, Win11 audio management>
-SL_15_>Flow>Network data sharing>
+SL_15_>Flow>Connected: Data over network, printer sharing>
 SL_16_>Fast Fetch-Start>Need: HDD>
 SL_17_>Windows Search>Indexing service │ May be required for flow service>
 SL_18_>Quick User Switch>Need: Blizzard>
@@ -238,7 +238,7 @@ SL_32_>Delivery optimization>Connected: Store, Xbox, Update>
 SL_33_>Remote desktop>Need: Enterprise>
 SL_34_>Screen capture>Connected: Screen excerpt>
 SL_35_>Parental controls> >
-SL_36_>Voice Command>Need: Speech Modes, Dictation>
+SL_36_>Voice Command>Connected: Cortana etc. applications>
 SL_37_>RetailDemo>Used for display products in stores>
 SL_38_>Contacts>Need: Synchronize host>
 SL_39_>Telemetry>Microsoft collects user data>

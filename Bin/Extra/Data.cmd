@@ -39,7 +39,6 @@ _0_10_>RMSvc>Radyo yönetimi ve uçak modu>3>Demand>
 :: WPS
 _0_11_>wcncsvc>Windows Şimdi Bağlan / WPS>3>Demand>
 :: WIFI
-_0_12_>WwanSvc>WWAN Otomatik Yapılandırma>3>Demand>
 _0_12_>WlanSvc>Kablosuz Yerel Ağ Otomatik Yapılandırma>2>Auto>
 _0_12_>vwifibus>Sanal Kablosuz Veri Yolu>3>Demand>
 _0_12_>NativeWifiP>Yerel Filtresi>3>Demand>
@@ -141,7 +140,6 @@ _0_33_>SessionEnv>Uzak Masaüstü Yapılandırması>3>Demand>
 _0_33_>RasAuto>Uzaktan Erişim Otomatik Bağlantı Yöneticisi>3>Demand>
 _0_33_>RasMan>Uzaktan Erişim Otomatik Bağlantı Yöneticisi>2>Auto>
 _0_33_>RpcLocator>Uzaktan Yordam Çağrısı Konumlandırıcısı>3>Demand>
-_0_33_>lmhosts>TCP/IP NetBIOS Yardımcısı>3>Demand>
 _0_33_>tcpipreg>TCP/IP Kayıt Defteri Uyumluluğu>2>Auto>
 _0_33_>Netlogon>Netlogon>3>Demand>
 _0_33_>PolicyAgent>IPsec İlke Aracısı>3>Demand>

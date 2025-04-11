@@ -217,7 +217,7 @@ SL_11_>Windows Şimdi Bağlan [WPS]>İhtiyaç: WiFi>
 SL_12_>Wifi>İhtiyaç: Claudflare WARP>
 SL_13_>Konum> >
 SL_14_>Miracast>Kablosuz ekran paylaşımı │ İhtiyaç: Ayarlar ► Cihazlar, Win11 ses yönetimi>
-SL_15_>Akış>Ağ üzeri veri paylaşımı │ Ağınızı sürekli yoklar>
+SL_15_>Akış>Bağlı: Ağ üzeri veri, yazıcı paylaşımı>
 SL_16_>Hızlı Getir-Başlat>İhtiyaç: HDD>
 SL_17_>Windows Search>İndeksleme hizmeti │ Akış hizmeti için gerekli olabilir>
 SL_18_>Hızlı Kullanıcı Değiştir>İhtiyaç: Blizzard>
@@ -238,7 +238,7 @@ SL_32_>Teslim en iyileştirme>Bağlı: Market, Xbox, Güncelleştirmeler>
 SL_33_>Uzak masaüstü>İhtiyaç: Kurumsal>
 SL_34_>Ekran yakalama>Bağlı: Ekran alıntısı>
 SL_35_>Ebeveyn denetimleri> >
-SL_36_>Sesli Komut>İhtiyaç: Konuşma modları, Dikte>
+SL_36_>Sesli Komut>Bağlı: Cortana vb. uygulamalar>
 SL_37_>Perakende gösteri [RetailDemo]>Mağazalarda teşhir ürünlerde kullanılır>
 SL_38_>Kişiler>İhtiyaç: Ana bilgisayarı eşitle>
 SL_39_>Telemetri>Microsoft kullanıcı verilerini toplar>

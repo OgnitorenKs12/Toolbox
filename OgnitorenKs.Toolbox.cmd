@@ -32,7 +32,7 @@ setlocal enabledelayedexpansion
 REM Başlık
 title 🤖 OgnitorenKs Toolbox 🤖
 REM Toolbox versiyon
-set Version=4.5.2
+set Version=4.5.3
 REM Pencere ayarı
 mode con cols=100 lines=23
 
@@ -204,6 +204,8 @@ set Error=NT
 REM OgnitorenKs Programlarının yüklenmesini sağlayan bölüm 
 cls&echo.&echo  ►%R%[36m !LA2!:%R%[0m !Value_M!
 REM İndirme listesinden bir değişiklik olursa bu değeri değişmen yeterli olacaktır. OgnitorenKs uygulamaların başlangıç numarasını yazman gerekiyor.
+REM Benim hazırladığım uygulamalar liste sonunda yer aldığı için ön taraftaki uygulamaların sıralamasında değişiklik yapınca burada numaraları tek tek düzenlemem gerekiyordu.
+REM Bu da dikkatsiz olduğum bir anda hataya sebebiyet verebilirdi. Bundan dolayı benim uygulamaların başladığı sıra numarasını OgniApp değişkenine kaydedip aşağıdaki FOR döngüsü içnden kontrol ettiriyorum.
 set OgniApp=70
 FOR %%a in (!Value_M!) do (
     if %%a EQU !OgniApp! (Call :OgniApp_Installer %%a https://raw.githubusercontent.com/OgnitorenKs12/EasyDism/main/.github/EasyDism.zip)
@@ -219,9 +221,11 @@ FOR %%a in (!Value_M!) do (
 )
 REM Seçilen programları yüklemek için 'Winget.txt' içerisinden veriyi çeker ve yükletir.
 cls&echo.&echo  ►%R%[36m !LA2!:%R%[0m !Value_M!
+REM All in One Runtimes yükleme işlemini gerçekleştirir.
 FOR %%a in (!Value_M!) do (
     if %%a EQU 1 (Call :AIO_Runtimes)
 )
+REM OgnitorenKs uygulamaları dışındaki uygulamaları yükleyen bölüm.
 FOR %%a in (!Value_M!) do (
     cls&echo.&echo  ►%R%[36m !LA2!:%R%[0m !Value_M!
     if %%a EQU 16 (netsh advfirewall firewall delete rule name="Disable Edge Updates" > NUL 2>&1
@@ -251,6 +255,7 @@ FOR %%a in (!Value_M!) do (
     set /a OgniApp+=1
 )
 REM 1 numaralı işlem tek seçilmişse bilgi ekranını atlar.
+REM 1 numaralı işlem All in One Runtimes'dır. Burada yüklendi, yüklenmedi kaydını tutmadığım içni tek işlem olursa menüye aktarıyorum.
 set Count=0
 FOR %%a in (!Value_M!) do (
     set /a Count+=1
@@ -273,6 +278,7 @@ FOR /F "delims='_' tokens=2" %%a in ('Findstr /i "Winget_" %Konum%\Log\Winget_Lo
         )
     )
 )
+REM Benim hazırladığım uygulamaların yüklenip yüklenmediğini kontrol eden bölüm.
 FOR %%a in (!Value_M!) do (
     if %%a EQU !OgniApp! (Call :OgniApp_Check %%a "EasyDism")
     set /a OgniApp+=1
@@ -527,6 +533,7 @@ Call :Dil A 2 D0001&echo.&set /p Value_M=%R%[92m ► !LA2!= %R%[0m
 FOR %%a in (x X) do (
     if !Value_M! EQU %%a (set Error=X&goto Main_Menu)
 )
+REM DNS değiştirme bölümü
 FOR /L %%a in (1,1,!Count!) do (
     if %%a EQU !Value_M! (FOR /F "delims=► tokens=4" %%b in ('Findstr /i "DNS_!Value_M!_" %Konum%\Bin\Extra\DNS.txt 2^>NUL') do (
                               FOR /F "delims=► tokens=5" %%c in ('Findstr /i "DNS_!Value_M!_" %Konum%\Bin\Extra\DNS.txt 2^>NUL') do (
@@ -732,7 +739,6 @@ Call :RD_Direct "%Windir%\WinSxS\Backup"
 REM Kullanıcıya tüm detaylar gösterilden sonra Toolbox'ın genel görünümü için 'Show' değişkeni 0 olarak ayarlanır.
 set Show=0
 goto :eof
-
 REM -------------------------------------------------------------
 :Windows_Repair
 REM Microsoft tarafından önerilen ve tarafımca tespit edilen hata çözümlerini toplu şekilde uygular. Çözüm olmazsa sistem bütünlüğü bozulmuştur. Marketi yeniden yükletip denemek gerekiyor. Yoksa temiz kurulum gerekiyor.
@@ -1096,7 +1102,7 @@ set X=NT
 set XT=NT
 set XS=NT
 REM Log dosyası oluşturuyorum. Düzenli görünmesi için bu çizgiyi ekliyorum. 
-echo -------------------------------------------- >> %Konum%\Log\Services.txt
+echo ▼ %~1- !LA2! >> %Konum%\Log\Services.txt
 REM Windows bilgisine göre 'Data.cmd' dosyasından alacağım veri bilgisini 'Value_W' değişkenine tanımlıyorum.
 if %Win% EQU 11 (set Value_W=0 11)
 if %Win% EQU 10 (set Value_W=0 10)
@@ -1105,7 +1111,7 @@ FOR %%g in (!Value_W!) do (
     FOR /F "delims=> tokens=2" %%h in ('Findstr /i "_%%g_%~1_" %Konum%\Bin\Extra\Data.cmd') do (
         reg query "HKLM\SYSTEM\CurrentControlSet\Services\%%h" /v "Start" > NUL 2>&1
             if !errorlevel! EQU 0 (FOR /F "skip=2 delims=x tokens=2" %%j in ('reg query "HKLM\System\CurrentControlSet\Services\%%h" /v "Start" 2^>NUL') do (
-                                       echo [%%h] ► [%%j] >> %Konum%\Log\Services.txt
+                                       echo    • %%h → %%j >> %Konum%\Log\Services.txt
                                        if %%j EQU 4 (set XS=Off
                                                      if "!X!" EQU "ON" (set Check=%R%[96m♦%R%[0m)
                                                      if "!X!" EQU "NT" (if "!XT!" EQU "Lost" (set Check=%R%[95m█%R%[0m)
@@ -1146,7 +1152,7 @@ FOR %%g in (!Value_W!) do (
                                                                  )
                                      )
                                  )
-            if !errorlevel! NEQ 0 (echo [%%h] ► [Not Found] >> %Konum%\Log\Services.txt
+            if !errorlevel! NEQ 0 (echo    • %%h → Not Found >> %Konum%\Log\Services.txt
                                    set XT=Lost
                                    if "!X!" EQU "ON" (if "!XS!" EQU "Off" (set Check=%R%[95m♦%R%[0m)
                                                       if "!XS!" EQU "NT" (set Check=%R%[91m♦%R%[0m)
@@ -2688,6 +2694,14 @@ REM Program uyumluluk asistanını kapat
 Call :Playbook_Reader Privacy_Setting_68_
     if "!Playbook!" EQU "1" (Call :RegAdd "HKCU\Software\Policies\Microsoft\Windows\AppCompat" "DisablePCA" REG_DWORD 1
 )
+REM Arkaplan uygulamalarını devre dışı bırakın
+Call :Playbook_Reader Privacy_Setting_69_
+    if "!Playbook!" EQU "1" (if "%Win%" EQU "11" (Call :RegAdd "HKLM\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy" "LetAppsRunInBackground" REG_DWORD 2
+	                                              Call :RegDel "HKLM\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy" /v "LetAppsRunInBackground_UserInControlOfTheseApps"
+	                                              Call :RegDel "HKLM\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy" /v "LetAppsRunInBackground_ForceAllowTheseApps"
+	                                              Call :RegDel "HKLM\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy" /v "LetAppsRunInBackground_ForceDenyTheseApps"
+												 )
+)
 REM Qos paket zamanlayıcı sınırını kaldır
 Call :Playbook_Reader Internet_Setting_1_
     if "!Playbook!" EQU "1" (Call :RegAdd "HKLM\SOFTWARE\Policies\Microsoft\Windows\Psched" "NonBestEffortLimit" REG_DWORD "0"
@@ -2953,6 +2967,11 @@ REM Uygulamaların arka planda çalışmasını engelle
 Call :Playbook_Reader Optimization_Setting_5_
     if "!Playbook!" EQU "1" (Call :RegAdd "HKCU\Software\Microsoft\Windows\CurrentVersion\Search" "BackgroundAppGlobalToggle" REG_DWORD 0
                              Call :RegAdd "HKCU\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications" "GlobalUserDisabled" REG_DWORD 1
+							 if "%Win%" EQU "11" (Call :RegAdd "HKLM\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy" "LetAppsRunInBackground" REG_DWORD 2
+	                                              Call :RegDel "HKLM\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy" /v "LetAppsRunInBackground_UserInControlOfTheseApps"
+	                                              Call :RegDel "HKLM\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy" /v "LetAppsRunInBackground_ForceAllowTheseApps"
+	                                              Call :RegDel "HKLM\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy" /v "LetAppsRunInBackground_ForceDenyTheseApps"
+												 )
 )
 REM Otomatik bakım görevini devre dışı bırak
 Call :Playbook_Reader Optimization_Setting_6_
