@@ -3,7 +3,15 @@
 -   Mail: ognitorenks@gmail.com
 -   Site: [https://ognitorenks.blospot.com](https://ognitorenks.blospot.com)
 
-<details><B><summary> Versiyon 4.5.3 ► 11.04.2025 </B></summary>
+<details><B><summary> Versiyon 4.5.4 ► 17.04.2025 </B></summary>
+
+    ▼ Genel değişiklikler;
+	    • Sistem Hakkında - Windows kurulum türünde "BIOS-MBR" tanımı "LEGACY-MBR" olarak değiştirildi.
+		• Sistem Hakkında - TPM ve Güvenli önyükleme bileşenleri hakkında bilgi bölümü eklendi.
+		• Playbook - Openshell kontrol ve indirme/yükleme işlemleri için bilgi mesajları eklendi.
+		• Playbook - Yeni fare simgelerinin yüklenmesiyle alakalı bilgi mesajı eklendi.
+
+</details><details><B><summary> Versiyon 4.5.3 ► 11.04.2025 </B></summary>
 
     ▼ Genel değişiklikler;
 	    • Hizmet Yönetimi - Bazı açıklamalar düzeltildi. 

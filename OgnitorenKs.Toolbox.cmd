@@ -32,7 +32,7 @@ setlocal enabledelayedexpansion
 REM Başlık
 title 🤖 OgnitorenKs Toolbox 🤖
 REM Toolbox versiyon
-set Version=4.5.3
+set Version=4.5.4
 REM Pencere ayarı
 mode con cols=100 lines=23
 
@@ -514,8 +514,8 @@ FOR /L %%a in (1,1,!Count!) do (
         FOR /F "delims=► tokens=3" %%c in ('Findstr /i "DNS_%%a_" %Konum%\Bin\Extra\DNS.txt 2^>NUL') do (
             FOR /F "delims=► tokens=4" %%d in ('Findstr /i "DNS_%%a_" %Konum%\Bin\Extra\DNS.txt 2^>NUL') do (
                 FOR /F "delims=► tokens=5" %%e in ('Findstr /i "DNS_%%a_" %Konum%\Bin\Extra\DNS.txt 2^>NUL') do (
-				    set LC2=
-					Call :Dil C 2 %%c
+                    set LC2=
+                    Call :Dil C 2 %%c
                     Call :Ping A %%d
                     Call :Ping B %%e
                     set Number=%%a
@@ -1550,7 +1550,7 @@ REM ─────────────────────────�
 bcdedit > %Konum%\Log\Bcdedit.txt
 Findstr /i "winload.efi" %Konum%\Log\Bcdedit.txt > NUL 2>&1
     if !errorlevel! EQU 0 (set Value=UEFI-GPT)
-    if !errorlevel! NEQ 0 (set Value=BIOS-MBR)
+    if !errorlevel! NEQ 0 (set Value=LEGACY-MBR)
 Call :Dil A 2 EE_3_
 Call :Dil B 2 EE_4_
 Call :Dil C 2 EE_5_
@@ -1559,6 +1559,26 @@ FOR /F "tokens=3" %%a in ('Findstr /i "InstallDate" %Konum%\Log\OS.txt 2^>NUL') 
         echo   ►%R%[36m !LA2!:%R%[33m %%a %R%[90m│%R%[36m !LB2!:%R%[33m !Value! %R%[90m│%R%[36m !LC2!:%R%[33m %%b %R%[0m
     )
 )
+REM ──────────────────────────────────────
+REM TMP-Secure Boot
+chcp 437 > NUL 2>&1
+FOR /F "tokens=1" %%a in ('Powershell -C "get-tpm | select -ExpandProperty tpmpresent"') do (set TPN=%%a)
+chcp 65001 > NUL 2>&1
+Call :Upper !TPN! TPN
+    if "!TPN!" EQU "TRUE" (FOR /F "tokens=3" %%b in ('tpmtool getdeviceinformation ^| Find "TPM Version" 2^>NUL') do (set TPM=%%b)
+                           )
+    if "!TPN!" NEQ "TRUE" (Call :Dil A 2 T0043&set TPM=!LA2!)
+chcp 437 > NUL 2>&1
+FOR /F "tokens=1" %%a in ('Powershell -C "Confirm-SecureBootUEFI"') do (set Secura=%%a)
+chcp 65001 > NUL 2>&1
+Call :Upper !Secura! Secura
+    if "!Secura!" EQU "TRUE" (Call :Dil A 2 T0045&set Secure=!LA2!)
+    if "!Secura!" NEQ "TRUE" (Call :Dil A 2 T0044&set Secure=!LA2!)
+Call :Dil A 2 EE_24_
+echo   ►%R%[36m TPM:%R%[33m !TPM! %R%[90m│%R%[36m !LA2!:%R%[33m !Secure!%R%[0m
+FOR %%a in (TPN TPM Secura Secure) do (set %%a=)
+REM ──────────────────────────────────────
+REM Anakart
 echo  %R%[90m├────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤%R%[0m
 Call :Powershell "Get-CimInstance -ClassName Win32_computerSystem | Select-Object -Property Name,Model,Manufacturer,PrimaryOwnerName,TotalPhysicalMemory | format-list" > %Konum%\Log\ComputerSystem.txt
 Call :Powershell "Get-CimInstance -ClassName Win32_BIOS | Select-Object -Property Name | format-list" > %Konum%\Log\Bios.txt
@@ -1579,6 +1599,8 @@ FOR /F "delims=: tokens=2" %%a in ('Findstr /i "Manufacturer" %Konum%\Log\Comput
         )
     )
 )
+REM ──────────────────────────────────────
+REM İşlemci
 echo  %R%[90m├────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤%R%[0m
 Call :Dil A 2 EE_12_
 Call :Dil B 2 EE_8_
@@ -1618,6 +1640,8 @@ FOR /F "delims=: tokens=2" %%a in ('Findstr /i "Name" %Konum%\Log\CPU.txt 2^>NUL
     )
 )
 FOR %%g in (VL2 VL3 Uzunluk1 Uzunluk2) do (set %%g=)
+REM ──────────────────────────────────────
+REM Diskler
 echo  %R%[90m├────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤%R%[0m
 DEL /F /Q /A "%Konum%\Log\DiskDetail" > NUL 2>&1
 Call :Powershell "Get-PhysicalDisk | Select-Object -Property MediaType,FriendlyName,Size | Format-List" > %Konum%\Log\DiskDetailAll
@@ -1661,6 +1685,8 @@ FOR /L %%a in (1,1,!Count!) do (
         )
     )
 )
+REM ──────────────────────────────────────
+REM RAM Bellekler
 echo  %R%[90m├────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤%R%[0m
 DEL /F /Q /A "%Konum%\Log\RamDetail" > NUL 2>&1
 Call :PowerShell "Get-CimInstance -ClassName Win32_PhysicalMemory | Select-Object -Property Manufacturer,PartNumber,Capacity,Speed,SMBIOSMemoryType | Format-List" > %Konum%\Log\RamDetailAll
@@ -1727,6 +1753,8 @@ FOR /F "tokens=4" %%a in ('systeminfo ^| Find "Total Physical Memory"') do (
         echo   ►%R%[36m !LA2! !LB2!:%R%[33m !RAM_Info!%R%[37m GB %R%[0m
     )
 )
+REM ──────────────────────────────────────
+REM Ekran Kartı (GPU)
 echo  %R%[90m├────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤%R%[0m
 Call :PowerShell "Get-CimInstance -ClassName win32_videocontroller | Select-Object -Property Name,CurrentHorizontalResolution,CurrentVerticalResolution,CurrentRefreshRate,AdapterRAM,DriverDate,DriverVersion | Format-List" > %Konum%\Log\GPUAll
 DEL /F /Q /A "%Konum%\Log\GPUDetail" > NUL 2>&1
@@ -2180,8 +2208,10 @@ Call :Playbook_Reader Change_App_3_
                              %NSudo% rename "C:\Windows\SystemApps\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy\StartMenuExperienceHost.exe" "StartMenuExperienceHost_OLD.exe"
                              %NSudo% taskkill /f /im "StartMenuExperienceHost.exe"
                              Call :Playbook_Reader Download_Application_1_
-                                if "!Playbook!" EQU "1" (winget list "Open-Shell.Open-Shell-Menu" --accept-source-agreements > NUL 2>&1
-                                                            if "!errorlevel!" NEQ "0" (Call :Openshell_Setting
+                                if "!Playbook!" EQU "1" (Call :Dil A 2 T0047&echo •%R%[32m !LA2! %R%[0m
+                                                         winget list "Open-Shell.Open-Shell-Menu" --accept-source-agreements > NUL 2>&1
+                                                            if "!errorlevel!" NEQ "0" (Call :Dil A 2 T0046&echo •%R%[32m !LA2! %R%[0m
+                                                                                       Call :Openshell_Setting
                                                                                        Call :Winget_Link "Open-Shell.Open-Shell-Menu" "exe" "/passive ADDLOCAL=StartMenu"
                                                                                            if "!Error!" NEQ "X" (Call :PSDownload "!Setup!"
                                                                                                                  "!Setup!" !Silent!
@@ -2697,10 +2727,10 @@ Call :Playbook_Reader Privacy_Setting_68_
 REM Arkaplan uygulamalarını devre dışı bırakın
 Call :Playbook_Reader Privacy_Setting_69_
     if "!Playbook!" EQU "1" (if "%Win%" EQU "11" (Call :RegAdd "HKLM\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy" "LetAppsRunInBackground" REG_DWORD 2
-	                                              Call :RegDel "HKLM\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy" /v "LetAppsRunInBackground_UserInControlOfTheseApps"
-	                                              Call :RegDel "HKLM\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy" /v "LetAppsRunInBackground_ForceAllowTheseApps"
-	                                              Call :RegDel "HKLM\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy" /v "LetAppsRunInBackground_ForceDenyTheseApps"
-												 )
+                                                  Call :RegDel "HKLM\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy" /v "LetAppsRunInBackground_UserInControlOfTheseApps"
+                                                  Call :RegDel "HKLM\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy" /v "LetAppsRunInBackground_ForceAllowTheseApps"
+                                                  Call :RegDel "HKLM\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy" /v "LetAppsRunInBackground_ForceDenyTheseApps"
+                                                 )
 )
 REM Qos paket zamanlayıcı sınırını kaldır
 Call :Playbook_Reader Internet_Setting_1_
@@ -2888,7 +2918,8 @@ Call :Playbook_Reader Explorer_Setting_29_
 )
 REM Modern beyaz fare simgesini yükle
 Call :Playbook_Reader Explorer_Setting_30_
-    if "!Playbook!" EQU "1" (Call :Powershell "Expand-Archive -Force '%Konum%\Bin\Mouse.zip' '%Temp%\Mouse_Playbook'"
+    if "!Playbook!" EQU "1" (Call :Dil A 2 T0048&echo •%R%[32m !LA2! %R%[0m
+                             Call :Powershell "Expand-Archive -Force '%Konum%\Bin\Mouse.zip' '%Temp%\Mouse_Playbook'"
                              RunDll32 advpack.dll,LaunchINFSection %Temp%\Mouse_Playbook\Mouse1\Install.inf,DefaultInstall
                              Call :RD_Direct "%Temp%\Mouse_Playbook"
 )
@@ -2910,7 +2941,8 @@ Call :Playbook_Reader Explorer_Setting_33_
 )
 REM Modern siyah fare simgesini yükle
 Call :Playbook_Reader Explorer_Setting_34_
-    if "!Playbook!" EQU "1" (Call :Powershell "Expand-Archive -Force '%Konum%\Bin\Mouse.zip' '%Temp%\Mouse_Playbook'"
+    if "!Playbook!" EQU "1" (Call :Dil A 2 T0048&echo •%R%[32m !LA2! %R%[0m
+                             Call :Powershell "Expand-Archive -Force '%Konum%\Bin\Mouse.zip' '%Temp%\Mouse_Playbook'"
                              RunDll32 advpack.dll,LaunchINFSection %Temp%\Mouse_Playbook\Mouse2\Install.inf,DefaultInstall
                              Call :RD_Direct "%Temp%\Mouse_Playbook"
 )
@@ -2967,11 +2999,11 @@ REM Uygulamaların arka planda çalışmasını engelle
 Call :Playbook_Reader Optimization_Setting_5_
     if "!Playbook!" EQU "1" (Call :RegAdd "HKCU\Software\Microsoft\Windows\CurrentVersion\Search" "BackgroundAppGlobalToggle" REG_DWORD 0
                              Call :RegAdd "HKCU\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications" "GlobalUserDisabled" REG_DWORD 1
-							 if "%Win%" EQU "11" (Call :RegAdd "HKLM\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy" "LetAppsRunInBackground" REG_DWORD 2
-	                                              Call :RegDel "HKLM\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy" /v "LetAppsRunInBackground_UserInControlOfTheseApps"
-	                                              Call :RegDel "HKLM\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy" /v "LetAppsRunInBackground_ForceAllowTheseApps"
-	                                              Call :RegDel "HKLM\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy" /v "LetAppsRunInBackground_ForceDenyTheseApps"
-												 )
+                             if "%Win%" EQU "11" (Call :RegAdd "HKLM\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy" "LetAppsRunInBackground" REG_DWORD 2
+                                                  Call :RegDel "HKLM\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy" /v "LetAppsRunInBackground_UserInControlOfTheseApps"
+                                                  Call :RegDel "HKLM\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy" /v "LetAppsRunInBackground_ForceAllowTheseApps"
+                                                  Call :RegDel "HKLM\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy" /v "LetAppsRunInBackground_ForceDenyTheseApps"
+                                                 )
 )
 REM Otomatik bakım görevini devre dışı bırak
 Call :Playbook_Reader Optimization_Setting_6_

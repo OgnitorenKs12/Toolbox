@@ -144,6 +144,12 @@ T0039>To apply the DNS addresses in the menu, simply dial the number to the left
 T0040>DNS address change process completed>
 T0041>Reset DNS setting>
 T0042>DNS settings made default>
+T0043>Not Found>
+T0044>Disable/NT>
+T0045>Active>
+T0046>Downloading and installing the Openshell start menu...>
+T0047>The Openshell application is being checked...>
+T0048>The new mouse icon installing...>
 ::██████████████████████████████████████████████████████████████████
 P1001>Removing components>
 P1002>Uninstalling apps>
@@ -361,6 +367,7 @@ EE_20_>Display Card>
 EE_21_>Driver>
 EE_22_>Date>
 EE_23_>VRAM>
+EE_24_>Secure Boot>
 ::███████████████████████████████████████████████████████████████████
 DD001>Unfiltered>
 DD002>Advertising Filter>

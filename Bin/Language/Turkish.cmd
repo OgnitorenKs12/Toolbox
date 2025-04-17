@@ -144,6 +144,12 @@ T0039>Menüdeki DNS adreslerini uygulamak için solunda yer alan numarayı tuşl
 T0040>DNS adresi değiştirme işlemi tamamlandı>
 T0041>DNS ayarını sıfırla>
 T0042>DNS ayarları varsayılan hale getirildi>
+T0043>Yok>
+T0044>Kapalı/Yok>
+T0045>Aktif>
+T0046>Openshell başlat menüsü indirilip, yükleniyor...>
+T0047>Openshell uygulaması kontrol ediliyor...>
+T0048>Yeni fare simgesi yükleniyor...>
 ::██████████████████████████████████████████████████████████████████
 P1001>Bileşenler kaldırılıyor...>
 P1002>Uygulamalar kaldırılıyor...>
@@ -361,6 +367,7 @@ EE_20_>Ekran Kartı>
 EE_21_>Sürücü>
 EE_22_>Tarihi>
 EE_23_>VRAM>
+EE_24_>Güvenli Önyükleme>
 ::███████████████████████████████████████████████████████████████████
 DD001>Filtresiz>
 DD002>Reklam Filtreli>
