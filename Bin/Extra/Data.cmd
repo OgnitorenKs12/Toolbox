@@ -124,7 +124,7 @@ _0_30_>VacSvc>Hacimsel Ses Düzenleyici Hizmeti>3>Demand>
 _0_30_>perceptionsimulation>Windows Algı Simülasyon Hizmeti>3>Demand>
 _0_30_>spectrum>Windows Algılama Hizmeti>3>Demand>
 _0_30_>MixedRealityOpenXRSvc>Windows Karma Gerçeklik OpenXR Hizmeti>3>Demand>
-_0_30_>SpatialGraphFilter>Windows Ses Akışı Uzamsal Ses>3>Demand>
+_11_30_>SpatialGraphFilter>Windows Ses Akışı Uzamsal Ses>3>Demand>
 :: Xbox
 _11_31_>XboxGipSvc>Xbox Accessory Management>3>Demand>
 _0_31_>XboxNetApiSvc>Xbox Live Ağ>3>Demand>

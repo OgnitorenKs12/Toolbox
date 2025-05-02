@@ -3,23 +3,34 @@
 -   Mail: ognitorenks@gmail.com
 -   Site: [https://ognitorenks.blospot.com](https://ognitorenks.blospot.com)
 
-<details><B><summary> Versiyon 4.5.4 ► 17.04.2025 </B></summary>
+<details><B><summary> Versiyon 4.5.5 ► GELİŞTİRİLİYOR... </B></summary>
 
     ▼ Genel değişiklikler;
-	    • Sistem Hakkında - Windows kurulum türünde "BIOS-MBR" tanımı "LEGACY-MBR" olarak değiştirildi.
-		• Sistem Hakkında - TPM ve Güvenli önyükleme bileşenleri hakkında bilgi bölümü eklendi.
-		• Playbook - Openshell kontrol ve indirme/yükleme işlemleri için bilgi mesajları eklendi.
-		• Playbook - Yeni fare simgelerinin yüklenmesiyle alakalı bilgi mesajı eklendi.
+        • Sistem Hakkında - TPM ve Güvenli Önyükleme bilgi ekranı Anakart bölümüne alındı.
+        • Hizmet Yönetimi - Karma gerçeklik hizmetinde yer alan "SpatialGraphFilter" servisini yalnızca Windows 11'de kontrol edilecek şekilde ayarlandı.
+        • Playbook - Explorer_Setting_21/31/32_ ayarlarına yeni regedit eklemeleri yapıldı. Koyu moddaki gri başlat menüsü sorunu giderildi.
+        • Playbook - Defender bölümüne yeni eklemeler yapıldı.
+        • Playbook - "Taskbar_Setting_16_" ayarına yeni regedit kayıtları eklendi
+        • Playbook - "Component_Setting_4_" ayarına yeni regedit kaydı eklendi
+        • Regedit silme anahtarındaki hata giderildi.
 
+</details><details><B><summary> Versiyon 4.5.4 ► 17.04.2025 </B></summary>
+
+    ▼ Genel değişiklikler;
+        • Sistem Hakkında - Windows kurulum türünde "BIOS-MBR" tanımı "LEGACY-MBR" olarak değiştirildi.
+        • Sistem Hakkında - TPM ve Güvenli önyükleme bileşenleri hakkında bilgi bölümü eklendi.
+        • Playbook - Openshell kontrol ve indirme/yükleme işlemleri için bilgi mesajları eklendi.
+        • Playbook - Yeni fare simgelerinin yüklenmesiyle alakalı bilgi mesajı eklendi.
+        
 </details><details><B><summary> Versiyon 4.5.3 ► 11.04.2025 </B></summary>
 
     ▼ Genel değişiklikler;
-	    • Hizmet Yönetimi - Bazı açıklamalar düzeltildi. 
-		• Hizmet Yönetimi - Log dosyası okunaklı hale getirildi. Hizmet gruplarında yer alan çoklu servisler düzenlendi.
-		• Hizmet Yönetimi - "WwanSvc" hizmeti WiFi bölümünden kaldırıldı.
-		• Hizmet Yönetimi - "lmhosts" hizmeti Uzak masaüstü bölümünden kaldırıldı.
-		• Playbook - "Optimization_Setting_5_" bölümüne Windows 11 için eklemeler yapıldı.
-		• Playbook - Kalıp dosyasında uygulamalar bölümüne "Copilot", "WidgetsPlatformRuntime" eklendiler. "Client.AIX" sistem uygulaması olduğu için listeden kaldırıldı.
+        • Hizmet Yönetimi - Bazı açıklamalar düzeltildi. 
+        • Hizmet Yönetimi - Log dosyası okunaklı hale getirildi. Hizmet gruplarında yer alan çoklu servisler düzenlendi.
+        • Hizmet Yönetimi - "WwanSvc" hizmeti WiFi bölümünden kaldırıldı.
+        • Hizmet Yönetimi - "lmhosts" hizmeti Uzak masaüstü bölümünden kaldırıldı.
+        • Playbook - "Optimization_Setting_5_" bölümüne Windows 11 için eklemeler yapıldı.
+        • Playbook - Kalıp dosyasında uygulamalar bölümüne "Copilot", "WidgetsPlatformRuntime" eklendiler. "Client.AIX" sistem uygulaması olduğu için listeden kaldırıldı.
 
 </details><details><B><summary> Versiyon 4.5.2 ► 23.11.2024 </B></summary>
 

@@ -32,7 +32,7 @@ setlocal enabledelayedexpansion
 REM Başlık
 title 🤖 OgnitorenKs Toolbox 🤖
 REM Toolbox versiyon
-set Version=4.5.4
+set Version=4.5.5
 REM Pencere ayarı
 mode con cols=100 lines=23
 
@@ -1343,9 +1343,9 @@ goto :eof
 
 REM -------------------------------------------------------------
 :RegDel
-if !Show! EQU 1 (echo %R%[90mReg delete%R%[33m "%~1" /v "%~2" %R%[90m/f%R%[0m)
-Reg delete "%~1" /v "%~2" /f > NUL 2>&1
-    if !errorlevel! NEQ 0 (%NSudo% Reg delete "%~1" /v "%~2" /f)
+if !Show! EQU 1 (echo %R%[90mReg delete%R%[33m %* %R%[90m/f%R%[0m)
+Reg delete %* /f > NUL 2>&1
+    if !errorlevel! NEQ 0 (%NSudo% Reg delete %* /f)
 goto :eof
 
 REM -------------------------------------------------------------
@@ -1560,24 +1560,6 @@ FOR /F "tokens=3" %%a in ('Findstr /i "InstallDate" %Konum%\Log\OS.txt 2^>NUL') 
     )
 )
 REM ──────────────────────────────────────
-REM TMP-Secure Boot
-chcp 437 > NUL 2>&1
-FOR /F "tokens=1" %%a in ('Powershell -C "get-tpm | select -ExpandProperty tpmpresent"') do (set TPN=%%a)
-chcp 65001 > NUL 2>&1
-Call :Upper !TPN! TPN
-    if "!TPN!" EQU "TRUE" (FOR /F "tokens=3" %%b in ('tpmtool getdeviceinformation ^| Find "TPM Version" 2^>NUL') do (set TPM=%%b)
-                           )
-    if "!TPN!" NEQ "TRUE" (Call :Dil A 2 T0043&set TPM=!LA2!)
-chcp 437 > NUL 2>&1
-FOR /F "tokens=1" %%a in ('Powershell -C "Confirm-SecureBootUEFI"') do (set Secura=%%a)
-chcp 65001 > NUL 2>&1
-Call :Upper !Secura! Secura
-    if "!Secura!" EQU "TRUE" (Call :Dil A 2 T0045&set Secure=!LA2!)
-    if "!Secura!" NEQ "TRUE" (Call :Dil A 2 T0044&set Secure=!LA2!)
-Call :Dil A 2 EE_24_
-echo   ►%R%[36m TPM:%R%[33m !TPM! %R%[90m│%R%[36m !LA2!:%R%[33m !Secure!%R%[0m
-FOR %%a in (TPN TPM Secura Secure) do (set %%a=)
-REM ──────────────────────────────────────
 REM Anakart
 echo  %R%[90m├────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤%R%[0m
 Call :Powershell "Get-CimInstance -ClassName Win32_computerSystem | Select-Object -Property Name,Model,Manufacturer,PrimaryOwnerName,TotalPhysicalMemory | format-list" > %Konum%\Log\ComputerSystem.txt
@@ -1599,6 +1581,24 @@ FOR /F "delims=: tokens=2" %%a in ('Findstr /i "Manufacturer" %Konum%\Log\Comput
         )
     )
 )
+REM ──────────────────────────────────────
+REM TMP-Secure Boot
+chcp 437 > NUL 2>&1
+FOR /F "tokens=1" %%a in ('Powershell -C "get-tpm | select -ExpandProperty tpmpresent"') do (set TPN=%%a)
+chcp 65001 > NUL 2>&1
+Call :Upper !TPN! TPN
+    if "!TPN!" EQU "TRUE" (FOR /F "tokens=3" %%b in ('tpmtool getdeviceinformation ^| Find "TPM Version" 2^>NUL') do (set TPM=%%b)
+                           )
+    if "!TPN!" NEQ "TRUE" (Call :Dil A 2 T0043&set TPM=!LA2!)
+chcp 437 > NUL 2>&1
+FOR /F "tokens=1" %%a in ('Powershell -C "Confirm-SecureBootUEFI"') do (set Secura=%%a)
+chcp 65001 > NUL 2>&1
+Call :Upper !Secura! Secura
+    if "!Secura!" EQU "TRUE" (Call :Dil A 2 T0045&set Secure=!LA2!)
+    if "!Secura!" NEQ "TRUE" (Call :Dil A 2 T0044&set Secure=!LA2!)
+Call :Dil A 2 EE_24_
+echo   ►%R%[36m TPM:%R%[33m !TPM! %R%[90m│%R%[36m !LA2!:%R%[33m !Secure!%R%[0m
+FOR %%a in (TPN TPM Secura Secure) do (set %%a=)
 REM ──────────────────────────────────────
 REM İşlemci
 echo  %R%[90m├────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤%R%[0m
@@ -2045,6 +2045,10 @@ Call :Playbook_Reader Component_Setting_1_
                              "%windir%\System32\drivers\WdFilter.sys"
                              "%windir%\System32\drivers\WdNisDrv.sys"
                              "%windir%\System32\smartscreen.exe"
+                             "%windir%\System32\smartscreen.dll"
+                             "%windir%\System32\smartscreenps.dll"
+                             "%windir%\SysWOW64\smartscreen.dll"
+                             "%windir%\SysWOW64\smartscreenps.dll"
                              "%windir%\System32\securityhealthhost.exe"
                              "%windir%\System32\securityhealthservice.exe"
                              "%windir%\System32\securityhealthsystray.exe"
@@ -2165,6 +2169,7 @@ Call :Playbook_Reader Component_Setting_4_
                              Call :RegAdd "HKLM\SOFTWARE\Policies\Microsoft\Windows\OneDrive" "DisableFileSyncNGSC" REG_DWORD 1
                              Call :RegDel "HKCR\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}"
                              Call :RegDel "HKCR\Wow6432Node\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}"
+                             Call :RegAdd "HKLM\SOFTWARE\Microsoft\OneDrive" "PreventNetworkTrafficPreUserSignIn" REG_DWORD 1
 )
 REM -------------------------------------------------------------
 REM Kurtarma alanını kaldır
@@ -2180,8 +2185,16 @@ Call :Playbook_Reader Change_App_1_
                              REM Call :RegAdd "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\CompatTelRunner.exe" "Debugger" REG_SZ "%%%%windir%%%%\System32\taskkill.exe"
                              Call :RegAdd "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\smartscreen.exe" "Debugger" REG_SZ "%%%%windir%%%%\System32\taskkill.exe"
                              Call :Check_Rename "%Windir%\System32\smartscreen.exe"
+                             Call :Check_Rename "%Windir%\System32\smartscreen.dll"
+                             Call :Check_Rename "%Windir%\System32\smartscreenps.dll"
+                             Call :Check_Rename "%Windir%\SysWOW64\smartscreen.dll"
+                             Call :Check_Rename "%Windir%\SysWOW64\smartscreenps.dll"
                              %NSudo% taskkill /f /im "smartscreen.exe"
                              %NSudo% rename "%Windir%\System32\smartscreen.exe" "smartscreen_OLD.exe"
+                             %NSudo% rename "%windir%\System32\smartscreen.dll" "smartscreen_OLD.dll"
+                             %NSudo% rename "%windir%\System32\smartscreenps.dll" "smartscreenps_OLD.dll"
+                             %NSudo% rename "%windir%\SysWOW64\smartscreen.dll" "smartscreen_OLD.dll"
+                             %NSudo% rename "%windir%\SysWOW64\smartscreenps.dll" "smartscreenps_OLD.dll""
                              Call :Defender_Regedit 4
 )
 REM Görev çubuğu arama bileşenini devre dışı bırak
@@ -2345,6 +2358,10 @@ Call :Playbook_Reader Taskbar_Setting_16_
                              Call :RegAdd "HKLM\SOFTWARE\Policies\Microsoft\Edge" "HubsSidebarEnabled" REG_DWORD 0
                              Call :RegAdd "HKCU\Software\Policies\Microsoft\Windows\Explorer" "DisableSearchBoxSuggestions" REG_DWORD 1
                              Call :RegAdd "HKLM\Software\Policies\Microsoft\Windows\Explorer" "DisableSearchBoxSuggestions" REG_DWORD 1
+                             Call :RegAdd "HKCU\SOFTWARE\Microsoft\Windows\Shell\Copilot\BingChat" "IsUserEligible" REG_DWORD 0
+                             Call :RegAdd "HKLM\SOFTWARE\Microsoft\Windows\Shell\Copilot\BingChat" "IsUserEligible" REG_DWORD 0
+                             Call :RegAdd "HKCU\SOFTWARE\Microsoft\Windows\Shell\Copilot\BingChat" "IsCopilotAvailable" REG_DWORD 0
+                             Call :RegAdd "HKLM\SOFTWARE\Microsoft\Windows\Shell\Copilot\BingChat" "IsCopilotAvailable" REG_DWORD 0
 )
 REM Başlat Menüsü - Microsoft hesabıyla ilgili bildirimleri gösterme
 Call :Playbook_Reader Taskbar_Setting_17_
@@ -2854,6 +2871,10 @@ Call :Playbook_Reader Explorer_Setting_21_
     if "!Playbook!" EQU "1" (Call :RegAdd "HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" "AppsUseLightTheme" REG_DWORD 1
                              Call :RegAdd "HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" "ColorPrevalence" REG_DWORD 0
                              Call :RegAdd "HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" "SystemUsesLightTheme" REG_DWORD 0
+                             Call :RegAdd "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Accent" "AccentPalette" REG_BINARY "9cebff0040bdff00007fdc000063b1000055a10000337c0000145a0000cc6a00"
+                             Call :RegAdd "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Accent" "StartColorMenu" REG_DWORD "0xffa15500"
+                             Call :RegAdd "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Accent" "AccentColorMenu" REG_DWORD "0xffb16300"
+                             Call :RegAdd "HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" "ColorPrevalence" REG_DWORD 0
 )
 REM Animasyonları kapat
 Call :Playbook_Reader Explorer_Setting_22_
@@ -2928,12 +2949,20 @@ Call :Playbook_Reader Explorer_Setting_31_
     if "!Playbook!" EQU "1" (Call :RegAdd "HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" "AppsUseLightTheme" REG_DWORD 0
                              Call :RegAdd "HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" "ColorPrevalence" REG_DWORD 0
                              Call :RegAdd "HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" "SystemUsesLightTheme" REG_DWORD 0
+                             Call :RegAdd "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Accent" "AccentPalette" REG_BINARY "0000000000000000000000000000000000000000000000000000000000000000"
+                             Call :RegAdd "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Accent" "StartColorMenu" REG_DWORD 0
+                             Call :RegAdd "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Accent" "AccentColorMenu" REG_DWORD 0
+                             Call :RegAdd "HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" "ColorPrevalence" REG_DWORD 1
 )
 REM Windows Tema ayarlarını değiştir [Açık mod]
 Call :Playbook_Reader Explorer_Setting_32_
     if "!Playbook!" EQU "1" (Call :RegAdd "HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" "AppsUseLightTheme" REG_DWORD 1
                              Call :RegAdd "HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" "ColorPrevalence" REG_DWORD 0
                              Call :RegAdd "HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" "SystemUsesLightTheme" REG_DWORD 1
+                             Call :RegAdd "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Accent" "AccentPalette" REG_BINARY "9cebff0040bdff00007fdc000063b1000055a10000337c0000145a0000cc6a00"
+                             Call :RegAdd "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Accent" "StartColorMenu" REG_DWORD "0xffa15500"
+                             Call :RegAdd "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Accent" "AccentColorMenu" REG_DWORD "0xffb16300"
+                             Call :RegAdd "HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" "ColorPrevalence" REG_DWORD 0
 )
 REM Başlangıç ve görev çubuğunda vurgu rengini göster
 Call :Playbook_Reader Explorer_Setting_33_
@@ -3795,6 +3824,8 @@ Call :Service_Admin SgrmAgent %~1
 Call :Service_Admin MsSecFlt %~1
 Call :Service_Admin webthreatdefsvc 4
 Call :Service_Admin webthreatdefusersvc 4
+Call :RegDel "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\StartupApproved\Run" /v "SecurityHealth"
+Call :RegDel "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" /v "SecurityHealth"
 Call :RegAdd "HKLM\SOFTWARE\Microsoft\Windows Defender Security Center\Notifications" "DisableNotifications" REG_DWORD "1"
 Call :RegAdd "HKLM\SOFTWARE\Microsoft\Windows Defender Security Center\Notifications" "DisableEnhancedNotifications" REG_DWORD "1"
 Call :RegAdd "HKCU\SOFTWARE\Microsoft\Windows Security Health\State" "AccountProtection_MicrosoftAccount_Disconnected" REG_DWORD "0"
@@ -3804,7 +3835,6 @@ Call :RegAdd "HKLM\SOFTWARE\Microsoft\Windows Defender\Features" "TamperProtecti
 Call :RegAdd "HKLM\SOFTWARE\Microsoft\Windows Defender\Features" "TamperProtectionSource" REG_DWORD "2"
 Call :RegAdd "HKLM\SOFTWARE\Microsoft\Windows Defender\Signature Updates" "FirstAuGracePeriod" REG_DWORD "0"
 Call :RegAdd "HKLM\SOFTWARE\Microsoft\Windows Defender\UX Configuration" "DisablePrivacyMode" REG_DWORD "1"
-Call :RegAdd "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\StartupApproved\Run" "SecurityHealth" REG_BINARY "030000000000000000000000"
 Call :RegAdd "HKLM\SOFTWARE\Policies\Microsoft\MRT" "DontOfferThroughWUAU" REG_DWORD "1"
 Call :RegAdd "HKLM\SOFTWARE\Policies\Microsoft\MRT" "DontReportInfectionInformation" REG_DWORD "1"
 Call :RegAdd "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Systray" "HideSystray" REG_DWORD "1"
@@ -3875,10 +3905,12 @@ Call :RegDel "HKCR\Drive\shellex\ContextMenuHandlers\EPP"
 Call :RegDel "HKCR\Directory\shellex\ContextMenuHandlers\EPP"
 Call :RegDel "HKCR\*\shellex\ContextMenuHandlers\EPP"
 Call :RegDel "HKCR\CLSID\{09A47860-11B0-4DA5-AFA5-26D86198A780}"
+Call :RegVeAdd "HKCU\Software\Microsoft\Edge\SmartScreenEnabled" REG_DWORD 0
 Call :Schtasks "Disable" "\Microsoft\Windows\Windows Defender\Windows Defender Cache Maintenance"
 Call :Schtasks "Disable" "\Microsoft\Windows\Windows Defender\Windows Defender Cleanup"
 Call :Schtasks "Disable" "\Microsoft\Windows\Windows Defender\Windows Defender Scheduled Scan"
 Call :Schtasks "Disable" "\Microsoft\Windows\Windows Defender\Windows Defender Verification"
+Call :RegAdd "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\smartscreen.exe" "Debugger" REG_SZ "%%%%windir%%%%\System32\taskkill.exe"
 goto :eof
 
 :Taskschd_Update
