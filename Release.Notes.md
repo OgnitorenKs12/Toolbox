@@ -3,7 +3,30 @@
 -   Mail: ognitorenks@gmail.com
 -   Site: [https://ognitorenks.blospot.com](https://ognitorenks.blospot.com)
 
-<details><B><summary> Versiyon 4.5.5 ► GELİŞTİRİLİYOR... </B></summary>
+<details><B><summary> Versiyon 4.5.6 ► 08.05.2025 </B></summary>
+
+    ▼ Genel değişiklikler;
+        • Hizmet yönetimi - Kurumsal bölümünden "gpsvc" hizmeti kaldrıldı.
+    ▼ Playbook bölümündeki değişiklikler;
+        • "Defender_Regedit" başlığına eklemeler yapıldı. Bazı kayıtlar düzenlendi.
+        • "Optimization_Setting_12_" ekleme yapıldı.
+        • "Security_Setting_3_" regedit kaydı düzenlendi.
+        • "Privacy_Setting_54_" regedit kaydı düzenlendi ve kalıpta uygulanacak şekilde düzenlendi.
+        • Kalıp içerisinde "Special_Setting_2_" ayarının değeri değiştirildi. 20>0
+        • Yeni eklenen ayarlar;
+            • Optimization_Setting_21_= Windows dosya listesinin yenileme politikasını optimize edin
+            • Optimization_Setting_22_= Küçük resimlerin hızlı görüntülenmesini sağlamak için Aero Snap'i hızlandırın.
+            • Optimization_Setting_23_= Simge önbelliğini arttır
+            • Optimization_Setting_24_= Programların en iyi performansı için işlemci planlamasını ayarlayın.
+            • Optimization_Setting_25_= Görev çubuğu ön izleme görünteleme hızını artır
+            • Optimization_Setting_26_= Bellek varsayılan ayarını optimize et
+            • Optimization_Setting_27_= Hata ayıklayıcıyı devre dışı bırak
+            • Internet_Setting_1_= Windows ağ taramasını devre dışı bırak [Yazıcı ve ağdaki cihazlar için gerekli]
+            • Internet_Setting_2_= Negatif DNS önbelliği optimizasyonu
+            • Internet_Setting_3_= Ağ iletim ayarlarının optimizasyonu [Stabillik sağlar ancak gecikme arttırabilir]
+        
+        
+</details><details><B><summary> Versiyon 4.5.5 ► 02.05.2025 </B></summary>
 
     ▼ Genel değişiklikler;
         • Sistem Hakkında - TPM ve Güvenli Önyükleme bilgi ekranı Anakart bölümüne alındı.

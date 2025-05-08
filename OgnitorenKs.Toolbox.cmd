@@ -32,7 +32,7 @@ setlocal enabledelayedexpansion
 REM Başlık
 title 🤖 OgnitorenKs Toolbox 🤖
 REM Toolbox versiyon
-set Version=4.5.5
+set Version=4.5.6
 REM Pencere ayarı
 mode con cols=100 lines=23
 
@@ -2125,6 +2125,7 @@ Call :Playbook_Reader Component_Setting_2_
                              FOR /F "skip=2 tokens=1" %%b in ('reg query "HKCU\Software\Microsoft\Windows\CurrentVersion\Run" /f "MicrosoftEdgeAutoLaunch" 2^>NUL') do (Call :RegDel "HKCU\Software\Microsoft\Windows\CurrentVersion\Run" /v "%%b")
                              Call :Service_Admin "edgeupdate" 4
                              Call :Service_Admin "edgeupdatem" 4
+                             Call :Service_Admin "MicrosoftEdgeElevationService" 4
 )
 REM -------------------------------------------------------------
 REM EdgeWebView2 kaldır
@@ -2621,9 +2622,9 @@ REM Hesap bilgileri erişimini devre dışı bırak
 Call :Playbook_Reader Privacy_Setting_53_
     if "!Playbook!" EQU "1" (Call :RegAdd "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\userAccountInformation" "Value" REG_SZ "Deny"
 )
-REM Teslim en iyileştirme hizmeti yerine BITS hizmetini kullan
+REM Teslim en iyileştirme indirmelerini kapat
 Call :Playbook_Reader Privacy_Setting_54_
-    if "!Playbook!" EQU "1" (Call :RegAdd "HKLM\SOFTWARE\Policies\Microsoft\Windows\DeliveryOptimization" "DODownloadMode" REG_DWORD 100
+    if "!Playbook!" EQU "1" (Call :RegAdd "HKU\S-1-5-20\Software\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Settings" "DownloadMode" REG_DWORD 0
 )
 REM Cihazımı bul devre dışı bırak
 Call :Playbook_Reader Privacy_Setting_55_
@@ -3082,6 +3083,7 @@ Call :Playbook_Reader Optimization_Setting_12_
                              Call :RegAdd "HKCU\Control Panel\Desktop" "HungAppTimeout" REG_SZ "3000"
                              Call :RegAdd "HKCU\Control Panel\Desktop" "WaitToKillAppTimeout" REG_SZ "5000"
                              Call :RegAdd "HKCU\Control Panel\Desktop" "LowLevelHooksTimeout" REG_SZ "4000"
+                             Call :RegAdd "HKCU\Control Panel\Desktop" "WaitToKillAppTimeout" REG_SZ "2000"
                              Call :RegAdd_CCS "Control" "WaitToKillServiceTimeout" REG_SZ "2000"
 )
 REM SSD/HDD optimizasyon
@@ -3138,6 +3140,7 @@ Call :Playbook_Reader Optimization_Setting_14_
                              )
                              Call :RegAdd "HKLM\SYSTEM\CurrentControlSet\Control" "SvcHostSplitThresholdInKB" REG_DWORD "0x!RAM!"
 )
+set RAM=
 REM Farklı işlemci markasına ait hizmetleri devre dışı bırak
 Call :Playbook_Reader Optimization_Setting_15_
     if "!Playbook!" EQU "1" (Call :Powershell "Get-CimInstance -ClassName Win32_Processor | Select-Object -Property Name | format-list" > %Konum%\Log\Brand
@@ -3180,6 +3183,58 @@ Call :Playbook_Reader Optimization_Setting_20_
                                 Call :RegDel "%%a" /v "DevicePriority"
                             )
 )
+REM Windows dosya listesinin yenileme politikasını optimize edin
+Call :Playbook_Reader Optimization_Setting_21_
+    if "!Playbook!" EQU "1" (Call :RegAdd "HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" "NoSimpleNetIDList" REG_DWORD 1
+)
+REM Küçük resimlerin hızlı görüntülenmesini sağlamak için Aero Snap'i hızlandırın.
+Call :Playbook_Reader Optimization_Setting_22_
+    if "!Playbook!" EQU "1" (Call :RegAdd "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" "ExtendedUIHoverTime" REG_DWORD 0
+)
+REM Simge önbelliğini arttır
+Call :Playbook_Reader Optimization_Setting_23_
+    if "!Playbook!" EQU "1" (Call :RegAdd "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" "Max Cached Icons" REG_SZ "4096"
+)
+REM Programların en iyi performansı için işlemci planlamasını ayarlayın. Varsayılan değeri 2
+Call :Playbook_Reader Optimization_Setting_24_
+    if "!Playbook!" EQU "1" (Call :RegAdd_CCS "Control\PriorityControl" "Win32PrioritySeparation" REG_DWORD "0x26"
+)
+REM Görev çubuğu ön izleme görünteleme hızını artır
+Call :Playbook_Reader Optimization_Setting_25_
+    if "!Playbook!" EQU "1" (Call :RegAdd "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" "DesktopLivePreviewHoverTime" REG_DWORD 0
+)
+REM Bellek varsayılan ayarını optimize et
+Call :Playbook_Reader Optimization_Setting_26_
+    if "!Playbook!" EQU "1" (FOR /F "tokens=4" %%a in ('systeminfo ^| find "Total Physical Memory"') do (
+                                FOR /F "delims=. tokens=1" %%b in ('echo %%a') do (
+                                    set /a RAM=%%b * 1024 * 1024 * 128
+                                )
+                             )
+                             Call :RegAdd "HKLM\System\CurrentControlSet\Control\Session Manager\Memory Management" "IoPageLockLimit" REG_DWORD "!RAM!"
+)
+set RAM=
+REM Hata ayıklayıcıyı devre dışı bırak
+Call :Playbook_Reader Optimization_Setting_27_
+    if "!Playbook!" EQU "1" (Call :RegAdd "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\AeDebug" "Auto" REG_SZ 0
+)
+REM Windows ağ taramasını devre dışı bırak [Yazıcı ve ağdaki cihazlar için gerekli]
+Call :Playbook_Reader Internet_Setting_1_
+    if "!Playbook!" EQU "1" (Call :RegAdd "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" "nonetcrawling" REG_DWORD 1
+)
+REM Negatif DNS önbelliği optimizasyonu
+Call :Playbook_Reader Internet_Setting_2_
+    if "!Playbook!" EQU "1" (Call :RegAdd "HKLM\System\CurrentControlSet\Services\Dnscache\Parameters" "maxnegativecachettl" REG_DWORD 0
+                             Call :RegAdd "HKLM\System\CurrentControlSet\Services\Dnscache\Parameters" "maxcachettl" REG_DWORD "0x2a30"
+                             Call :RegAdd "HKLM\System\CurrentControlSet\Services\Dnscache\Parameters" "maxcacheentryttllimit" REG_DWORD "0x2a30"
+                             Call :RegAdd "HKLM\System\CurrentControlSet\Services\Dnscache\Parameters" "netfailurecachetime" REG_DWORD 0
+                             Call :RegAdd "HKLM\System\CurrentControlSet\Services\Dnscache\Parameters" "negativesoacachetime" REG_DWORD 0
+)
+REM Ağ iletim ayarlarının optimizasyonu [Stabillik sağlar ancak gecikme arttırabilir]
+Call :Playbook_Reader Internet_Setting_3_
+    if "!Playbook!" EQU "1" (Call :RegAdd "HKLM\System\CurrentControlSet\Services\Tcpip\Parameters" "Tcp1323Opts" REG_DWORD 1
+                             Call :RegAdd "HKLM\System\CurrentControlSet\Services\Tcpip\Parameters" "SackOpts" REG_DWORD 1
+                             Call :RegAdd "HKLM\System\CurrentControlSet\Services\Tcpip\Parameters" "TcpMaxDupAcks" REG_DWORD 2
+)
 REM Dosya Gezgini hafıza sorununu gider
 Call :Playbook_Reader Fix_Setting_1_
     if "!Playbook!" EQU "1" (Call :RegAdd "HKCU\Software\Classes\Local Settings\Software\Microsoft\Windows\Shell" "BagMRU Size" REG_DWORD "0x4e20"
@@ -3204,7 +3259,7 @@ Call :Playbook_Reader Security_Setting_2_
 REM Otomatik oynatma devre dışı bırak
 Call :Playbook_Reader Security_Setting_3_
     if "!Playbook!" EQU "1" (Call :RegAdd "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\AutoplayHandlers" "DisableAutoplay" REG_DWORD 0
-                             Call :RegAdd "HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" "NoDriveTypeAutoRun" REG_DWORD 221
+                             Call :RegAdd "HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" "NoDriveTypeAutoRun" REG_DWORD 0xdd
 )
 REM Uzak bağlantıyla komut dosyalı tanılamalıyı devre dışı bırak
 Call :Playbook_Reader Security_Setting_4_
@@ -3228,12 +3283,12 @@ Call :Playbook_Reader Security_Setting_7_
 )
 REM VPN kullanırken DNS sızıntılarını engelle
 Call :Playbook_Reader Security_Setting_8_
-    if "!Playbook!" EQU "1" (Call :RegAdd "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\DNSClient" DisableSmartNameResolution REG_DWORD 1
-                             Call :RegAdd_CCS "Services\Dnscache\Parameters" DisableParallelAandAAAA REG_DWORD 1
+    if "!Playbook!" EQU "1" (Call :RegAdd "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\DNSClient" "DisableSmartNameResolution" REG_DWORD 1
+                             Call :RegAdd_CCS "Services\Dnscache\Parameters" "DisableParallelAandAAAA" REG_DWORD 1
 )
 REM Uzak bilgisayardan regedit kayıt değişikliğini devre dışı bırak [Uzak masaüstü]
 Call :Playbook_Reader Security_Setting_9_
-    if "!Playbook!" EQU "1" (Call :RegAdd_CCS "Control\SecurePipeServers\winreg" remoteregaccess REG_DWORD 1
+    if "!Playbook!" EQU "1" (Call :RegAdd_CCS "Control\SecurePipeServers\winreg" "remoteregaccess" REG_DWORD 1
 )
 REM Microsoft hesapları için paralosız açılışı aktifleştir
 Call :Playbook_Reader Security_Setting_10_
@@ -3824,6 +3879,7 @@ Call :Service_Admin SgrmAgent %~1
 Call :Service_Admin MsSecFlt %~1
 Call :Service_Admin webthreatdefsvc 4
 Call :Service_Admin webthreatdefusersvc 4
+if "!Win!" EQU "11" (Call :RegAdd "HKLM\SYSTEM\CurrentControlSet\Control\CI\Policy" "VerifiedAndReputablePolicyState" REG_DWORD 0)
 Call :RegDel "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\StartupApproved\Run" /v "SecurityHealth"
 Call :RegDel "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" /v "SecurityHealth"
 Call :RegAdd "HKLM\SOFTWARE\Microsoft\Windows Defender Security Center\Notifications" "DisableNotifications" REG_DWORD "1"
@@ -3831,7 +3887,7 @@ Call :RegAdd "HKLM\SOFTWARE\Microsoft\Windows Defender Security Center\Notificat
 Call :RegAdd "HKCU\SOFTWARE\Microsoft\Windows Security Health\State" "AccountProtection_MicrosoftAccount_Disconnected" REG_DWORD "0"
 Call :RegAdd "HKLM\SOFTWARE\Microsoft\Windows Defender" "DisableAntiSpyware" REG_DWORD "1"
 Call :RegAdd "HKLM\SOFTWARE\Microsoft\Windows Defender" "DisableAntiVirus" REG_DWORD "1"
-Call :RegAdd "HKLM\SOFTWARE\Microsoft\Windows Defender\Features" "TamperProtection" REG_DWORD "0"
+Call :RegAdd "HKLM\SOFTWARE\Microsoft\Windows Defender\Features" "TamperProtection" REG_DWORD "4"
 Call :RegAdd "HKLM\SOFTWARE\Microsoft\Windows Defender\Features" "TamperProtectionSource" REG_DWORD "2"
 Call :RegAdd "HKLM\SOFTWARE\Microsoft\Windows Defender\Signature Updates" "FirstAuGracePeriod" REG_DWORD "0"
 Call :RegAdd "HKLM\SOFTWARE\Microsoft\Windows Defender\UX Configuration" "DisablePrivacyMode" REG_DWORD "1"

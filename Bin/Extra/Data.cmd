@@ -104,7 +104,6 @@ _0_25_>AppIDSvc>Uygulama Kimliği>3>Demand>
 _0_25_>MSDTC>Dağıtılmış İşlem Düzenleyicisi>3>Demand>Veritabanları, ileti kuyrukları ve dosya sistemleri gibi birden fazla kaynak yöneticisini kapsayan işlemleri koordine eder. Bu hizmet durdurulursa, bu işlemler başarısız olur. Bu hizmet devre dışı bırakılırsa, buna açıkça bağımlı olan tüm hizmetler başlatılamaz.>
 _0_25_>KtmRm>Dağıtılmış İşlem Düzenleyicisi için KtmRm>3>Demand>Dağıtılmış İşlem Koordinatörü (MSDTC) ile Çekirdek İşlem Yöneticisi (KTM) arasındaki işlemleri koordine eder. KtmRm hizmetinin yeniden yapılandırılması önerilmez. Hem MSDTC hem de KTM gerektiğinde bu hizmeti otomatik olarak başlatır. Bu hizmet devre dışı bırakılırsa, Çekirdek Kaynak Yöneticisi ile etkileşimde bulunan herhangi bir MSDTC işlemi başarısız olur ve buna açıkça bağımlı olan tüm hizmetler başlatılamaz.>
 _0_25_>wmiApSrv>WMI Performans Bağdaştırıcısı>3>Demand>Windows Yönetim Araçları (WMI) sağlayıcılarından ağdaki istemcilere performans kitaplığı bilgileri sağlar. Bu hizmet yalnızca Performans Veri Yardımcısı etkinleştirildiğinde çalışır>
-_0_25_>gpsvc>Grup İlkesi İstemcisi>2>Auto>Yöneticiler tarafından bilgisayar ve kullanıcılar için Grup İlkesi bileşeni aracılığıyla yapılandırılan ayarları uygulamaktan sorumludur>
 :: NPSMSvc
 _0_26_>NPSMSvc>Şimdi Yürütülüyor Oturum Yöneticisi>3>Demand>
 :: Performans Günlükleri
@@ -382,3 +381,15 @@ OGNI_2_>Windows-Defender>Component>
 OGNI_2_>Microsoft-Windows-SenseClient>Component>
 OGNI_2_>Microsoft-Windows-HVSI>Component>
 OGNI_2_>Microsoft-OneCoreUAP-AppRuntime-RemoteAppLifetimeManager-Package>Component>
+
+
+
+
+
+
+
+
+
+
+REM Kurumsal bölümünden kaldırıldı
+>gpsvc>Grup İlkesi İstemcisi>2>Auto>Yöneticiler tarafından bilgisayar ve kullanıcılar için Grup İlkesi bileşeni aracılığıyla yapılandırılan ayarları uygulamaktan sorumludur>
