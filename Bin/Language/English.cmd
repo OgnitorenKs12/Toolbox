@@ -71,16 +71,16 @@ goto :eof
 
 ::███████████████████████████████████████████████████████████████████
 Error_0_>Warning>
-Error_1_>ERROR! Turkish character detected in folder path>
-Error_2_>ERROR! Space detected in folder path>
-Error_3_>ERROR! Your system architecture is not x64>
-Error_4_>App installer is outdated, please update from Microsoft Store>
-Error_5_>If you have already updated the app, there may be a problem with your internet connection or firewall>
+Error_1_>[ERROR] Turkish character detected in folder path>
+Error_2_>[ERROR] Space detected in folder path>
+Error_3_>[ERROR] Your system architecture is not x64>
+Error_4_>[ERROR] Update the 'App installer' from the Microsoft Store.>
+Error_5_>[ERROR] There is no Internet connection, you may get an error in transactions that require downloading.>
 Error_6_>>
-Error_7_>Toolbox works on Windows 10/11 systems>
-Error_8_>Toolbox works on current versions of Windows>
-Error_9_>You cannot use the relevant section without an internet connection>
-Error_10_>Playbook.ini patterns were not found. Please upload them.>
+Error_7_>[ERROR] Toolbox works on Windows 10/11 systems>
+Error_8_>[ERROR] Toolbox works on current versions of Windows>
+Error_9_>[ERROR] No internet connection>
+Error_10_>[ERROR] Playbook.ini patterns were not found. Please upload them.>
 ::███████████████████████████████████████████████████████████████████
 D0001>Process>
 D0002>Multiprocessing>
@@ -140,7 +140,7 @@ T0035>Hardware data received via WMI may have a margin of error>
 T0036>Playbook Update>
 T0037>Application Installer information screen>
 T0038>To make all services default: DEFAULT>
-T0039>To apply the DNS addresses in the menu, simply dial the number to the left of it>
+T0039>Dial the green numbers on the left side to apply the DNS addresses in the menu>
 T0040>DNS address change process completed>
 T0041>Reset DNS setting>
 T0042>DNS settings made default>
@@ -173,12 +173,12 @@ P4003>Components uninstalled on the system may not be reinstalled>
 P4004>Apply on a freshly installed clean system. If you observe no problems, start using>
 P4005>The system will reboot after the process is finished>
 P4006>After the system is turned on, the command screen for the cleaning process will open, and it will automatically shut down when the process is finished>
-P4007>Do you want to continue the process?>
+P4007>Do you want to continue the process and switch to the settings editing menu?>
 ::
 P5001>'Laptop' and 'All in One' device users should pay attention to the following settings>
 P5002>It will raise the temperature value and cause early battery life depletion>
 P5003>Playbook pattern management>
-P5004>Start implementing Playbook operations>
+P5004>Start applying system editing [Playbook] operations>
 P5005>Open the pattern file with notepad for detailed editing>
 P5006>Adjusting the settings in the mold...>
 ::

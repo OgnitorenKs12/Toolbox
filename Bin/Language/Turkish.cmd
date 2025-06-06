@@ -71,16 +71,16 @@ goto :eof
 
 ::███████████████████████████████████████████████████████████████████
 Error_0_>UYARI>
-Error_1_>HATA! Klasör yolunda Türkçe karakter tespit edildi>
-Error_2_>HATA! Klasör yolunda boşluk tespit edildi>
-Error_3_>HATA! Sistem mimariniz x64 değil>
-Error_4_>Uygulama yükleyici güncel değil, lütfen Microsoft Store'dan güncelleyin>
-Error_5_>Uygulamayı zaten güncellediyseniz internet bağlantınızda veya güvenlik duvarında sorun olabilir>
+Error_1_>[HATA] Klasör yolunda Türkçe karakter tespit edildi>
+Error_2_>[HATA] Klasör yolunda boşluk tespit edildi>
+Error_3_>[HATA] Sistem mimariniz x64 değil>
+Error_4_>[HATA] Microsoft Store üzerinden 'Uygulama yükleyiciyi' güncelleyiniz.>
+Error_5_>[HATA] İnternet bağlantısı yok, indirme gerektiren işlemlerde hata alabilirsiniz.>
 Error_6_>>
-Error_7_>Toolbox, Windows 10/11 sistemlerde çalışmaktadır>
-Error_8_>Toolbox, Windows güncel sürümlerinde çalışmaktadır>
-Error_9_>İnternet bağlantısı olmadan ilgili bölümü kullanamazsınız>
-Error_10_>Playbook.ini kalıpları bulunumadı. Lütfen kalıpları yükleyiniz.>
+Error_7_>[HATA] Toolbox, Windows 10/11 sistemlerde çalışmaktadır>
+Error_8_>[HATA] Toolbox, Windows güncel sürümlerinde çalışmaktadır>
+Error_9_>[HATA] İnternet bağlantınız yok>
+Error_10_>[HATA] Playbook.ini kalıpları bulunumadı. Lütfen kalıpları yükleyiniz.>
 ::███████████████████████████████████████████████████████████████████
 D0001>İşlem>
 D0002>Çoklu işlem>
@@ -140,7 +140,7 @@ T0035>WMI ile alınan donanım verilerinde hata payı olabilir>
 T0036>Playbook Güncelleme>
 T0037>Uygulama Yükleyici bilgi ekranı>
 T0038>Bütün hizmetleri varsayılan hale getirmek için: DEFAULT>
-T0039>Menüdeki DNS adreslerini uygulamak için solunda yer alan numarayı tuşlamanız yeterlidir>
+T0039>Menüdeki DNS adreslerini uygulamak için sol tarafta yer alan yeşil renkli sayıları tuşlayınız>
 T0040>DNS adresi değiştirme işlemi tamamlandı>
 T0041>DNS ayarını sıfırla>
 T0042>DNS ayarları varsayılan hale getirildi>
@@ -173,12 +173,12 @@ P4003>Sistem üzerinde kaldırılan bileşenler yeniden yüklenmeyebilir>
 P4004>Yeni yüklenmiş temiz sistemde uygulayınız. Sorun gözlemlemiyorsanız kullanmaya başlayın>
 P4005>İşlem bittikten sonra sistem yeniden başlatılacak>
 P4006>Sistem açıldıktan sonra temizlik işlemi için komut ekranı açılacak, işlem bitince otomatik kapanacak>
-P4007>İşleme devam etmek istiyor musunuz?>
+P4007>İşleme devam edip, ayar düzenleme menüsüne geçmek istiyor musunuz?>
 ::
 P5001>'Laptop' ve 'All in One' cihaz kullananlar aşağıdaki ayarlara dikkat etsinler>
 P5002>Sıcaklık değerini yükseltip, pil ömrünü erken tüketmesine neden olacaktır>
 P5003>Playbook kalıp yönetimi>
-P5004>Playbook işlemlerini uygulamaya başla>
+P5004>Sistem düzenleme [Playbook] işlemlerini uygulamaya başla>
 P5005>Kalıp dosyasını detaylı düzenlemek için not defteri ile aç>
 P5006>Kalıptaki ayarlar düzenleniyor...>
 ::

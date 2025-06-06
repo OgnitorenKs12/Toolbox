@@ -3,7 +3,29 @@
 -   Mail: ognitorenks@gmail.com
 -   Site: [https://ognitorenks.blospot.com](https://ognitorenks.blospot.com)
 
-<details><B><summary> Versiyon 4.5.6 ► 08.05.2025 </B></summary>
+<details><B><summary> Versiyon 4.5.7 ► 06.06.2025... </B></summary>
+
+    ▼ Genel değişiklikler;
+        • Dil dosyalarında güncellenen bölümler; "P4007" │ "T0039" │ "P5004" │ "Error_4_" │ "Error_5_" │ "Error_9_"
+        • Varsayılan uygulama komutları optimize edildi.
+    ▼ Uygulama Yükleyici bölümündeki değişiklikler;
+        • Winget ve internet kontrol bölümleri ayrıldı. Hata mesajları sadeleştirildi.
+        • Yükleme ekranına geçerken çıkan kod çıktısı gizlendi.
+    ▼ Sistem Düzenleme [Playbook] bölümündeki değişiklikler;
+        • "Internet_Setting_1_" ayarı "Internet_Setting_4_" olarak tanımlandı.
+        • "Internet_Setting_2_" ayarı "Internet_Setting_5_" olarak tanımlandı.
+        • "Internet_Setting_3_" ayarı "Internet_Setting_6_" olarak tanımlandı ve düzenleme yapıldı.
+        • "Internet_Setting_7_" ayarı eklendi. [Ağ daraltma mekanizmasını kapat, oyun için ayarlanmıştır]
+        • Defender kaldırma/kapatma bölümüne ".dll" için özel komutlar eklendi.
+        • İnternet kontrol komutları eklendi. Bağlantı olmaması halinde uyarı verip işleme devam edecek şekilde ayarlandı.
+        • Kalıp klasöründe tek ".ini" dosyası olması halinde kalıp seçme menüsünü atlama kodu, gereksiz çıktıları gizlemek için konumu değiştirildi.
+        • "Playbook_Service_Manager" başlığı altında bileşen silme bölümünde hizmet silme işlemlerinde veriyi "\Bin\Extra\Data.cmd" üzerinden alacak şekilde düzenlendi.
+        • "___DEVELOPER__HANGAR___" başlığı "___PLAYBOOK__HANGAR___" olarak değiştirildi.
+        • "Playbook_Manager" başlığı "SYSTEM_OPTIMIZATION_PLAYBOOK" olarak değiştirildi.
+        • "Playbook_Manager_Menu" başlığı "Pattern_Menu" olarak değiştirildi.
+        • "Explorer_Setting_31_" ayarı eski haline getirildi. [Renk teması tamamen siyah moda çekilince butonları görünmez hale getiriyordu.]
+
+</details><details><B><summary> Versiyon 4.5.6 ► 08.05.2025 </B></summary>
 
     ▼ Genel değişiklikler;
         • Hizmet yönetimi - Kurumsal bölümünden "gpsvc" hizmeti kaldrıldı.
@@ -24,7 +46,6 @@
             • Internet_Setting_1_= Windows ağ taramasını devre dışı bırak [Yazıcı ve ağdaki cihazlar için gerekli]
             • Internet_Setting_2_= Negatif DNS önbelliği optimizasyonu
             • Internet_Setting_3_= Ağ iletim ayarlarının optimizasyonu [Stabillik sağlar ancak gecikme arttırabilir]
-        
         
 </details><details><B><summary> Versiyon 4.5.5 ► 02.05.2025 </B></summary>
 

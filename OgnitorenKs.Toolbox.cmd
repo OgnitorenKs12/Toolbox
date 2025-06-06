@@ -32,7 +32,7 @@ setlocal enabledelayedexpansion
 REM Başlık
 title 🤖 OgnitorenKs Toolbox 🤖
 REM Toolbox versiyon
-set Version=4.5.6
+set Version=4.5.7
 REM Pencere ayarı
 mode con cols=100 lines=23
 
@@ -161,11 +161,11 @@ Call :Dil A 2 D0001&set /p Value_M=%R%[32m        !LA2!: %R%[0m
 Call :Upper !Value_M! Value_M
 title 🤖 OgnitorenKs Toolbox 🤖
     if "!Value_M!" EQU "1" (Call :Dil A 2 T0013&echo %R%[36m        !LA2!... %R%[0m
+                            Call :Internet_Kontrol
+                                if "!Internet!" EQU "1" (Call :Dil A 2 Error_9_&echo %R%[31m        !LA2! %R%[0m&set Internet=&Call :Bekle 8&goto Main_Menu)
+                            set Internet=
                             Winget show "Google.Chrome" --accept-source-agreements > NUL 2>&1
-                                if "!errorlevel!" NEQ "0" (Call :Dil A 2 Error_4_&Call :Dil B 2 Error_5_
-                                                           echo.&echo %R%[31m !LA2! %R%[0m
-                                                           echo.&echo %R%[31m !LB2! %R%[0m
-                                                           Call :Bekle 10&goto Main_Menu)
+                                if "!errorlevel!" NEQ "0" (Call :Dil A 2 Error_4_&echo %R%[31m        !LA2! %R%[0m&Call :Bekle 8&goto Main_Menu)
                                 if "!errorlevel!" EQU "0" (goto Software_Installer)
                            )
     if "!Value_M!" EQU "2" (goto Service_Menu)
@@ -177,7 +177,7 @@ title 🤖 OgnitorenKs Toolbox 🤖
     if "!Value_M!" EQU "8" (goto Wifi_Info)
     if "!Value_M!" EQU "9" (Call :Cleaner)
     if "!Value_M!" EQU "10" (Call :Windows_Repair)
-    if "!Value_M!" EQU "11" (goto Playbook_Manager)
+    if "!Value_M!" EQU "11" (goto SYSTEM_OPTIMIZATION_PLAYBOOK)
     if "!Value_M!" EQU "Z" (goto Language_Select)
     if "!Value_M!" EQU "X" (exit)
     if "!Error!" EQU "X" (goto Main_Menu)
@@ -198,10 +198,10 @@ echo !Value_M! | Findstr /i "x" > NUL 2>&1
     if !errorlevel! EQU 0 (goto Main_Menu)
 Call :Dil A 2 T0003
 Call :Dil C 2 T0011
-MD %Konum%\Log
+MD %Konum%\Log > NUL 2>&1
 Call :DEL_Direct "%Konum%\Log\Winget_Log.txt"
 set Error=NT
-REM OgnitorenKs Programlarının yüklenmesini sağlayan bölüm 
+REM OgnitorenKs Programlarının yüklenmesini sağlayan bölüm
 cls&echo.&echo  ►%R%[36m !LA2!:%R%[0m !Value_M!
 REM İndirme listesinden bir değişiklik olursa bu değeri değişmen yeterli olacaktır. OgnitorenKs uygulamaların başlangıç numarasını yazman gerekiyor.
 REM Benim hazırladığım uygulamalar liste sonunda yer aldığı için ön taraftaki uygulamaların sıralamasında değişiklik yapınca burada numaraları tek tek düzenlemem gerekiyordu.
@@ -244,7 +244,7 @@ FOR %%a in (!Value_M!) do (
     if %%a LEQ !OgniApp! (FOR /F "delims=> tokens=2" %%b in ('Findstr /i "Winget_%%a_" %Konum%\Bin\Extra\Winget.txt') do (
                               FOR /F "delims=> tokens=3" %%c in ('Findstr /i "Winget_%%a_" %Konum%\Bin\Extra\Winget.txt') do (
                                   echo  ►%R%[32m %%a%R%[90m-%R%[33m %%c%R%[32m !LC2! %R%[0m
-                                  Call :Winget %%b
+                                  Call :Winget "%%b" "%%a" "%%c"
                                   if %%a EQU 16 (dir /b "%ProgramFiles(x86)%\Microsoft\Edge\Application\msedge.exe" > NUL 2>&1
                                                      if !errorlevel! EQU 0 (Call :Powershell "Start-Process '%ProgramFiles(x86)%\Microsoft\Edge\Application\msedge.exe'")
                                                 )
@@ -296,7 +296,7 @@ echo.&echo %R%[36m !LA2! %R%[0m
 FOR %%a in (LA2 LB2 LC2 Numb) do (set %%a=)
 pause > NUL
 goto Software_Installer
-    
+
 REM -------------------------------------------------------------
 :AIO_Runtimes
 cls&Call :Dil B 2 T0018&echo %R%[32m !LB2! %R%[0m
@@ -944,6 +944,20 @@ set Value_%~1=!Value_%~1:~0,-2!
 goto :eof
 
 REM -------------------------------------------------------------
+:Internet_Kontrol
+REM 0: İnternet var │ 1: İnternet yok
+set Internet=1
+FOR %%g in (
+"www.google.com"
+"archlinux.org"
+"www.bing.com"
+) do (
+    ping -n 1 %%g -w 2000 > NUL 2>&1
+        if !errorlevel! EQU 0 (set Internet=0)
+)
+goto :eof
+
+REM -------------------------------------------------------------
 :ExplorerResetAsk
 REM Dosya gezginini (Explorer) yeniden başlat işlemlerinin uygulanıp uygulanmayacağını kontrol eder
 set Explorer_Reset=NT
@@ -1020,47 +1034,23 @@ REM !Default!= Uzantıları içeren değişken
 REM !AppKey!= Program adı
 REM !AppIcon!= Uygulama simgesi
 REM !AppRoad!= Uygulama .exe'sinin yüklü olduğu dizin
-echo Windows Registry Editor Version 5.00 > %Konum%\DefaultApp.reg
-echo. >> %Konum%\DefaultApp.reg
-FOR %%g in (!Default!) do (
-    echo [-HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.%%g] >> %Konum%\DefaultApp.reg
-    echo [-HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\!AppKey!.%%g] >> %Konum%\DefaultApp.reg
-    echo [-HKEY_CLASSES_ROOT\.%%g] >> %Konum%\DefaultApp.reg 
-    echo [-HKEY_CLASSES_ROOT\!AppKey!.%%g] >> %Konum%\DefaultApp.reg
-    echo [-HKEY_CURRENT_USER\Software\Classes\.%%g] >> %Konum%\DefaultApp.reg 
-    echo [-HKEY_CURRENT_USER\Software\Classes\!AppKey!.%%g] >> %Konum%\DefaultApp.reg
-    echo [-HKEY_LOCAL_MACHINE\SOFTWARE\Classes\SystemFileAssociations\.%%g] >> %Konum%\DefaultApp.reg 
-    echo [-HKEY_LOCAL_MACHINE\SOFTWARE\Classes\SystemFileAssociations\!AppKey!.%%g] >> %Konum%\DefaultApp.reg
-)
-regedit /s "%Konum%\DefaultApp.reg" > NUL 2>&1
+set AppKey=Default_App_!AppKey!
 Call :DEL_Direct "%Konum%\DefaultApp.reg"
 FOR %%g in (!Default!) do (
     Call :RegDel "HKCR\.%%g"
-    Call :RegDel "HKCR\!AppKey!.%%g"
     Call :RegDel "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.%%g"
-    Call :RegDel "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\!AppKey!.%%g"
     Call :RegDel "HKCU\Software\Classes\.%%g"
-    Call :RegDel "HKCU\Software\Classes\!AppKey!.%%g"
     Call :RegDel "HKLM\SOFTWARE\Classes\SystemFileAssociations\.%%g"
-    Call :RegDel "HKLM\SOFTWARE\Classes\SystemFileAssociations\!AppKey!.%%g"
+    Call :RegDel "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.%%g\UserChoice"
 )
+if "%~1" EQU "Icon" (reg add "HKCR\!AppKey!\DefaultIcon" /ve /t REG_SZ /d "!AppIcon!" /f > NUL 2>&1)
+reg add "HKCR\!AppKey!\shell\open\command" /ve /t REG_SZ /d "\"!AppRoad!\" \"%%1\"" /f > NUL 2>&1
 FOR %%g in (!Default!) do (
-    reg add "HKCR\.%%g" /ve /t REG_SZ /d "!AppKey!.%%g" /f > NUL 2>&1
-    if "%~1" EQU "Icon" (reg add "HKCR\!AppKey!.%%g\DefaultIcon" /ve /t REG_SZ /d "!AppIcon!" /f > NUL 2>&1)
-    reg add "HKCR\!AppKey!.%%g\shell\open\command" /ve /t REG_SZ /d "\"!AppRoad!\" \"%%1\"" /f > NUL 2>&1
+    reg add "HKCR\.%%g" /ve /t REG_SZ /d "!AppKey!" /f > NUL 2>&1
+    Call :RegAdd "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.%%g\UserChoice" "ProgId" REG_SZ "!AppKey!"
 )
 FOR %%g in (AppRoad AppIcon AppKey Default) do (set %%g=)
 goto :eof
-
-REM reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.%%g" /ve /t REG_SZ /d "!AppKey!.%%g" /f > NUL 2>&1
-REM reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\!AppKey!.%%g\DefaultIcon" /ve /t REG_SZ /d "!AppIcon!" /f > NUL 2>&1
-REM reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\!AppKey!.%%g\shell\open\command" /ve /t REG_SZ /d "\"!AppRoad!\" \"%%1\"" /f > NUL 2>&1
-REM reg add "HKCU\Software\Classes\.%%g" /ve /t REG_SZ /d "!AppKey!.%%g" /f > NUL 2>&1
-REM reg add "HKCU\Software\Classes\!AppKey!.%%g\DefaultIcon" /ve /t REG_SZ /d "!AppIcon!" /f > NUL 2>&1
-REM reg add "HKCU\Software\Classes\!AppKey!.%%g\shell\open\command" /ve /t REG_SZ /d "\"!AppRoad!\" \"%%1\"" /f > NUL 2>&1
-REM reg add "HKLM\SOFTWARE\Classes\SystemFileAssociations\.%%g" /ve /t REG_SZ /d "!AppKey!.%%g" /f > NUL 2>&1
-REM reg add "HKLM\SOFTWARE\Classes\SystemFileAssociations\!AppKey!.%%g\DefaultIcon" /ve /t REG_SZ /d "!AppIcon!" /f > NUL 2>&1
-REM reg add "HKLM\SOFTWARE\Classes\SystemFileAssociations\!AppKey!.%%g\shell\open\command" /ve /t REG_SZ /d "\"!AppRoad!\" \"%%1\"" /f > NUL 2>&1
 
 REM ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 :Service_Admin
@@ -1256,7 +1246,7 @@ REM -------------------------------------------------------------
 :Remove_Capability
 FOR /F "delims=> tokens=2" %%g in ('Findstr /i "%~1" %Konum%\Bin\Extra\Data.cmd 2^>NUL') do (
     Findstr /i "%%g" %Konum%\Log\C_Capabilities > NUL 2>&1
-        if !errorlevel! EQU 0 (FOR /F "tokens=1" %%k in ('Findstr /i "%%g" %Konum%\Log\C_Capabilities') do (
+        if !errorlevel! EQU 0 (FOR /F "tokens=1" %%k in ('Findstr /i "%%g" %Konum%\Log\C_Capabilities 2^>NUL') do (
                                    Dism /Online /Remove-Capability /CapabilityName:%%k /NoRestart > NUL 2>&1
         )
     )
@@ -1267,7 +1257,7 @@ REM -------------------------------------------------------------
 :Remove_Package
 FOR /F "delims=> tokens=2" %%g in ('Findstr /i "%~1" %Konum%\Bin\Extra\Data.cmd 2^>NUL') do (
     Findstr /i "%%g" %Konum%\Log\C_Packages > NUL 2>&1
-        if !errorlevel! EQU 0 (FOR /F "tokens=1" %%k in ('Findstr /i "%%g" %Konum%\Log\C_Packages') do (
+        if !errorlevel! EQU 0 (FOR /F "tokens=1" %%k in ('Findstr /i "%%g" %Konum%\Log\C_Packages 2^>NUL') do (
                                    Dism /Online /Remove-Package /PackageName:%%k /NoRestart > NUL 2>&1
         )
     )
@@ -1511,7 +1501,6 @@ FOR /F "delims=> tokens=2" %%g in ('Findstr /i "Lang_!Value_M!_" %Konum%\Log\Dil
 goto Main_Menu
 
 REM ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-:___DEVELOPER__HANGAR___
 :Sistem_Bilgi
 mode con cols=140 lines=50
 Call :Date&Call :Time
@@ -1812,20 +1801,44 @@ pause > NUL
 goto Main_Menu
 
 REM ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-:Playbook_Manager
+:___PLAYBOOK__HANGAR___
+:Playbook_Service_Manager
+REM COM_ işlemlerinde bileşen kaldırma bölümünde hizmet işlemlerinde kullanılır.
+REM %~1: Data.cmd içerisindeki hizmet grup numarası │ %~2: Hizmete yapılacak işlem numarası yazılır. 1-6 arası verilir. Service_Admin başlığında detaylar var.
+FOR %%x in (0 !Win!) do (
+    FOR /F "delims=> tokens=2" %%v in ('Findstr /i "_%%x_%~1_" !Konum!\Bin\Extra\Data.cmd 2^>NUL') do (
+        Call :Service_Admin "%%v" %~2
+    )
+)
+goto:eof
+
+REM -------------------------------------------------------------
+:Pattern_Manager
+if "%~1" EQU "E" (set Value=1&goto :eof)
+if "%~1" EQU "D" (set Value=0&goto :eof)
+set CM=0
+FOR /F "delims=> tokens=2" %%g in ('Findstr /i "PB_T" %Konum%\Bin\Extra\Playbook_Menu.ini') do (
+    set /a CM+=1
+    if "%~1" EQU "!CM!" (set Value2=%%g)
+)
+FOR /F "skip=2 tokens=2" %%g in ('Find "!Value2!" !PB! 2^>NUL') do (set Value3=%%g)
+Call :Powershell "(Get-Content '!PB!') | ForEach-Object { $_ -replace '!Value2!= !Value3!', '!Value2!= !Value!' } | Set-Content '!PB!'"
+goto :eof
+
+REM ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+:SYSTEM_OPTIMIZATION_PLAYBOOK
 cls
 REM Winget sistemini kontrol eder
 FOR /F "tokens=2" %%g in ('Findstr /i "Setting_3_" %Konum%\Settings.ini 2^>NUL') do (
      if "%%g" EQU "0" (Call :Dil A 2 T0013&echo.&echo %R%[92m !LA2! %R%[0m
                        Winget show "Google.Chrome" --accept-source-agreements > NUL 2>&1
-                            if "!errorlevel!" NEQ "0" (Call :Dil A 2 Error_4_
-                                                       Call :Dil B 2 Error_5_
-                                                       echo.&echo %R%[31m !LA2! %R%[0m
-                                                       echo.&echo %R%[31m !LB2! %R%[0m
-                                                       Call :Bekle 10&goto Main_Menu
-                                                      )
+                                if "!errorlevel!" NEQ "0" (Call :Dil A 2 Error_4_&echo %R%[31m !LA2! %R%[0m&Call :Bekle 10&goto Main_Menu)
     )
 )
+REM İnternet yoksa uyarı verip devam eder
+Call :Internet_Kontrol
+    if "!Internet!" EQU "1" (Call :Dil A 2 Error_5_&echo %R%[31m !LA2! %R%[0m&set Internet=&Call :Bekle 6)
+set Internet=
 REM Playbook kütüphanesi kontrol edilir. Kalıp sayısına göre pencere ayarı yapılır. Yoksa ana menüye atar.
 set Mode=8
 set CTRL=0
@@ -1837,14 +1850,16 @@ dir /b "%Konum%\Bin\Playbook\*.ini" > NUL 2>&1
                            )
                            mode con cols=110 lines=!Mode!
                           )
-    if !errorlevel! NEQ 0 (Call :Dil A 2 Error_10_&echo %R%[91m !LA2! %R%[0m&Call :Bekle 7&goto Main_Menu)
+    if !errorlevel! NEQ 0 (Call :Dil A 2 Error_10_&echo.&echo %R%[91m !LA2! %R%[0m&Call :Bekle 7&goto Main_Menu)
+REM -------------------------------------------------------------
+REM Tek bir kalıp dosyası var ise kalıp seçme menüsünü atlayıp uyarıları bölümüne geçer.
+if "!CTRL!" EQU "1" (set CTRL=&goto Pass_1)
 REM -------------------------------------------------------------
 REM Playbook dosyaları listelenir
 Call :Dil A 2 B0008&cls&echo.&echo ►%R%[36m !LA2! %R%[0m
 echo %R%[90m▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬%R%[0m
 Call :DEL_Direct "%Konum%\Log\Playbook"
 Call :Dil A 2 T0006
-if "!CTRL!" EQU "1" (set CTRL=&goto Pass_1)
 set PB=
 REM Kalıp dosyasından birden fazla dosya var ise burada listenecektir.
 set Count=0
@@ -1884,7 +1899,7 @@ Call :Dil A 2 P4007&echo.&set /p Value_MM=►%R%[32m !LA2!%R%[90m [%R%[36m Y%R%[
 Call :Upper !Value_MM! Value_MM
     if "!Value_MM!" EQU "N" (set Error=X&goto Main_Menu)
 REM -------------------------------------------------------------
-:Playbook_Manager_Menu
+:Pattern_Menu
 set Value_MM=
 REM Son özelleştirme bölümü
 mode con cols=130 lines=35
@@ -1929,21 +1944,7 @@ Call :Dil A 2 P5006&echo ►%R%[33m !LA2! %R%[0m
 FOR %%a in (!Value_NN!) do (
     Call :Pattern_Manager %%a
 )
-goto Playbook_Manager_Menu
-
-REM -------------------------------------------------------------
-:Pattern_Manager
-if "%~1" EQU "E" (set Value=1&goto :eof)
-if "%~1" EQU "D" (set Value=0&goto :eof)
-set CM=0
-FOR /F "delims=> tokens=2" %%g in ('Findstr /i "PB_T" %Konum%\Bin\Extra\Playbook_Menu.ini') do (
-    set /a CM+=1
-    if "%~1" EQU "!CM!" (set Value2=%%g)
-)
-FOR /F "skip=2 tokens=2" %%g in ('Find "!Value2!" !PB! 2^>NUL') do (set Value3=%%g)
-Call :Powershell "(Get-Content '!PB!') | ForEach-Object { $_ -replace '!Value2!= !Value3!', '!Value2!= !Value!' } | Set-Content '!PB!'"
-goto :eof
-
+goto Pattern_Menu
 REM -------------------------------------------------------------
 :Pass_2
 set Value_MM=
@@ -2024,7 +2025,7 @@ FOR /L %%a in (1,1,69) do (
                           Call :Remove_!Value_C! "COM_%%a_"
                           echo [%%b]-"COM_%%a_" >> %Konum%\Log\Playbook_Log.txt
                           if "%%a" EQU "12" (set Value=D&Call :SS_29)
-                          if "%%a" EQU "21" (FOR %%x in (SharedRealitySvc VacSvc perceptionsimulation spectrum MixedRealityOpenXRSvc SpatialGraphFilter) do (Call :Service_Admin "%%x" 6))
+                          if "%%a" EQU "21" (Call :Playbook_Service_Manager 30 6)
                          )
     )
 )
@@ -2762,11 +2763,33 @@ REM Nagle's algoritmasını kapat
 Call :Playbook_Reader Internet_Setting_3_
     if "!Playbook!" EQU "1" (Call :Powershell "Get-CimInstance -ClassName Win32_NetworkAdapter | Select-Object GUID" > %Konum%\Log\Nagle.txt
                              FOR /F "tokens=*" %%a in ('Findstr /i "{" %Konum%\Log\Nagle.txt 2^>NUL') do (
-                                Call :RegAdd_CCS "Services\Tcpip\Parameters\Interfaces\%%a" "TcpAckFrequency" REG_DWORD 1
-                                Call :RegAdd_CCS "Services\Tcpip\Parameters\Interfaces\%%a" "TcpDelAckTicks" REG_DWORD 0
-                                Call :RegAdd_CCS "Services\Tcpip\Parameters\Interfaces\%%a" "TCPNoDelay" REG_DWORD 1
+                                Call :RegAdd "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces\%%a" "TcpAckFrequency" REG_DWORD 1
+                                Call :RegAdd "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces\%%a" "TcpDelAckTicks" REG_DWORD 0
+                                Call :RegAdd "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces\%%a" "TCPNoDelay" REG_DWORD 1
                              )
                              Call :DEL_Direct "%Konum%\Log\Nagle.txt"
+)
+REM Windows ağ taramasını devre dışı bırak [Yazıcı ve ağdaki cihazlar için gerekli]
+Call :Playbook_Reader Internet_Setting_4_
+    if "!Playbook!" EQU "1" (Call :RegAdd "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" "nonetcrawling" REG_DWORD 1
+)
+REM Negatif DNS önbelliği optimizasyonu
+Call :Playbook_Reader Internet_Setting_5_
+    if "!Playbook!" EQU "1" (Call :RegAdd "HKLM\System\CurrentControlSet\Services\Dnscache\Parameters" "maxnegativecachettl" REG_DWORD 0
+                             Call :RegAdd "HKLM\System\CurrentControlSet\Services\Dnscache\Parameters" "maxcachettl" REG_DWORD "0x2a30"
+                             Call :RegAdd "HKLM\System\CurrentControlSet\Services\Dnscache\Parameters" "maxcacheentryttllimit" REG_DWORD "0x2a30"
+                             Call :RegAdd "HKLM\System\CurrentControlSet\Services\Dnscache\Parameters" "netfailurecachetime" REG_DWORD 0
+                             Call :RegAdd "HKLM\System\CurrentControlSet\Services\Dnscache\Parameters" "negativesoacachetime" REG_DWORD 0
+)
+REM Ağ iletim ayarlarının optimizasyonu [Stabillik sağlar ancak gecikme arttırabilir]
+Call :Playbook_Reader Internet_Setting_6_
+    if "!Playbook!" EQU "1" (Call :RegAdd "HKLM\System\CurrentControlSet\Services\Tcpip\Parameters" "Tcp1323Opts" REG_DWORD 1
+                             Call :RegAdd "HKLM\System\CurrentControlSet\Services\Tcpip\Parameters" "SackOpts" REG_DWORD 1
+                             Call :RegAdd "HKLM\System\CurrentControlSet\Services\Tcpip\Parameters" "TcpMaxDupAcks" REG_DWORD 2
+)
+REM Ağ daraltma mekanizmasını kapat [Oyun için ayarlanmıştır]
+Call :Playbook_Reader Internet_Setting_7_
+    if "!Playbook!" EQU "1" (Call :RegAdd "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" "NetworkThrottlingIndex" REG_DWORD "0xfffffff"
 )
 REM Önbellekleme kapat - Prefetch
 Call :Playbook_Reader Explorer_Setting_1_
@@ -2950,9 +2973,6 @@ Call :Playbook_Reader Explorer_Setting_31_
     if "!Playbook!" EQU "1" (Call :RegAdd "HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" "AppsUseLightTheme" REG_DWORD 0
                              Call :RegAdd "HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" "ColorPrevalence" REG_DWORD 0
                              Call :RegAdd "HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" "SystemUsesLightTheme" REG_DWORD 0
-                             Call :RegAdd "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Accent" "AccentPalette" REG_BINARY "0000000000000000000000000000000000000000000000000000000000000000"
-                             Call :RegAdd "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Accent" "StartColorMenu" REG_DWORD 0
-                             Call :RegAdd "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Accent" "AccentColorMenu" REG_DWORD 0
                              Call :RegAdd "HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" "ColorPrevalence" REG_DWORD 1
 )
 REM Windows Tema ayarlarını değiştir [Açık mod]
@@ -3216,24 +3236,6 @@ set RAM=
 REM Hata ayıklayıcıyı devre dışı bırak
 Call :Playbook_Reader Optimization_Setting_27_
     if "!Playbook!" EQU "1" (Call :RegAdd "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\AeDebug" "Auto" REG_SZ 0
-)
-REM Windows ağ taramasını devre dışı bırak [Yazıcı ve ağdaki cihazlar için gerekli]
-Call :Playbook_Reader Internet_Setting_1_
-    if "!Playbook!" EQU "1" (Call :RegAdd "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" "nonetcrawling" REG_DWORD 1
-)
-REM Negatif DNS önbelliği optimizasyonu
-Call :Playbook_Reader Internet_Setting_2_
-    if "!Playbook!" EQU "1" (Call :RegAdd "HKLM\System\CurrentControlSet\Services\Dnscache\Parameters" "maxnegativecachettl" REG_DWORD 0
-                             Call :RegAdd "HKLM\System\CurrentControlSet\Services\Dnscache\Parameters" "maxcachettl" REG_DWORD "0x2a30"
-                             Call :RegAdd "HKLM\System\CurrentControlSet\Services\Dnscache\Parameters" "maxcacheentryttllimit" REG_DWORD "0x2a30"
-                             Call :RegAdd "HKLM\System\CurrentControlSet\Services\Dnscache\Parameters" "netfailurecachetime" REG_DWORD 0
-                             Call :RegAdd "HKLM\System\CurrentControlSet\Services\Dnscache\Parameters" "negativesoacachetime" REG_DWORD 0
-)
-REM Ağ iletim ayarlarının optimizasyonu [Stabillik sağlar ancak gecikme arttırabilir]
-Call :Playbook_Reader Internet_Setting_3_
-    if "!Playbook!" EQU "1" (Call :RegAdd "HKLM\System\CurrentControlSet\Services\Tcpip\Parameters" "Tcp1323Opts" REG_DWORD 1
-                             Call :RegAdd "HKLM\System\CurrentControlSet\Services\Tcpip\Parameters" "SackOpts" REG_DWORD 1
-                             Call :RegAdd "HKLM\System\CurrentControlSet\Services\Tcpip\Parameters" "TcpMaxDupAcks" REG_DWORD 2
 )
 REM Dosya Gezgini hafıza sorununu gider
 Call :Playbook_Reader Fix_Setting_1_
@@ -3967,6 +3969,35 @@ Call :Schtasks "Disable" "\Microsoft\Windows\Windows Defender\Windows Defender C
 Call :Schtasks "Disable" "\Microsoft\Windows\Windows Defender\Windows Defender Scheduled Scan"
 Call :Schtasks "Disable" "\Microsoft\Windows\Windows Defender\Windows Defender Verification"
 Call :RegAdd "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\smartscreen.exe" "Debugger" REG_SZ "%%%%windir%%%%\System32\taskkill.exe"
+FOR %%g in (
+"C:\Program Files\Windows Defender\AMMonitoringProvider.dll"
+"C:\Program Files\Windows Defender\DefenderCSP.dll"
+"C:\Program Files\Windows Defender\endpointdlp.dll"
+"C:\Program Files\Windows Defender\EppManifest.dll"
+"C:\Program Files\Windows Defender\MpAsDesc.dll"
+"C:\Program Files\Windows Defender\MpAzSubmit.dll"
+"C:\Program Files\Windows Defender\MpClient.dll"
+"C:\Program Files\Windows Defender\MpCommu.dll"
+"C:\Program Files\Windows Defender\MpDetours.dll"
+"C:\Program Files\Windows Defender\MpDetoursCopyAccelerator.dll"
+"C:\Program Files\Windows Defender\MpEvMsg.dll"
+"C:\Program Files\Windows Defender\MpOAV.dll"
+"C:\Program Files\Windows Defender\MpProvider.dll"
+"C:\Program Files\Windows Defender\MpRtp.dll"
+"C:\Program Files\Windows Defender\MpSvc.dll"
+"C:\Program Files\Windows Defender\MsMpCom.dll"
+"C:\Program Files\Windows Defender\MsMpLics.dll"
+"C:\Program Files\Windows Defender\MsMpRes.dll"
+"C:\Program Files\Windows Defender\ProtectionManagement.dll"
+"C:\Program Files\Windows Defender\shellext.dll"
+"C:\Program Files (x86)\Windows Defender\EppManifest.dll"
+"C:\Program Files (x86)\Windows Defender\MpAsDesc.dll"
+"C:\Program Files (x86)\Windows Defender\MpClient.dll"
+"C:\Program Files (x86)\Windows Defender\MpDetours.dll"
+"C:\Program Files (x86)\Windows Defender\MpDetoursCopyAccelerator.dll"
+"C:\Program Files (x86)\Windows Defender\MpOAV.dll"
+"C:\Program Files (x86)\Windows Defender\MsMpLics.dll"
+) do (regsvr32 /u %%g /s > NUL 2>&1)
 goto :eof
 
 :Taskschd_Update
