@@ -32,7 +32,7 @@ setlocal enabledelayedexpansion
 REM Başlık
 title 🤖 OgnitorenKs Toolbox 🤖
 REM Toolbox versiyon
-set Version=4.5.8
+set Version=4.5.9
 REM Pencere ayarı
 mode con cols=100 lines=23
 
@@ -81,7 +81,7 @@ REM -------------------------------------------------------------
 REM Settings.ini dosyası içine dil bilgisi kayıtlı ise onu alır. Yok ise sistem varsayılan diline göre atama yapar.
 Findstr /i "Language_Pack" %Konum%\Settings.ini > NUL 2>&1
     if !errorlevel! NEQ 0 (FOR /F "tokens=6" %%a in ('Dism /online /Get-intl ^| Find /I "Default system UI language"') do (
-	                           if "%%a" EQU "tr-TR" (echo. >> %Konum%\Settings.ini
+                               if "%%a" EQU "tr-TR" (echo. >> %Konum%\Settings.ini
                                                      echo ► Language_Pack^= Turkish >> %Konum%\Settings.ini
                                                      set Dil=%Konum%\Bin\Language\Turkish.cmd
                                                     )
@@ -729,7 +729,7 @@ FOR /F "tokens=2" %%g in ('Findstr /i "Setting_5_" %Konum%\Settings.ini 2^>NUL')
                   ipconfig /flushdns > NUL 2>&1
                   ipconfig /release > NUL 2>&1
                   ipconfig /renew > NUL 2>&1
-				 )
+                 )
 )
 REM SSD'ler için Trim özelliğini çalıştırır. SSD optimizasyonu için önemlidir.
 FOR /F "tokens=2" %%g in ('Findstr /i "Setting_6_" %Konum%\Settings.ini 2^>NUL') do (
@@ -3139,7 +3139,7 @@ Call :Playbook_Reader Optimization_Setting_13_
                                                        Call :Service_Admin "defragsvc" 2
                                                        Call :Service_Admin "WSearch" 4
                                                        powercfg /hibernate off > NUL 2>&1
-													   Call :Powershell  "Optimize-Volume -DriveLetter C -ReTrim -SlabConsolidate"
+                                                       Call :Powershell  "Optimize-Volume -DriveLetter C -ReTrim -SlabConsolidate"
                                                       )
                                 if !errorlevel! NEQ 0 (Call :RegAdd_CCS "Control\Power" "HibernateEnabled" REG_DWORD 1
                                                        Call :RegAdd_CCS "Control\Power" "HibernateEnabledDefault" REG_DWORD 1
@@ -3235,7 +3235,7 @@ Call :Playbook_Reader Optimization_Setting_26_
                                 )
                              )
                              Call :RegAdd "HKLM\System\CurrentControlSet\Control\Session Manager\Memory Management" "IoPageLockLimit" REG_DWORD "!RAM!"
-							 set RAM=
+                             set RAM=
 )
 REM Hata ayıklayıcıyı devre dışı bırak
 Call :Playbook_Reader Optimization_Setting_27_
@@ -3553,35 +3553,35 @@ Call :Playbook_Reader Update_Setting_22_
     if "!Playbook!" EQU "1" (Call :RegAdd "HKLM\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings" "IsContinuousInnovationOptedIn" REG_DWORD 0
 )
 REM DevHomeUpdate devre dışı bırak [Microsoft proje yönetim uygulamasının otomatik kurulmasını engeller]
-Call :Playbook_Reader Taskschd_Update_Setting_1_
+Call :Playbook_Reader Taskschd_Setting_1_
     if "!Playbook!" EQU "1" (Call :Taskschd_Update "DevHomeUpdate"
 )
 REM IA devre dışı bırak [Microsoft güncelleştirme kanalı üzerinden Market için kritik güncelleştirmeleri yapar]
-Call :Playbook_Reader Taskschd_Update_Setting_2_
+Call :Playbook_Reader Taskschd_Setting_2_
     if "!Playbook!" EQU "1" (Call :Taskschd_Update "IA"
 )
 REM LXP devre dışı bırak [Yerel deneyim paketleri - Dil paket güncelleştirmelerini market güncelleştirme kanalından sunar]
-Call :Playbook_Reader Taskschd_Update_Setting_3_
+Call :Playbook_Reader Taskschd_Setting_3_
     if "!Playbook!" EQU "1" (Call :Taskschd_Update "LXP"
 )
 REM MACUpdate devre dışı bırak [Bu konuda bilgi bulamadım ancak tahminimce Windows yüklü MAC cihazlar için bir özellik güncelleştirmesi içeriyor]
-Call :Playbook_Reader Taskschd_Update_Setting_4_
+Call :Playbook_Reader Taskschd_Setting_4_
     if "!Playbook!" EQU "1" (Call :Taskschd_Update "MACUpdate"
 )
 REM OutlookUpdate devre dışı bırak [Yeni Outlook uygulamasının otomatik kurulmasını engeller]
-Call :Playbook_Reader Taskschd_Update_Setting_5_
+Call :Playbook_Reader Taskschd_Setting_5_
     if "!Playbook!" EQU "1" (Call :Taskschd_Update "OutlookUpdate"
 )
 REM TFLUpdate devre dışı bırak [Londra şehrinin ulaşım hizmetleri hakkında bilgi veren Market tabanlı uygulamanın yüklenmesini sağlar. Bölgelese çalışdığını düşünüyorum ancak siz kapatmayı ihmal etmeyin. Microsoft bildiğimiz gibi :D]
-Call :Playbook_Reader Taskschd_Update_Setting_6_
+Call :Playbook_Reader Taskschd_Setting_6_
     if "!Playbook!" EQU "1" (Call :Taskschd_Update "TFLUpdate"
 )
 REM Edge otomatik yüklemeyi devre dışı bırakır.
-Call :Playbook_Reader Taskschd_Update_Setting_7_
+Call :Playbook_Reader Taskschd_Setting_7_
     if "!Playbook!" EQU "1" (Call :Taskschd_Update "EdgeUpdate"
 )
 REM CrossDeviceUpdate devre dışı bırakır. Cihazlar arası deneyim güncellemesini devre dışı bırakır
-Call :Playbook_Reader Taskschd_Update_Setting_8_
+Call :Playbook_Reader Taskschd_Setting_8_
     if "!Playbook!" EQU "1" (Call :Taskschd_Update "CrossDeviceUpdate"
 )
 REM Masaüstü duvar kağıdı görüntü kalitesini değiştir
