@@ -150,6 +150,8 @@ T0045>Active>
 T0046>Downloading and installing the Openshell start menu...>
 T0047>The Openshell application is being checked...>
 T0048>The new mouse icon installing...>
+T0049>Searching>
+T0050>Take Ownership>
 ::██████████████████████████████████████████████████████████████████
 P1001>Removing components>
 P1002>Uninstalling apps>

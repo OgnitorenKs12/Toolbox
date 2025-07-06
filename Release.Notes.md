@@ -3,7 +3,16 @@
 -   Mail: ognitorenks@gmail.com
 -   Site: [https://ognitorenks.blospot.com](https://ognitorenks.blospot.com)
 
-<details><B><summary> Versiyon 4.5.7 ► 06.06.2025... </B></summary>
+<details><B><summary> Versiyon 4.5.8 ► 06.07.2025... </B></summary>
+
+    ▼ Genel değişiklikler;
+        • Varsayılan uygulama bölümündeki regedit silme kayıtları düzenlendi.
+		• Açılıştaki dil kontrol bölümünün kodları düzenlendi. Bu işleme bağlı olarak Playbook bölümünde "Explorer_Setting_19_" ayarındaki dil komutları da düzenlendi.
+		• Sistem temizliği ve Playbook SSD optimizasyonu bölümüne SSD için Trim komutu eklendi. "Settings.ini" dosyasında "Setting_6_" ayarı olarak eklendi. Varsayılan olarak açık bırakıldı.
+		• Sistem temizliği bölümünde "DNS önbelliğini temizle" ayarı yeniden aktifleştirildi. "Settings.ini" dosyasında "Setting_5_" ayarı olarak eklendi. Varsayılan olarak kapalı bırakıldı.
+		• Dosya ve dizin silme komutları düzenlendi.
+
+</details><details><B><summary> Versiyon 4.5.7 ► 06.06.2025 </B></summary>
 
     ▼ Genel değişiklikler;
         • Dil dosyalarında güncellenen bölümler; "P4007" │ "T0039" │ "P5004" │ "Error_4_" │ "Error_5_" │ "Error_9_"

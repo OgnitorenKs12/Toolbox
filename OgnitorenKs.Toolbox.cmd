@@ -32,7 +32,7 @@ setlocal enabledelayedexpansion
 REM Başlık
 title 🤖 OgnitorenKs Toolbox 🤖
 REM Toolbox versiyon
-set Version=4.5.7
+set Version=4.5.8
 REM Pencere ayarı
 mode con cols=100 lines=23
 
@@ -59,6 +59,7 @@ cd /d "%~dp0"
 FOR /F "tokens=*" %%a in ('cd') do (set Konum=%%a)
 REM Değişkenler
 set NSudo="%Konum%\Bin\NSudo.exe" -U:T -P:E -Wait -ShowWindowMode:hide cmd /c
+set Show=0
 REM Log klasörünü oluşturur
 MD "%Konum%\Log" > NUL 2>&1
 REM Hata mesajlarında olası kapanmaları önler
@@ -77,21 +78,18 @@ FOR /F "tokens=2" %%a in ('Find "%username%" %Konum%\Log\cusername 2^>^NUL') do 
 Call :DEL_Direct "%Konum%\Log\cusername"
 
 REM -------------------------------------------------------------
-REM Sistem varsayılan dil bilgisini öğrenir
-FOR /F "tokens=6" %%a in ('Dism /online /Get-intl ^| Find /I "Default system UI language"') do (set DefaultLang=%%a)
-
-REM -------------------------------------------------------------
 REM Settings.ini dosyası içine dil bilgisi kayıtlı ise onu alır. Yok ise sistem varsayılan diline göre atama yapar.
 Findstr /i "Language_Pack" %Konum%\Settings.ini > NUL 2>&1
-    if !errorlevel! NEQ 0 (if "!DefaultLang!" EQU "tr-TR" (echo. >> %Konum%\Settings.ini
-                                                           echo ► Language_Pack^= Turkish >> %Konum%\Settings.ini
-                                                           set Dil=%Konum%\Bin\Language\Turkish.cmd
-                                                          )
-                           if "!DefaultLang!" NEQ "tr-TR" (echo. >> %Konum%\Settings.ini
-                                                           echo ► Language_Pack= English >> %Konum%\Settings.ini
-                                                           set Dil=%Konum%\Bin\Language\English.cmd
-                                                          ) 
-                          )
+    if !errorlevel! NEQ 0 (FOR /F "tokens=6" %%a in ('Dism /online /Get-intl ^| Find /I "Default system UI language"') do (
+	                           if "%%a" EQU "tr-TR" (echo. >> %Konum%\Settings.ini
+                                                     echo ► Language_Pack^= Turkish >> %Konum%\Settings.ini
+                                                     set Dil=%Konum%\Bin\Language\Turkish.cmd
+                                                    )
+                               if "%%a" NEQ "tr-TR" (echo. >> %Konum%\Settings.ini
+                                                     echo ► Language_Pack= English >> %Konum%\Settings.ini
+                                                     set Dil=%Konum%\Bin\Language\English.cmd
+                                                    )
+                          ))
     if !errorlevel! EQU 0 (FOR /F "tokens=3" %%a in ('Findstr /i "Language_Pack" %Konum%\Settings.ini') do (set Dil=%Konum%\Bin\Language\%%a.cmd))
 REM -------------------------------------------------------------
 REM Klasör yolunda Türkçe karakter kontrolü yapar
@@ -109,7 +107,7 @@ FOR /F "tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Control\Sess
 )
 REM Sistem bilgileri
 Call :Powershell "Get-CimInstance Win32_OperatingSystem | Select-Object Caption,InstallDate,OSArchitecture,RegisteredUser,CSName | FL" > %Konum%\Log\OS
-FOR /F "tokens=5" %%a in ('Findstr /i "Caption" %Konum%\Log\OS') do set Win=%%a
+FOR /F "tokens=5" %%a in ('Findstr /i "Caption" %Konum%\Log\OS') do (set Win=%%a)
 
 REM -------------------------------------------------------------
 REM Toolbox güncelleştirme bölümü
@@ -128,12 +126,13 @@ FOR /F "tokens=2" %%a in ('Findstr /i "Setting_1_" %Konum%\Settings.ini') do (
         )
     )
 )
+
 REM ██████████████████████████████████████████████████████████████████
 :Main_Menu
 set PB_Version=
+set Show=0
 REM Regedit bölümünde yapılan işlemlerin gösterilip gösterilmeyeceğini belirler. 1 gösterir. 0 göstermez
 REM Playbook bölümünde ayarları göstermek için bu değişkeni 0 olarak ayarlıyorum. Burada daha düzgün bir arayüz için regedit kayıtlarını uygularken göstermiyorum.
-set Show=0
 REM Sistem hakkında bilgi alınır. Ana menüde gösterilir.
 FOR /F "tokens=2 delims=':'" %%a in ('Find "Caption" %Konum%\Log\OS') do (set Value1=%%a)
 set Value1=%Value1:~11%
@@ -608,7 +607,6 @@ FOR /F "tokens=5" %%a in ('netsh wlan show profil ^| find "All"') do (
     FOR /F "tokens=4" %%b in ('netsh wlan show profile "%%a" key^=clear ^| find "Content"') do (
         echo   ► %R%[36m%%a :%R%[33m %%b%R%[0m
         echo.
-        )
     )
 )
 echo  %R%[90m└─────────────────────────────────────────────────────────────┘%R%[0m
@@ -623,6 +621,9 @@ cls
 Call :Dil A 2 B0006&title !LA2!
 REM 'Show' değişkeni 1 olarak ayarlayıp yapılan işlemlerin detayını kullanıcılara gösteriyorum.
 set Show=1
+REM Çöp kutusunu temizler
+Call :RD_Direct "C:\$Recycle.Bin\!CUS!"
+REM Simge önbelliğini temizler
 ie4uinit.exe -show
 ie4uinit.exe -ClearIconCache
 Call :ExplorerResetAsk
@@ -650,13 +651,14 @@ REM Sistem içerisindeki gereksiz log dosyalarını temizler
 Call :RD_Search "%Windir%\System32\config\systemprofile\AppData\Local\*.tmp"
 Call :DEL_Deep_Search "%SystemDrive%\*.log"
 Call :DEL_Deep_Search "%SystemDrive%\*.etl"
+Call :RD_Direct "%Windir%\Logs"
 REM Teslim en iyileştirme çöp dosyalarını temizler
 Call :RD_Search "%Windir%\ServiceProfiles\NetworkService\AppData\Local\Microsoft\Windows\DeliveryOptimization\Logs\*"
 Call :DEL_Search "%Windir%\ServiceProfiles\NetworkService\AppData\Local\Microsoft\Windows\DeliveryOptimization\Logs\*"
 Call :RD_Direct "%Windir%\ServiceProfiles\NetworkService\AppData\Local\Microsoft\Windows\DeliveryOptimization\Cache"
 Call :DEL_Search "%windir%\prefetch\*"
 REM Windows'un oluşturduğu gereksiz boş klasörleri temizler
-FOR /F %%a in ('dir /b "%LocalAppData%\tw-*.tmp"') do (Call :RD_Direct "%LocalAppData%\%%a")
+FOR /F %%a in ('dir /b "%LocalAppData%\tw-*.tmp" 2^>NUL') do (Call :RD_Direct "%LocalAppData%\%%a")
 REM Sistem üzerinde oluşan gereksiz log dosyalarını temizler
 Call :DEL_Search "%Windir%\Panther\*"
 Call :DEL_Search "%localappdata%\Microsoft\Windows\WebCache\*.*"
@@ -695,7 +697,7 @@ REM AMD sürücü artıkları ve log temizleme kayıtları
 Call :RD_Direct "%systemdrive%\AMD"
 Call :RD_Direct "%ProgramFiles%\AMD\CIM\Log"
 Call :RD_Direct "%ProgramFiles%\AMD\CIM\Reports"
-Call :RD_Direct "%SystemDrive%\Users\%Username%\AppData\LocalLow\AMD\DxCache"
+Call :RD_Direct "%SystemDrive%\Users\%username%\AppData\LocalLow\AMD\DxCache"
 Call :RD_Direct "%LocalAppData%\AMD\VkCache"
 Call :RD_Direct "%LocalAppData%\AMD\DxcCache"
 Call :RD_Direct "%LocalAppData%\AMD\DxCache"
@@ -721,13 +723,18 @@ Call :NET stop wuauserv
 Call :RD_Direct "%windir%\SoftwareDistribution"
 Call :NET start wuauserv
 REM Call :Powershell "Start-Process cleanmgr -ArgumentList '/verylowdisk /sagerun:5'"
-REM Çöp kutusunu temizler
-Call :RD_Direct "C:\$Recycle.Bin\!CUS!"
 REM DNS önbelleği temizler
-REM Call :Dil A 2 T0030&echo ►%R%[32m !LA2! %R%[0m
-REM ipconfig /flushdns > NUL 2>&1
-REM ipconfig /release > NUL 2>&1
-REM ipconfig /renew > NUL 2>&1
+FOR /F "tokens=2" %%g in ('Findstr /i "Setting_5_" %Konum%\Settings.ini 2^>NUL') do (
+    if %%g EQU 0 (Call :Dil A 2 T0030&echo ►%R%[32m !LA2! %R%[0m
+                  ipconfig /flushdns > NUL 2>&1
+                  ipconfig /release > NUL 2>&1
+                  ipconfig /renew > NUL 2>&1
+				 )
+)
+REM SSD'ler için Trim özelliğini çalıştırır. SSD optimizasyonu için önemlidir.
+FOR /F "tokens=2" %%g in ('Findstr /i "Setting_6_" %Konum%\Settings.ini 2^>NUL') do (
+    if %%g EQU 0 (Call :Powershell  "Optimize-Volume -DriveLetter C -ReTrim -SlabConsolidate")
+)
 REM Olay günlüğü temizleniyor
 Call :Dil A 2 T0017&echo ►%R%[32m !LA2! %R%[0m
 FOR /F "tokens=*" %%g in ('wevtutil.exe el') do (wevtutil.exe cl "%%g" > NUL 2>&1)
@@ -978,16 +985,15 @@ goto :eof
 REM ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 :RD_Direct
 REM Klasör silmek için
-if !Show! EQU 1 echo %R%[90m [RD_Direct]-%R%[33m[%~1]%R%[0m
+if !Show! EQU 1 echo %R%[90m RD_Direct-%R%[33m %~1%R%[0m
 RD /S /Q "%~1" > NUL 2>&1
-    if !errorlevel! NEQ 0 (%NSudo% RD /S /Q "%~1")
-set RemoveValue=
+    if %errorlevel% NEQ 0 (%NSudo% RD /S /Q "%~1")
 goto :eof
 
 :RD_Search
 REM Klasör silmek için (dizin aramalı)
 FOR /F "tokens=*" %%v in ('Dir /AD /B "%~1" 2^>NUL') do (
-    if !Show! EQU 1 echo %R%[90m [RD_Search]-%R%[33m [%~dp1%%v]%R%[0m
+    if %Show% EQU 1 (echo %R%[90m RD_Search-%R%[33m %~dp1%%v%R%[0m)
     RD /S /Q "%~dp1%%v" > NUL 2>&1
         if !errorlevel! NEQ 0 (%NSudo% RD /S /Q "%~dp1%%v")
 )
@@ -995,8 +1001,9 @@ goto :eof
 
 :RD_Deep_Search
 REM Klasör silmek için (derin aramalı)
+if %Show% EQU 1 (Call :Dil K 2 T0049&echo %R%[32m • !LK2!:%R%[90m "%~1"%R%[0m&set LK2=)
 FOR /F "tokens=*" %%v in ('Dir /AD /B /S "%~1" 2^>NUL') do (
-    if !Show! EQU 1 echo %R%[90m [RD_Deep_Search]-%R%[33m [%%v]%R%[0m
+    if %Show% EQU 1 (echo %R%[90m RD_Deep_Search-%R%[33m %%v%R%[0m)
     RD /S /Q "%%v" > NUL 2>&1
         if !errorlevel! NEQ 0 (%NSudo% RD /S /Q "%%v")
 )
@@ -1004,15 +1011,15 @@ goto :eof
 
 :DEL_Direct
 REM Dosya silmek için
+if %Show% EQU 1 echo %R%[90m DEL_Direct-%R%[33m %~1%R%[0m
 DEL /F /Q /A "%~1" > NUL 2>&1
-    if !Show! EQU 1 echo %R%[90m [DEL_Direct]-%R%[33m [%~1]%R%[0m
-    if !errorlevel! NEQ 0 (%NSudo% DEL /F /Q /A "%~1")
+    if %errorlevel% NEQ 0 (%NSudo% DEL /F /Q /A "%~1")
 goto :eof
 
 :DEL_Search
 REM Dosya silmek için (dizin aramalı)
 FOR /F "tokens=*" %%v in ('Dir /A-D /B "%~1" 2^>NUL') do (
-    if !Show! EQU 1 echo %R%[90m [DEL_Search]-%R%[33m [%~dp1%%v]%R%[0m
+    if %Show% EQU 1 (echo %R%[90m DEL_Search-%R%[33m %~dp1%%v%R%[0m)
     DEL /F /Q /A "%~dp1%%v" > NUL 2>&1
         if !errorlevel! NEQ 0 (%NSudo% DEL /F /Q /A "%~dp1%%v")
 )
@@ -1020,8 +1027,9 @@ goto :eof
 
 :DEL_Deep_Search
 REM Dosya silmek için (derin aramalı)
+if %Show% EQU 1 (Call :Dil K 2 T0049&echo %R%[32m • !LK2!:%R%[90m "%~1"%R%[0m&set LK2=)
 FOR /F "tokens=*" %%v in ('Dir /A-D /B /S "%~1" 2^>NUL') do (
-    if !Show! EQU 1 echo %R%[90m [DEL_Deep_Search]-%R%[33m [%%v]%R%[0m
+    if %Show% EQU 1 (echo %R%[90m DEL_Deep_Search-%R%[33m %%v%R%[0m)
     DEL /F /Q /A "%%v" > NUL 2>&1
         if !errorlevel! NEQ 0 (%NSudo% DEL /F /Q /A "%%v")
 )
@@ -1035,12 +1043,7 @@ REM !AppKey!= Program adı
 REM !AppIcon!= Uygulama simgesi
 REM !AppRoad!= Uygulama .exe'sinin yüklü olduğu dizin
 set AppKey=Default_App_!AppKey!
-Call :DEL_Direct "%Konum%\DefaultApp.reg"
 FOR %%g in (!Default!) do (
-    Call :RegDel "HKCR\.%%g"
-    Call :RegDel "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.%%g"
-    Call :RegDel "HKCU\Software\Classes\.%%g"
-    Call :RegDel "HKLM\SOFTWARE\Classes\SystemFileAssociations\.%%g"
     Call :RegDel "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.%%g\UserChoice"
 )
 if "%~1" EQU "Icon" (reg add "HKCR\!AppKey!\DefaultIcon" /ve /t REG_SZ /d "!AppIcon!" /f > NUL 2>&1)
@@ -2030,6 +2033,7 @@ FOR /L %%a in (1,1,69) do (
     )
 )
 cls
+set Show=1
 REM -------------------------------------------------------------
 REM Microsoft Defender kaldır
 Call :Playbook_Reader Component_Setting_1_
@@ -2110,7 +2114,7 @@ Call :Playbook_Reader Component_Setting_2_
                              Call :DEL_Direct "C:\Users\%username%\Desktop\Microsoft Edge.lnk"
                              Call :RD_Direct "%LocalAppData%\Microsoft\Edge"
                              Call :DEL_Deep_Search "%Windir%\*dge.wim"
-                             Call :RD_Direct "C:\Users\OgnitorenKs\AppData\Local\Microsoft\Edge"
+                             Call :RD_Direct "C:\Users\%username%\AppData\Local\Microsoft\Edge"
                              Call :RD_Direct "C:\Users\All Users\Microsoft\EdgeUpdate"
                              Call :DEL_Direct "%Windir%\System32\config\systemprofile\AppData\Roaming\Microsoft\Internet Explorer\Quick Launch\Microsoft Edge.lnk"
                              echo Call :DEL_Direct "C:\Users\Public\Desktop\Microsoft Edge.lnk" >> C:\Playbook.Reset.After.cmd
@@ -2118,7 +2122,7 @@ Call :Playbook_Reader Component_Setting_2_
                              echo Call :DEL_Direct "C:\Users\%username%\Desktop\Microsoft Edge.lnk" >> C:\Playbook.Reset.After.cmd
                              echo Call :RD_Search "%LocalAppData%\Microsoft\Edge" >> C:\Playbook.Reset.After.cmd
                              echo Call :DEL_Deep_Search "C:\Windows\*dge.wim" >> C:\Playbook.Reset.After.cmd
-                             echo Call :RD_Direct "C:\Users\OgnitorenKs\AppData\Local\Microsoft\Edge" >> C:\Playbook.Reset.After.cmd
+                             echo Call :RD_Direct "C:\Users\%username%\AppData\Local\Microsoft\Edge" >> C:\Playbook.Reset.After.cmd
                              echo Call :DEL_Direct "%Windir%\System32\config\systemprofile\AppData\Roaming\Microsoft\Internet Explorer\Quick Launch\Microsoft Edge.lnk" >> C:\Playbook.Reset.After.cmd
                              Call :RegAdd "HKLM\SOFTWARE\Policies\Microsoft\MicrosoftEdge" "PreventFirstRunPage" REG_DWORD 0
                              netsh advfirewall firewall add rule name="Disable Edge Updates" dir=out action=block program="C:\Program Files (x86)\Microsoft\EdgeUpdate\MicrosoftEdgeUpdate.exe" > NUL 2>&1
@@ -2139,9 +2143,9 @@ Call :Playbook_Reader Component_Setting_3_
                                 dir /b "%programfiles(x86)%\Microsoft\EdgeWebView\Application\%%a\Installer" > NUL 2>&1
                                     if !errorlevel! EQU 0 ("%programfiles(x86)%\Microsoft\EdgeWebView\Application\%%a\Installer\setup.exe" --uninstall --msedgewebview --system-level --force-uninstall)
                              )
-                             FOR /F "tokens=*" %%b in ('Dir /AD /B "%ProgramFiles(x86)%\Microsoft\*WebView*" 2^>NUL') do (
-                                Call :RD_Direct "%ProgramFiles(x86)%\Microsoft\%%b"
-                                echo Call :RD_Direct "%%ProgramFiles(x86)%%\Microsoft\%%b" >> C:\Playbook.Reset.After.cmd
+                             FOR /F "tokens=*" %%c in ('Dir /AD /B "%programfiles(x86)%\Microsoft\*WebView*" 2^>NUL') do (
+                                Call :RD_Direct "%programfiles(x86)%\Microsoft\%%c"
+                                echo Call :RD_Direct "%%programfiles(x86)%%\Microsoft\%%c" >> C:\Playbook.Reset.After.cmd
                              )
                              netsh advfirewall firewall add rule name="Disable Edge Updates" dir=out action=block program="C:\Program Files (x86)\Microsoft\EdgeUpdate\MicrosoftEdgeUpdate.exe" > NUL 2>&1
                              Call :RegAdd "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\MicrosoftEdgeUpdate.exe" "Debugger" REG_SZ "%%%%windir%%%%\System32\taskkill.exe"
@@ -2261,6 +2265,7 @@ FOR /F "delims=► tokens=2" %%a in ('Findstr /i "RemoveApp" %PB% 2^>NUL') do (
 REM -------------------------------------------------------------
 REM Hizmet Yönetimi
 REM Hizmet düzenlemesini hızlıca atlamak için bu bölüm eklendi
+set Show=0
 Call :Playbook_Reader Skip_Service_
     if "!Playbook!" EQU "0" (cls&Call :Dil A 2 P1003&title OgnitorenKs Playbook │ 3/6 │ !LA2!
                              Call :Dil A 2 T0012
@@ -2275,8 +2280,8 @@ Call :Playbook_Reader Skip_Service_
 )
 REM -------------------------------------------------------------
 REM Uygulanan regedit ayarlarını gösterir
-set Show=1
 cls&Call :Dil A 2 P1004&title OgnitorenKs Playbook │ 4/6 │ !LA2!
+set Show=1
 REM Başlat menüsünde en son eklenenleri kaldır
 Call :Playbook_Reader Taskbar_Setting_1_
     if "!Playbook!" EQU "1" (Call :RegAdd "HKLM\SOFTWARE\Policies\Microsoft\Windows\Explorer" "HideRecentlyAddedApps" REG_DWORD 1
@@ -2872,19 +2877,17 @@ Call :Playbook_Reader Explorer_Setting_18_
 )
 REM Sağ-Tık 'Sahiplik Al' ekle
 Call :Playbook_Reader Explorer_Setting_19_
-    if "!Playbook!" EQU "1" (if "!DefaultLang!" EQU "tr-TR" (set Value19=Sahipliği Al)
-                             if "!DefaultLang!" NEQ "tr-TR" (set Value19=Take Ownership)
-                             Call :RegVeAdd "HKCR\*\shell\runas" REG_SZ "!Value19!"
+    if "!Playbook!" EQU "1" (Call :Dil A 2 T0050
+                             Call :RegVeAdd "HKCR\*\shell\runas" REG_SZ "!LA2!"
                              Call :RegAdd "HKCR\*\shell\runas" "Icon" REG_SZ "imageres.dll,73"
                              Call :RegAdd "HKCR\*\shell\runas" "NoWorkingDirectory" REG_SZ ""
                              Call :RegVeAdd "HKCR\*\shell\runas\command" REG_SZ "cmd.exe /c takeown /f \"%%%%1\" && ica \"%%%%1\" /grant administrators:F"
                              Call :RegAdd "HKCR\*\shell\runas\command" "IsolatedCommand" REG_SZ "cmd.exe /c takeown /f \"%%%%1\" && ica \"%%%%1\" /grant administrators:F"
-                             Call :RegVeAdd "HKCR\Directory\shell\runas" REG_SZ "!Value19!"
+                             Call :RegVeAdd "HKCR\Directory\shell\runas" REG_SZ "!LA2!"
                              Call :RegAdd "HKCR\Directory\shell\runas" "Icon" REG_SZ "imageres.dll,73"
                              Call :RegAdd "HKCR\Directory\shell\runas" "NoWorkingDirectory" REG_SZ ""
                              Call :RegVeAdd "HKCR\Directory\shell\runas\command" REG_SZ "cmd.exe /c takeown /f \"%%%%1\" /r /d y && ica \"%%%%1\" /grant administrators:F /t"
                              Call :RegAdd "HKCR\Directory\shell\runas\command" "IsolatedCommand" REG_SZ "cmd.exe /c takeown /f \"%%%%1\" /r /d y && ica \"%%%%1\" /grant administrators:F /t"
-                             set Value19=
 )
 REM Office dosyalarını dosya gezgininde gizle
 Call :Playbook_Reader Explorer_Setting_20_
@@ -3136,6 +3139,7 @@ Call :Playbook_Reader Optimization_Setting_13_
                                                        Call :Service_Admin "defragsvc" 2
                                                        Call :Service_Admin "WSearch" 4
                                                        powercfg /hibernate off > NUL 2>&1
+													   Call :Powershell  "Optimize-Volume -DriveLetter C -ReTrim -SlabConsolidate"
                                                       )
                                 if !errorlevel! NEQ 0 (Call :RegAdd_CCS "Control\Power" "HibernateEnabled" REG_DWORD 1
                                                        Call :RegAdd_CCS "Control\Power" "HibernateEnabledDefault" REG_DWORD 1
@@ -3231,8 +3235,8 @@ Call :Playbook_Reader Optimization_Setting_26_
                                 )
                              )
                              Call :RegAdd "HKLM\System\CurrentControlSet\Control\Session Manager\Memory Management" "IoPageLockLimit" REG_DWORD "!RAM!"
+							 set RAM=
 )
-set RAM=
 REM Hata ayıklayıcıyı devre dışı bırak
 Call :Playbook_Reader Optimization_Setting_27_
     if "!Playbook!" EQU "1" (Call :RegAdd "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\AeDebug" "Auto" REG_SZ 0
@@ -3594,7 +3598,7 @@ Call :Playbook_Reader Special_Setting_3_
 )
 REM -------------------------------------------------------------
 cls&Call :Dil A 2 P1007&title OgnitorenKs Playbook │ 5/6 │ !LA2!
-REM Regedit kayıtlarının çıktılarını gizlemek için
+REM Silinen dosya/klasör ve regedit kayıtlarıın çıktılarını kapatır.
 set Show=0
 REM Playbook.ini CMD komutları uygulama bölümü
 Call :Dil B 2 P6001

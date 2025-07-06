@@ -150,6 +150,8 @@ T0045>Aktif>
 T0046>Openshell başlat menüsü indirilip, yükleniyor...>
 T0047>Openshell uygulaması kontrol ediliyor...>
 T0048>Yeni fare simgesi yükleniyor...>
+T0049>Aranıyor>
+T0050>Sahipliği Al>
 ::██████████████████████████████████████████████████████████████████
 P1001>Bileşenler kaldırılıyor...>
 P1002>Uygulamalar kaldırılıyor...>
