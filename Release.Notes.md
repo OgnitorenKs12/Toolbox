@@ -3,7 +3,13 @@
 -   Mail: ognitorenks@gmail.com
 -   Site: [https://ognitorenks.blospot.com](https://ognitorenks.blospot.com)
 
-<details><B><summary> Versiyon 4.5.9 ► 06.07.2025... </B></summary>
+
+<details><B><summary> Versiyon 4.6.0 ► 24.08.2025 </B></summary>
+
+    ▼ Genel değişiklikler;
+	    • Uygulama Yükleyiciyi - 'All in One Runtimes' bölümünden 'OpenAL' kaldırıldı. Winget üzerinden kaldırıldığı için hata mesajlarını önlemek için kaldırıldı.
+
+</details><details><B><summary> Versiyon 4.5.9 ► 06.07.2025 </B></summary>
 
     ▼ Genel değişiklikler;
         • Sistem Optimizasyonu [Playbook] bölümünde kalıpta yer alan "Taskschd_Update_Setting_~_" ayarları "Taskschd_Setting_~_" olarak değiştirildi. "Update_Setting_~_" ayarlarının açık kapalı durumunu bozuyordu.

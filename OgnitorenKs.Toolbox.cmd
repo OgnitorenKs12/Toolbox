@@ -32,7 +32,7 @@ setlocal enabledelayedexpansion
 REM Başlık
 title 🤖 OgnitorenKs Toolbox 🤖
 REM Toolbox versiyon
-set Version=4.5.9
+set Version=4.6.0
 REM Pencere ayarı
 mode con cols=100 lines=23
 
@@ -348,7 +348,6 @@ Microsoft.VCRedist.2015+.x86
 Microsoft.VCRedist.2015+.x64
 Oracle.JavaRuntimeEnvironment
 Microsoft.XNARedist
-OpenAL.OpenAL
 Microsoft.DotNet.DesktopRuntime.8
 Microsoft.DotNet.DesktopRuntime.9
 Microsoft.DirectX
