@@ -4,7 +4,18 @@
 -   Site: [https://ognitorenks.blospot.com](https://ognitorenks.blospot.com)
 
 
-<details><B><summary> Versiyon 4.6.0 ► 24.08.2025 </B></summary>
+<details><B><summary> Versiyon 4.6.1 ► 07.10.2025 </B></summary>
+
+    ▼ Sistem Düzenleme [Playbook] bölümündeki değişiklikler;
+	    • "Explorer_Setting_37_" ayarı eklendi. "Ayarlar uygulamasının bildirimlerini kapat [Windows 11]"
+		• Defender kapat ayarına ekleme yapıldı.
+		• "Privacy_Setting_20_" ayarına ekleme yapıldı.
+		• "Taskbar_Setting_16_" ayarına ekleme yapıldı.
+		• "Update_Setting_11_" ayarına ekleme yapıldı.
+		• "Update_Setting_3_" ayarına ekleme yapıldı.
+		• Playbook kalıbına Windows 11'de devre dışı bırakması için yeni hizmetler eklendi; "WSAIFabricSvc", "refsdedupsvc", "whesvc"
+
+</details><details><B><summary> Versiyon 4.6.0 ► 24.08.2025 </B></summary>
 
     ▼ Genel değişiklikler;
 	    • Uygulama Yükleyiciyi - 'All in One Runtimes' bölümünden 'OpenAL' kaldırıldı. Winget üzerinden kaldırıldığı için hata mesajlarını önlemek için kaldırıldı.

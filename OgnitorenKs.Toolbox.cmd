@@ -32,7 +32,7 @@ setlocal enabledelayedexpansion
 REM Başlık
 title 🤖 OgnitorenKs Toolbox 🤖
 REM Toolbox versiyon
-set Version=4.6.0
+set Version=4.6.1
 REM Pencere ayarı
 mode con cols=100 lines=23
 
@@ -2368,6 +2368,10 @@ Call :Playbook_Reader Taskbar_Setting_16_
                              Call :RegAdd "HKLM\SOFTWARE\Microsoft\Windows\Shell\Copilot\BingChat" "IsUserEligible" REG_DWORD 0
                              Call :RegAdd "HKCU\SOFTWARE\Microsoft\Windows\Shell\Copilot\BingChat" "IsCopilotAvailable" REG_DWORD 0
                              Call :RegAdd "HKLM\SOFTWARE\Microsoft\Windows\Shell\Copilot\BingChat" "IsCopilotAvailable" REG_DWORD 0
+							 Call :RegAdd "HKCU\Software\Policies\Microsoft\Windows\WindowsAI" "DisableAIDataAnalysis" REG_DWORD 1
+							 Call :RegAdd "HKLM\Software\Policies\Microsoft\Windows\WindowsAI" "DisableAIDataAnalysis" REG_DWORD 1
+							 Call :RegAdd "HKLM\Policies\Microsoft\Windows\WindowsAI" "DisableAIDataAnalysis" REG_DWORD 1
+							 Call :RegAdd "HKCU\Policies\Microsoft\Windows\WindowsAI" "DisableAIDataAnalysis" REG_DWORD 1
 )
 REM Başlat Menüsü - Microsoft hesabıyla ilgili bildirimleri gösterme
 Call :Playbook_Reader Taskbar_Setting_17_
@@ -2474,6 +2478,8 @@ REM Uygulamaların reklam kimliği kullanmasını engelle
 Call :Playbook_Reader Privacy_Setting_20_
     if "!Playbook!" EQU "1" (Call :RegAdd "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\AdvertisingInfo" "Enabled" REG_DWORD 0
                              Call :RegAdd "HKLM\SOFTWARE\Policies\Microsoft\Windows\AdvertisingInfo" "DisabledByGroupPolicy" REG_DWORD 1
+							 Call :RegDel "HKCU\Software\Microsoft\Windows\CurrentVersion\AdvertisingInfo" /v "Id"
+							 Call :RegDel "HKLM\Software\Microsoft\Windows\CurrentVersion\AdvertisingInfo" /v "Id"
 )
 REM Uygulama envanterini toplamayı kapatın
 Call :Playbook_Reader Privacy_Setting_21_
@@ -3008,6 +3014,10 @@ REM Dosya gezgini hızlı erişim bölümünde Galeri butonunu kaldır
 Call :Playbook_Reader Explorer_Setting_36_
     if "!Playbook!" EQU "1" (if %Win% EQU 11 (Call :RegAdd "HKCU\Software\Classes\CLSID\{e88865ea-0e1c-4e20-9aa6-edcd0212c87c}" "System.IsPinnedToNameSpaceTree" REG_DWORD 0)
 )
+REM Ayarlar uygulamasının bildirimlerini kapat [Windows 11]
+Call :Playbook_Reader Explorer_Setting_37_
+    if "!Playbook!" EQU "1" (if %Win% EQU 11 (Call :RegAdd "HKCU\Software\Microsoft\Windows\CurrentVersion\SystemSettings\AccountNotifications" "EnableAccountNotifications" REG_DWORD 0)
+)
 REM Windows Search - Şifrelenmiş dosyaların indekslenmesini devre dışı bırak
 Call :Playbook_Reader Search_Setting_1_
     if "!Playbook!" EQU "1" (Call :RegAdd "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" "AllowIndexingEncryptedStoresOrItems" REG_DWORD 0
@@ -3423,6 +3433,8 @@ Call :Playbook_Reader Update_Setting_3_
                              Call :RegAdd "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" "ExcludeWUDriversInQualityUpdate" REG_DWORD 1
                              Call :RegAdd "HKLM\SOFTWARE\Microsoft\WindowsUpdate\UpdatePolicy\PolicyState" "ExcludeWUDrivers" REG_DWORD 1
                              Call :RegAdd "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Device Metadata" "PreventDeviceMetadataFromNetwork" REG_DWORD 1
+							 Call :RegDel "HKLM\Microsoft\Windows\CurrentVersion\DriverSearching" /v "SearchOrderConfig"
+							 Call :RegDel "HKCU\Microsoft\Windows\CurrentVersion\DriverSearching" /v "SearchOrderConfig"
 )
 REM Konuşma modellerinin otomatik güncellemesini kapat
 Call :Playbook_Reader Update_Setting_4_
@@ -3432,8 +3444,8 @@ Call :Playbook_Reader Update_Setting_4_
 )
 REM Microsoft Store otomatik güncelleştirmeleri kapat
 Call :Playbook_Reader Update_Setting_5_
-    if "!Playbook!" EQU "1" (Call :RegAdd "HKLM\SOFTWARE\Policies\Microsoft\WindowsStore" "AutoDownload" REG_DWORD 2
-                             REM NTLite içinde manuel olarak ayarlanıyor. Call :RegAdd "HKLM\SOFTWARE\Policies\Microsoft\WindowsStore" "AutoDownload" REG_DWORD 0
+    if "!Playbook!" EQU "1" (if "%Win%" EQU "10" (Call :RegAdd "HKLM\SOFTWARE\Policies\Microsoft\WindowsStore" "AutoDownload" REG_DWORD 2)
+                             if "%Win%" EQU "11" (Call :RegAdd "HKLM\SOFTWARE\Policies\Microsoft\WindowsStore" "AutoDownload" REG_DWORD 0)
 )
 REM Disk hatası tahmin modeli güncelleştirmelerini kapat
 Call :Playbook_Reader Update_Setting_6_
@@ -3467,6 +3479,8 @@ Call :Playbook_Reader Update_Setting_11_
     if "!Playbook!" EQU "1" (Call :RegAdd "HKLM\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings" "AllowAutoWindowsUpdateDownloadOverMeteredNetwork" REG_DWORD 0
                              Call :RegAdd "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" "AllowAutoWindowsUpdateDownloadOverMeteredNetwork" REG_DWORD 0
                              Call :RegAdd "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate\Auto Update" "AllowAutoWindowsUpdateDownloadOverMeteredNetwork" REG_DWORD 0
+							 Call :RegAdd "HKCU\Microsoft\WindowsUpdate\UX\StateVariables" "AlwaysAllowMeteredNetwork" REG_DWORD 1
+							 Call :RegAdd "HKLM\Microsoft\WindowsUpdate\UX\StateVariables" "AlwaysAllowMeteredNetwork" REG_DWORD 1
 )
 REM Windows güncellemeleri yükseltme bildirimlerini devre dışı bırak
 Call :Playbook_Reader Update_Setting_12_
@@ -3955,6 +3969,10 @@ Call :RegAdd "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\AppHost" "SmartScre
 Call :RegAdd "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" "SmartScreenEnabled" REG_SZ "Off"
 Call :RegAdd "HKLM\SOFTWARE\Policies\Microsoft\Internet Explorer\PhishingFilter" "EnabledV9" REG_DWORD 0
 Call :RegAdd "HKLM\SOFTWARE\Policies\Microsoft\Internet Explorer\PhishingFilter" "PreventOverride" REG_DWORD 0
+Call :RegAdd "HKCU\Software\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppContainer\Storage\microsoft.microsoftedge_8wekyb3d8bbwe\MicrosoftEdge\PhishingFilter" "EnabledV9" REG_DWORD 0
+Call :RegAdd "HKLM\Software\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppContainer\Storage\microsoft.microsoftedge_8wekyb3d8bbwe\MicrosoftEdge\PhishingFilter" "EnabledV9" REG_DWORD 0
+Call :RegAdd "HKCU\Software\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppContainer\Storage\microsoft.microsoftedge_8wekyb3d8bbwe\MicrosoftEdge\PhishingFilter" "PreventOverride" REG_DWORD 0
+Call :RegAdd "HKLM\Software\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppContainer\Storage\microsoft.microsoftedge_8wekyb3d8bbwe\MicrosoftEdge\PhishingFilter" "PreventOverride" REG_DWORD 0
 Call :RegAdd "HKLM\SOFTWARE\Policies\Microsoft\MicrosoftEdge\PhishingFilter" "EnabledV9" REG_DWORD 0
 Call :RegAdd "HKLM\SOFTWARE\Policies\Microsoft\MicrosoftEdge\PhishingFilter" "PreventOverride" REG_DWORD 0
 Call :RegAdd "HKLM\SOFTWARE\Policies\Microsoft\Windows\System" "EnableSmartScreen" REG_DWORD "0"
