@@ -4,14 +4,14 @@
 -   Site: [https://ognitorenks.blospot.com](https://ognitorenks.blospot.com)
 
 
-<details><B><summary> Versiyon 4.6.2 ► 22.12.2025 </B></summary>
+<details><summary><B> Versiyon 4.6.2 ► 22.12.2025 </B></summary>
 
     ▼ Genel değişiklikler;
 	    • Sistem Hakkında bölümünde Ram bilgi bölümündeki kodlarda güncelleme yapıldı.
 		• Sistem Düzenleme [Playbook] bölümüne "Privacy_Setting_70" ayarı eklendi. Recall özelliğini kapat (Yapay zeka için sürekli ekran görüntüsü alınıp kayıt ediliyor)
 		• Sistem Düzenleme [Playbook] bölümüne "Internet_Setting_8" ayarı eklendi. RSS aktifleştir. İnternet bağlantısını tek bir çekirdek yerine tüm çekirdeklere eşit şekilde paylaştırır.
 
-</details><details><B><summary> Versiyon 4.6.1 ► 07.10.2025 </B></summary>
+</details><details><summary><B> Versiyon 4.6.1 ► 07.10.2025 </B></summary>
 
     ▼ Sistem Düzenleme [Playbook] bölümündeki değişiklikler;
 	    • "Explorer_Setting_37_" ayarı eklendi. "Ayarlar uygulamasının bildirimlerini kapat [Windows 11]"
@@ -22,17 +22,17 @@
 		• "Update_Setting_3_" ayarına ekleme yapıldı.
 		• Playbook kalıbına Windows 11'de devre dışı bırakması için yeni hizmetler eklendi; "WSAIFabricSvc", "refsdedupsvc", "whesvc"
 
-</details><details><B><summary> Versiyon 4.6.0 ► 24.08.2025 </B></summary>
+</details><details><summary><B> Versiyon 4.6.0 ► 24.08.2025 </B></summary>
 
     ▼ Genel değişiklikler;
 	    • Uygulama Yükleyiciyi - 'All in One Runtimes' bölümünden 'OpenAL' kaldırıldı. Winget üzerinden kaldırıldığı için hata mesajlarını önlemek için kaldırıldı.
 
-</details><details><B><summary> Versiyon 4.5.9 ► 06.07.2025 </B></summary>
+</details><details><summary><B> Versiyon 4.5.9 ► 06.07.2025 </B></summary>
 
     ▼ Genel değişiklikler;
         • Sistem Optimizasyonu [Playbook] bölümünde kalıpta yer alan "Taskschd_Update_Setting_~_" ayarları "Taskschd_Setting_~_" olarak değiştirildi. "Update_Setting_~_" ayarlarının açık kapalı durumunu bozuyordu.
 
-</details><details><B><summary> Versiyon 4.5.8 ► 06.07.2025... </B></summary>
+</details><details><summary><B> Versiyon 4.5.8 ► 06.07.2025... </B></summary>
 
     ▼ Genel değişiklikler;
         • Varsayılan uygulama bölümündeki regedit silme kayıtları düzenlendi.
@@ -41,7 +41,7 @@
         • Sistem temizliği bölümünde "DNS önbelliğini temizle" ayarı yeniden aktifleştirildi. "Settings.ini" dosyasında "Setting_5_" ayarı olarak eklendi. Varsayılan olarak kapalı bırakıldı.
         • Dosya ve dizin silme komutları düzenlendi.
 
-</details><details><B><summary> Versiyon 4.5.7 ► 06.06.2025 </B></summary>
+</details><details><summary><B> Versiyon 4.5.7 ► 06.06.2025 </B></summary>
 
     ▼ Genel değişiklikler;
         • Dil dosyalarında güncellenen bölümler; "P4007" │ "T0039" │ "P5004" │ "Error_4_" │ "Error_5_" │ "Error_9_"
@@ -63,7 +63,7 @@
         • "Playbook_Manager_Menu" başlığı "Pattern_Menu" olarak değiştirildi.
         • "Explorer_Setting_31_" ayarı eski haline getirildi. [Renk teması tamamen siyah moda çekilince butonları görünmez hale getiriyordu.]
 
-</details><details><B><summary> Versiyon 4.5.6 ► 08.05.2025 </B></summary>
+</details><details><summary><B> Versiyon 4.5.6 ► 08.05.2025 </B></summary>
 
     ▼ Genel değişiklikler;
         • Hizmet yönetimi - Kurumsal bölümünden "gpsvc" hizmeti kaldrıldı.
@@ -85,7 +85,7 @@
             • Internet_Setting_2_= Negatif DNS önbelliği optimizasyonu
             • Internet_Setting_3_= Ağ iletim ayarlarının optimizasyonu [Stabillik sağlar ancak gecikme arttırabilir]
         
-</details><details><B><summary> Versiyon 4.5.5 ► 02.05.2025 </B></summary>
+</details><details><summary><B> Versiyon 4.5.5 ► 02.05.2025 </B></summary>
 
     ▼ Genel değişiklikler;
         • Sistem Hakkında - TPM ve Güvenli Önyükleme bilgi ekranı Anakart bölümüne alındı.
@@ -96,7 +96,7 @@
         • Playbook - "Component_Setting_4_" ayarına yeni regedit kaydı eklendi
         • Regedit silme anahtarındaki hata giderildi.
 
-</details><details><B><summary> Versiyon 4.5.4 ► 17.04.2025 </B></summary>
+</details><details><summary><B> Versiyon 4.5.4 ► 17.04.2025 </B></summary>
 
     ▼ Genel değişiklikler;
         • Sistem Hakkında - Windows kurulum türünde "BIOS-MBR" tanımı "LEGACY-MBR" olarak değiştirildi.
@@ -104,7 +104,7 @@
         • Playbook - Openshell kontrol ve indirme/yükleme işlemleri için bilgi mesajları eklendi.
         • Playbook - Yeni fare simgelerinin yüklenmesiyle alakalı bilgi mesajı eklendi.
         
-</details><details><B><summary> Versiyon 4.5.3 ► 11.04.2025 </B></summary>
+</details><details><summary><B> Versiyon 4.5.3 ► 11.04.2025 </B></summary>
 
     ▼ Genel değişiklikler;
         • Hizmet Yönetimi - Bazı açıklamalar düzeltildi. 
@@ -114,7 +114,7 @@
         • Playbook - "Optimization_Setting_5_" bölümüne Windows 11 için eklemeler yapıldı.
         • Playbook - Kalıp dosyasında uygulamalar bölümüne "Copilot", "WidgetsPlatformRuntime" eklendiler. "Client.AIX" sistem uygulaması olduğu için listeden kaldırıldı.
 
-</details><details><B><summary> Versiyon 4.5.2 ► 23.11.2024 </B></summary>
+</details><details><summary><B> Versiyon 4.5.2 ► 23.11.2024 </B></summary>
 
     ▼ Genel değişiklikler;
         • Bazı renk ayarları düzenlendi.
@@ -188,19 +188,19 @@
         • "Cüzdan" hizmeti eklendi.
             • Cüzdan hizmet = WalletService
 
-</details><details><B><summary> Versiyon 4.5.1 ► 18.09.2024 </B></summary>
+</details><details><summary><B> Versiyon 4.5.1 ► 18.09.2024 </B></summary>
 
     ▼ Genel değişiklikler;
         • Playbook sonrası yeniden başlatma komutunu bir önceki güncellemede yorum satırı olarak bırakmıştım. Bu sorun giderilmiştir.
 
-</details><details><B><summary> Versiyon 4.5.0 ► 11.09.2024 </B></summary>
+</details><details><summary><B> Versiyon 4.5.0 ► 11.09.2024 </B></summary>
 
     ▼ Genel değişiklikler;
         • Ana menüde boş girişlerde belli işlemlerin dönüşünde gösterilen işlem başarılı ekranı kaldırıldı.
         • Playbook - "Optimization_Setting_21/22/23/24/25/26" ve "Special_Setting_4_" ayarları araçtan kaldırıldı. "Feature_Setting_5_" ayarındaki dosya yolu hatası giderildi.
         • Playbook - Kalıp ayar menüsünde yer alan önemli bazı ayarlar kalıp dosyasında üst bölüme taşındı.
 
-</details><details><B><summary> Versiyon 4.4.9 ► 04.09.2024 - Playbook </B></summary>
+</details><details><summary><B> Versiyon 4.4.9 ► 04.09.2024 - Playbook </B></summary>
 
     ▼ Genel değişiklikler;
         • "Hizmetleri Yönet" bölümüde Wifi hizmetine Warp uygulaması için uyarı eklendi.
@@ -228,12 +228,12 @@
         • MSI Afterburner yükleme sorunlarından dolayı listeden kaldırıldı.
         • Seçili işlem komutlarında düzenlemeler yapıldı. Liste güncellemesi sonrası oluşan kodları düzenleme karmaşıklığı giderildi. [Bunu çalışma yapısını takip edenler için not düştüm]
         
-</details><details><B><summary> Versiyon 4.4.8 ► 08.08.2024 </B></summary>
+</details><details><summary><B> Versiyon 4.4.8 ► 08.08.2024 </B></summary>
 
     ▼ Genel değişiklikler;
         • Playbook - Kalıp dizininde kalan "2.ini" kalıp dosyası kaldırıldı.
 
-</details><details><B><summary> Versiyon 4.4.7 ► 05.08.2024 </B></summary>
+</details><details><summary><B> Versiyon 4.4.7 ► 05.08.2024 </B></summary>
 
     ▼ Genel değişiklikler;
         • Playbook - "Update_Setting_3" ayarına ekleme yapıldı.
@@ -243,7 +243,7 @@
         • Playbook - Kalıpta bazı ayarlara yeni açıklamalar eklendi.
         • Uygulama Yükleyici - All in One Runtimes bölümünde Net Framework 4.5 açılırken farklı özellikleri açması engellendi.
 
-</details><details><B><summary> Versiyon 4.4.6 ► 22.07.2024 </B></summary>
+</details><details><summary><B> Versiyon 4.4.6 ► 22.07.2024 </B></summary>
 
     ▼ Genel değişiklikler;
         • Sistem temizliği bölümünde "C:\Windows\Installer" "C:\Program Data\Package Cache" ve klasörünün temizleme komutları kaldırıldı. MSI uzantılı dosyaların kaldırılmasında soruna neden oluyordu.
@@ -257,7 +257,7 @@
         • Kalıpta "Optimization_Setting_7_= 0 ► Arkaplanda çalışan uygulamaların güç kullanımını azalt işlemini kapat" varsayılan olarak ayarlandı.
         • "Change_App_3_" bölümündeki komut hatası giderildi.
 
-</details><details><B><summary> Versiyon 4.4.5 ► 18.07.2024 </B></summary>
+</details><details><summary><B> Versiyon 4.4.5 ► 18.07.2024 </B></summary>
 
     ▼ Genel değişiklikler;
         • "Uygulama yükleyici" bölümüne CapCut uygulaması 27 numaralı işlem olarak eklendi
@@ -265,7 +265,7 @@
         • "GpuEnergyDrv" ve "GraphicsPerfSvc" hizmetleri kalıpta varsayılan olarak ayarlandı.
         • "Oyun modunu kapat" ayarı kalıpta varsayılan olarak ayarlandı.
         
-</details><details><B><summary> Versiyon 4.4.4 ► 14.07.2024 </B></summary>
+</details><details><summary><B> Versiyon 4.4.4 ► 14.07.2024 </B></summary>
 
     ▼ Genel değişiklikler;
         • "Hizmet yönetimi" bölümünde "Miracast" için Win11 ses yönetiminin ihtiyacı olduğunu belirten not ekledim.
@@ -276,13 +276,13 @@
         • "Windows-Market onar" bölümünde Sfc /scannow ve Dism onarma seçeneği sistem optimizasyonu ve tema ayarını bozmasıyla alakalı uyarı mesajı ve kullanıcı yönetimi için evet hayır seçeneği eklendi.
             • Ayrıca hizmet grupları kapatılınca belirgin sorunlara neden olan bazı hizmet guruplarını varsayılan olarak ayarlaması için yeni komutlar eklendi. 
             
-</details><details><B><summary> Versiyon 4.4.3 ► 28.06.2024 </B></summary>
+</details><details><summary><B> Versiyon 4.4.3 ► 28.06.2024 </B></summary>
 
     ▼ Genel değişiklikler;
         • "Uygulama yükleyici" bölümünde "All in One Runtimes"a EdgeWebView2 yüklemesi için ekleme yapıldı.
         • Playbook kalıbında Edge ve EdgeWebView2 silme ayarları pasif olarak düzenlendi.
 
-</details><details><B><summary> Versiyon 4.4.2 ► 28.06.2024 </B></summary>
+</details><details><summary><B> Versiyon 4.4.2 ► 28.06.2024 </B></summary>
 
     ▼ Genel değişiklikler;
         • "Sistem hakkında" bölümünde işlemci çalışma frekansı bilgisini MHZ olarak yanlış kullanmışım, GHZ olarak düzeltildi.
@@ -291,7 +291,7 @@
         • Settings.ini içerisinde yer alan Playbook Winget kontrol sistemini atlama bölümü anlaşılır hale getirildi ve tanımlama hatası giderildi.
         • Winget komutlarını atlayıp Openshell kurulumunda hata alınmaması için yeni komutlar eklendi.
         
-</details><details><B><summary> Versiyon 4.4.1 ► 06.06.2024 </B></summary>
+</details><details><summary><B> Versiyon 4.4.1 ► 06.06.2024 </B></summary>
 
     ▼ Genel değişiklikler;
         • Playbook bölümünde "Explorer_Setting_19_" ayarındaki gereksiz Call komutu kaldırıldı.
@@ -300,13 +300,13 @@
         • "Winget_Link" başlığındaki mantıksal sorgudaki konum hatası giderildi.
         • "Jpegview.ini" dosyasında panel görünteleme ayarı değiştirildi.
 
-</details><details><B><summary> Versiyon 4.4.0 ► 31.05.2024 </B></summary>
+</details><details><summary><B> Versiyon 4.4.0 ► 31.05.2024 </B></summary>
 
     ▼ Genel değişiklikler;
         • Kullanılmayan değişkenleri sıfırlaması için yeni eklemeler yapıldı.
         • "Uygulama yükleyici" bölümünde Edge tarayıcısının yüklenmesini bloklayan regedit ve güvenlik duvarı engelleri kaldırılacak şekilde ekleme yapıldı. Yükleme sonrası çalışmasını tetiklemek için komut eklendi.
 
-</details><details><B><summary> Versiyon 4.3.9 ► 30.05.2024 </B></summary>
+</details><details><summary><B> Versiyon 4.3.9 ► 30.05.2024 </B></summary>
 
     ▼ Genel değişiklikler;
         • "Sistem hakkında" bölümünde Ram miktarını gösteren bölümde toplam RAM boyutu az göstermesine neden olan veri hatasını gidermek için kontrol komutları eklendi.
@@ -320,7 +320,7 @@
         • "Jump_1" başlığı kaldırıldı. Öncesinde yer alan Winget kontrol komutları ana menüde if sorgusuna alındı.
         • "Adobe Reader" "Acrobat Reader" olarak adlandırıldı.
         
-</details><details><B><summary> Versiyon 4.3.8 ► 29.05.2024 </B></summary>
+</details><details><summary><B> Versiyon 4.3.8 ► 29.05.2024 </B></summary>
 
     ▼ Genel değişiklikler;
         • Playbook bölümünden "Pass_3" başlığı kaldırıldı.
@@ -329,7 +329,7 @@
             • Hatalı Windows bilgi sorunu giderildi.
         • "Uygulama yükleyici" bölümünde hash doğrulama hatasını atlaması için yeni eklemeler yapıldı.
 
-</details><details><B><summary> Versiyon 4.3.7 ► 27.05.2024 </B></summary>
+</details><details><summary><B> Versiyon 4.3.7 ► 27.05.2024 </B></summary>
 
     ▼ Genel değişiklikler;
         • "Ping Ölçer" bölümündeki 'Ping_M1' ve 'Ping_M2' başlıkları birleştirilip 'Ping' başlığı haline getirildi. Bağlı kodlar yeni başlığa göre düzenlendi.
@@ -339,7 +339,7 @@
         • "CurrentUserName" ve "Default_System_Language" kodları çalışmanın başına alındı. İlk açılışta değişkene tanımlanacak şekilde düzenlendiler.
         • Playbook kalıbına hizmet düzenlemesini tek bir ayar ile atlaması için "Skip_Service_" ayarı eklendi.
 
-</details><details><B><summary> Versiyon 4.3.6 ► 19.05.2024</B></summary>
+</details><details><summary><B> Versiyon 4.3.6 ► 19.05.2024</B></summary>
 
     ▼ Genel değişiklikler;
         • Belirli komutların konumları değiştirildi.
@@ -350,7 +350,7 @@
     ▼ Playbook bölümündeki değişiklikler;
         • "Taskbar_Setting_17_" ayarı başlat menüsü Microsoft hesap bildirimlerini kapatması için eklendi.
 
-</details><details><B><summary> Versiyon 4.3.5 ► 12.05.2024 - Playbook</B></summary>
+</details><details><summary><B> Versiyon 4.3.5 ► 12.05.2024 - Playbook</B></summary>
 
     ▼ Genel değişiklikler;
         • "Sistem hakkında" RAM bilgilendirme bölümünde "MHZ" ifadesi "MT/s" olarak güncellendi. "MT/s" ifadesi daha doğru olduğu için üreticiler ve yeni sürüm Windows'larda kullanılmaya başlanacak.
@@ -359,7 +359,7 @@
         • Playbook ayar özelleştirme menüsünün kodları yeniden yazıldı. Olası özelleştirmeler için basitleştirildi.
         • Kalıp içerisindeki eski sürümler için eklenmiş bilgi notları güncellendi.
 
-</details><details><B><summary> Versiyon 4.3.4 ►  01.05.2024 - Playbook</B></summary>
+</details><details><summary><B> Versiyon 4.3.4 ►  01.05.2024 - Playbook</B></summary>
 
     ▼ Playbook bölümünde yapılan değişiklikler;
         • Hizmet düzenleme ve uygulama silme bölümündeki kalıptaki anahtar kelime komutlarında değişiklik yapıldı.
@@ -374,7 +374,7 @@
         • Playbook özelleştirme ekranına EdgeWebView2 ayarı eklendi.
         • "Güç azaltmayı kapat" ayarı "Arkaplanda çalışan uygulamaların güç kullanımını azalt işlemini kapat" olarak düzenlendi.
 
-</details><details><B><summary> Versiyon 4.3.3 ►  27.04.2024 - Playbook</B></summary>
+</details><details><summary><B> Versiyon 4.3.3 ►  27.04.2024 - Playbook</B></summary>
 
     ▼ Uygulama yükleyici bölümündeki değişiklikler;
         • "All in One Runtimes" bölümündeki değişiklikler;
@@ -386,7 +386,7 @@
         • Winget konrol komutlarını geçmeniz için "Settings.ini" içerisine "Setting_3_" ayarı eklendi.
         • Edge tarayıcısının yeniden yüklenmesini engellemek için güvenlik duvarı engelleme komutu yeniden eklendi. Ayrıca tetiklenmesini engelleyecek yeni regedit kaydı eklendi.
     
-</details><details><B><summary> Versiyon 4.3.2 ►  21.04.2024 - Playbook</B></summary>
+</details><details><summary><B> Versiyon 4.3.2 ►  21.04.2024 - Playbook</B></summary>
 
     ▼ Genel değişiklikler;
         • Dil kontrol bölümü kodları optimize edildi.
@@ -395,7 +395,7 @@
         • Taskbar_Setting_16_ (Copilot) bölümüne yeni regedit kayıtları eklendi.
         • Openshell bölümündeki program regedit kayıtlarını uygulamadan önce kapatıp açmaya yarayan komutlar kaldırıldı.
 
-</details><details><B><summary> Versiyon 4.3.1 ►  17.04.2024 - Playbook</B></summary>
+</details><details><summary><B> Versiyon 4.3.1 ►  17.04.2024 - Playbook</B></summary>
 
     ▼ Genel değişiklikler;
         • Sistem temizliği bölümünde kodlar optimize edildi. Yeni eklemeler yapıldı.
@@ -405,7 +405,7 @@
         • Openshell uygulama yükleme ayarı başlat menüsü ayarına bağlı hale getirildi. Bu ayar uygulanmadan Openshell uygulaması artık yüklenemeyecek.
         • Gereksiz başlıklar kaldırıldı.
         
-</details><details><B><summary> Versiyon 4.3.0 ►  13.04.2024 - Playbook</B></summary>
+</details><details><summary><B> Versiyon 4.3.0 ►  13.04.2024 - Playbook</B></summary>
 
     ▼ Genel değişiklikler;
         • Sistem temizleyici bölümündeki DNS önbellek temizleme işlemi kaldırıldı. Uygulandığında anlık olarak internet gidip geldiği için sorun çıkarma potansiyeline sahipti.
@@ -430,7 +430,7 @@
         • Kalem hizmeti varsayılan olarak bırakıldı. Dileyenler kalıptan düzenleyebilir yada playbook işlemi sonrası hizmet yönetimi bölümünden kapatabilir.
         • Görev çubuğunu sola hizalama işlemi varsayılan olarak bırakıldı. Dileyenler kalıptan düzenleyerek aktifleştirebilir.
     
-</details><details><B><summary> Versiyon 4.2.9 ►  04.04.2024 - Playbook</B></summary>
+</details><details><summary><B> Versiyon 4.2.9 ►  04.04.2024 - Playbook</B></summary>
 
     ▼ Playbook bölümünde yapılan değişiklikler;
         • "Taskschd_Update_Setting_8_" ayarı eklendi. Cihazlar arası deneyim (Crossdevice) uygulamasının oto yüklenmesini devre dışı bırakır.
@@ -440,14 +440,14 @@
         • Edge işleminden sonra pause komutu kaldırıldı. Test işlemlerinde unutulmuş kod :)
         • Özel ayarlar uygulanıyor bölümünde detaylı bilgi mesajları eklendi. Şuanki kalıpta bu bölümle ilgili çok bir ayar yok ancak tek mesajla geçmek istemedim.
         
-</details><details><B><summary> Versiyon 4.2.8 ►  03.04.2024 - Playbook</B></summary>
+</details><details><summary><B> Versiyon 4.2.8 ►  03.04.2024 - Playbook</B></summary>
 
     ▼ Playbook bölümünde yapılan değişiklikler;
         • "Taskschd_Update_Setting" bölümündeki komutlar düzenlendi. Ayrıca Edge ile alakalı komutlar bu bölümü eklendi.
         • Edge kaldırma bölümüde güvenlik duvarı engelleme komutu kaldırıldı.
         • Playbook bölümünün kapanmasına neden olan sorun giderildi.
         
-</details><details><B><summary> Versiyon 4.2.7 ►  31.03.2024</B></summary>
+</details><details><summary><B> Versiyon 4.2.7 ►  31.03.2024</B></summary>
 
     ▼ Playbook bölümünde yapılan değişiklikler;
         • "Optimization_Setting_15_" bölümündeki başlık hatası giderildi.
@@ -464,7 +464,7 @@
         • "Sistem temizliği" bölümündeki işlemler görünür hale getirildi ve bilgilendirici mesajlar eklendi.
         • "Sistem temizliği" bölümünde dosya gezgini yeniden başlatılması gerektiği yerde kullanıcıdan onay alacak şekilde ayarlama yapıldı.
 
-</details><details><B><summary> Versiyon 4.2.6 ►  29.03.2024 - Playbook</B></summary>
+</details><details><summary><B> Versiyon 4.2.6 ►  29.03.2024 - Playbook</B></summary>
 
     ▼ Playbook bölümü değişiklikler;
         • Sistem geri yükleme ve bileşenleri playbook kalıbından kaldırıldı. Artık varsayılan olarak bırakılacak. Dileyenler "hizmetleri yönet" bölümünden kapatabilir.
@@ -473,13 +473,13 @@
         • Playbook içerisindeki bazı özel ayarların yönetimi daha rahat olması için liste başında toplandı.
         • Playbook sonrası temizlik işlemini atlama ayarı Settings.ini içerisinden, playbook kalıbına eklendi.
 
-</details><details><B><summary> Versiyon 4.2.5 ►  28.03.2024 - Playbook</B></summary>
+</details><details><summary><B> Versiyon 4.2.5 ►  28.03.2024 - Playbook</B></summary>
 
     • Playbook bölümü internet kontrol komutları kaldırıldı.
     • Internet kontrol bölümüne www.google.com ve github.com adresleri eklendi.
     • Uygulama yükleyici bölümünden internet kontrol komutları kaldırıldı.
 
-</details><details><B><summary> Versiyon 4.2.4 ►  28.03.2024 - Playbook</B></summary>
+</details><details><summary><B> Versiyon 4.2.4 ►  28.03.2024 - Playbook</B></summary>
     
     ▼ Playbook bölümünde yapılan değişiklikler;
         • Playbook kalıp güncelleme sistemi kaldırıldı. Ana güncellemeye bağlı olarak kalıplar güncellenecek.
@@ -535,7 +535,7 @@
         • Ping ölçer bölümünde DNS adresleri belirtildi.
         • Sistem temizliği bölümündeki kodlar düzenlendi. Hızlı erişim sabitlenmiş pinleri silme sorunu giderildi.
         
-</details><details><B><summary> Versiyon 4.2.3 ►  28.02.2024 - Playbook</B></summary>
+</details><details><summary><B> Versiyon 4.2.3 ►  28.02.2024 - Playbook</B></summary>
     
     • Playbook bölümünde yapılan değişiklikler;
         • "Special_Setting_1_" ayarı masaüstü arkaplan resminin görüntü kalitesini ayarlamak için eklendi.
@@ -545,7 +545,7 @@
         • "Feature_Setting_7_" ayarında yer alan regedit kayıtları yeniden düzenlendi.
         • "Special_Setting_3_" ayarı fare işaretçi hızı bölümünden çıkartılıp özel ayar olarak eklendi. İçeriği farklı olduğu ayrı olması daha sağlıklı.
         
-</details><details><B><summary> Versiyon 4.2.2 ►  27.02.2024 - Playbook</B></summary>
+</details><details><summary><B> Versiyon 4.2.2 ►  27.02.2024 - Playbook</B></summary>
 
     • Playbook bölümünde yapılan değişiklikler;
         • Uygulama kaldırma bölümü;
@@ -584,7 +584,7 @@
         • "Dism /Online /Cleanup-Image /SPSuperseded" yeni sürüm Windows'larda işlevsiz olduğu için kaldırıldı.
     
 
-</details><details><B><summary> Versiyon 4.2.1 ►  23.01.2024 - Playbook</B></summary>
+</details><details><summary><B> Versiyon 4.2.1 ►  23.01.2024 - Playbook</B></summary>
 
     • Playbook bölümünde yapılan değişiklikler;
         • Kodlarda genel iyileştirme yapıldı.
@@ -598,7 +598,7 @@
     • Hizmet yönetimi bölümündeki değişiklikler;
         • Sistem geri yükleme bölümüne hizmet artıklarını silecek şekilde ekleme yapıldı.
 
-</details><details><B><summary> Versiyon 4.2.0 ►  12.01.2024 - Playbook</B></summary>
+</details><details><summary><B> Versiyon 4.2.0 ►  12.01.2024 - Playbook</B></summary>
 
     • Playbook bölümünde yapılan değişiklikler;
         • Playbook sistem temizliği komutlarına eklemeler yapıldı. Dizin hataları giderildi
@@ -606,7 +606,7 @@
         • Winget ile uygulama yükleme komutlarındaki varsayılan uygulama komutları düzenlendi.
     • Dosya ve klasör silme komutları düzenlendi.
 
-</details><details><B><summary> Versiyon 4.1.9 ►  10.01.2024 - Playbook</B></summary>
+</details><details><summary><B> Versiyon 4.1.9 ►  10.01.2024 - Playbook</B></summary>
     
     • Playbook bölümünde yapılan değişiklikler;
         • "Optimization_Setting_13_" bölümüne hızlı başlatmayı kapatması için powercfg komutu eklendi.
@@ -630,23 +630,23 @@
         • "All in One Runtimes" bölümünde Desktop Runtime 6.0 sürümü çıkarıldı. 8.0 sürümü eklendi.
             • Bundan sonra güncel sürüm ve bir alt sürümü yüklenecektir. Şuan 8/7 sürümleri yüklenmektedir.
 
-</details><details><B><summary> Versiyon 4.1.8 ►  27.12.2023 - Playbook [QuickFix]</B></summary>
+</details><details><summary><B> Versiyon 4.1.8 ►  27.12.2023 - Playbook [QuickFix]</B></summary>
 
     • Playbook "Uyarılar ve yönlendirmeler" bölümünde işlemi kabul etmediğinizde devam etmesine neden olan sorgulama hatası giderildi. Ek önlemler eklendi
 
-</details><details><B><summary> Versiyon 4.1.7 ►  27.12.2023 - Playbook</B></summary>
+</details><details><summary><B> Versiyon 4.1.7 ►  27.12.2023 - Playbook</B></summary>
 
     • Playbook kalıp seçme bölümü ekran genişliği azaltıldı.
     • Deli_Petro06 ve Speyda_readyOS kalıpları entegre edildi.
 
-</details><details><B><summary> Versiyon 4.1.6 ►  27.12.2023 - Playbook</B></summary>
+</details><details><summary><B> Versiyon 4.1.6 ►  27.12.2023 - Playbook</B></summary>
 
     • "Sistem optimizasyonu [Playbook]" bölümündeki değişiklikler;
         • Taskbar_Settings_10/11 bölümündeki veri karışıklığı hatası giderildi.
         • Edge kaldırma komutuna yeni reg kaydı eklendi.
         • Uygulama kaldırma bölümündeki powershell optimizasyon komutlarında yaşanan sorun giderildi.
 
-</details><details><B><summary> Versiyon 4.1.5 ►  26.12.2023 - Playbook</B></summary>
+</details><details><summary><B> Versiyon 4.1.5 ►  26.12.2023 - Playbook</B></summary>
 
     • "Sistem optimizasyonu [Playbook]" bölümündeki değişiklikler;
         • Regedit komutları optimize edildi. 
@@ -660,7 +660,7 @@
         • Uygulama kaldırma bölümündeki kodlar optimize edildi.
         • Bileşen silme bölümündeki kısmi çalışma sorunu giderildi.
 
-</details><details><B><summary> Versiyon 4.1.4 ►  23.12.2023 - Playbook</B></summary>
+</details><details><summary><B> Versiyon 4.1.4 ►  23.12.2023 - Playbook</B></summary>
 
     • "Sistem optimizasyonu [Playbook]" bölümündeki değişiklikler;
         • Tüm ayarlar yönetilebilir hale getirildi.
@@ -671,7 +671,7 @@
     • "___HANGAR___" başlığı altındaki yer alan işlevsel başlıklar düzenli hale getirildi. Yorum satırları arttırıldı.
         
 
-</details><details><B><summary> Versiyon 4.1.3 ►  26.11.2023</B></summary>
+</details><details><summary><B> Versiyon 4.1.3 ►  26.11.2023</B></summary>
 
     • "Hizmet Yönetimi" bölümündeki değişiklikler;
         • Wifi hizmet grubu çalışma değerleri güncellendi.
@@ -682,7 +682,7 @@
     • "Sistem Hakkında" bölümündeki değişiklikler;
         • DDR5 ram tip numarası eklendi.
     
-</details><details><B><summary> Versiyon 4.1.2 ►  23.11.2023</B></summary>
+</details><details><summary><B> Versiyon 4.1.2 ►  23.11.2023</B></summary>
 
     • "Sistem temizliği" bölümüne '%LocalAppData%' dizininde yer alan 'tw-' isimli boş klasörleri silme komutu eklendi.
     • "Hizmet Yönetimi" bölümü kontrol kodları revize edildi.
@@ -692,11 +692,11 @@
     • İngilizce dil bölümünde iyileştirmeler yapıldı. 
     
 
-</details><details><B><summary> Versiyon 4.1.1 ►  04.10.2023</B></summary>
+</details><details><summary><B> Versiyon 4.1.1 ►  04.10.2023</B></summary>
 
     • Sistem optimizasyonu [Playbook] bölümünde düzenlemeler yapıldı. 
 
-</details><details><B><summary> Versiyon 4.1.0 ►  01.10.2023</B></summary>
+</details><details><summary><B> Versiyon 4.1.0 ►  01.10.2023</B></summary>
 
     • 'Hizmetleri Yönet' bölümüne yeni açıklayıcı bilgiler eklendi.
     • "Sistem optimizasyonu [Playbook]" bölümüne seçmeli ayarlar eklendi. Artık işlem öncesi belli başlı ayarları seçip işleme devam edebilirsiniz.
@@ -704,7 +704,7 @@
     • "Uygulama yükleyici" bölümünde Winget ile uygulamaları toplu güncelleme komutunda eski sürümleri sil parametresi kaldırıldı. Uygulamaların altyapısı bu parametreye uygun değil.
     
 
-</details><details><B><summary> Versiyon 4.0.9 ►  21.09.2023</B></summary>
+</details><details><summary><B> Versiyon 4.0.9 ►  21.09.2023</B></summary>
 
     • İngilizce dil dosyasında iyileştirmeler yapıldı.
     • "Windows-Market onar" bölümünde düzenleme yapıldı.
@@ -714,52 +714,52 @@
         • İlk onaydan sonra ikinci bir uyarı ekranı daha eklendi. Uyarı ekranını mutlaka okuyun. 
         • Sistem üzerinde yapılan değişikliklerde düzenleme yapıldı. Güncelleme bölümü optimize edildi. Hatalı komutlar düzeltildi.
     
-</details><details><B><summary> Versiyon 4.0.8 ►  04.09.2023</B></summary>
+</details><details><summary><B> Versiyon 4.0.8 ►  04.09.2023</B></summary>
 
     • Uygulama yükleyici bölümündeki internet kontrol bölümüne bilgi mesajı eklendi. Artık internet bağlantısı olmadığı durumlar için bilgi mesajı verip ana menüye dönecek.
     • Playbook bölümündeki bazı regedit komutları düzenlendi. 
     • Toolbox artık Win10-11 tüm sürümlerde çalışabilecek. Sınırlamalar kaldırıldı.
 
-</details><details><B><summary> Versiyon 4.0.7 ►  27.08.2023</B></summary>
+</details><details><summary><B> Versiyon 4.0.7 ►  27.08.2023</B></summary>
 
     • "Uygulama yükleyici" bölümünde çoklu seçimde "All in One Runtimes" seçiminden sonra oluşan bilgilendirme mesajındaki hata giderildi.
     • "Sistem hakkında" bölümüne Windows yönetim araçlarından alınan verilerden hata payı olabileğiyle ilgili bilgilendirici metin eklendi.
         • "Sistem hakkında" bölümünden ana menüye dönüşte silinen log kayıtlarından kaynaklı hatalı bilgilendirme mesaj sorunu giderildi.
 
-</details><details><B><summary> Versiyon 4.0.6 ►  27.08.2023</B></summary>
+</details><details><summary><B> Versiyon 4.0.6 ►  27.08.2023</B></summary>
 
     • Sistem temizleyici bölümüne olay günlüğü temizleme komutları eklendi.
     • İlk açılıştaki komut ekranında boş siyah ekran görünmemesi için OgnitorenKs Toolbox yazısı eklendi.
 
-</details><details><B><summary> Versiyon 4.0.5 ►  26.08.2023</B></summary>
+</details><details><summary><B> Versiyon 4.0.5 ►  26.08.2023</B></summary>
 
     • 7-Zip kurulum hatası giderildi. (Yapımcısı Winget sistemine eklediği kurulum setupta programfiles içine 7-Zip klasörü açamıyormuş)
     • Uygulama yükleyici bölümüne Microsoft Store ile Uygulama yükleyiciyi güncelleyin uyarısı ekledim. Ayrıca 80 numaralı işlem ile Microsoft Store'un güncelleme ekranını açmasını sağladım.
     • Varsayılan uygulama ekleme bölümündeki eksik kod hatası giderildi.
     • Uygulama yükleyici bölümüne 'PortMaster' uygulaması eklendi.
 
-</details><details><B><summary> Versiyon 4.0.4 ►  19.08.2023</B></summary>
+</details><details><summary><B> Versiyon 4.0.4 ►  19.08.2023</B></summary>
 
     • "Lisans-Kullanıcı yönetimi" bölümü ana menüye dönüşteki işlem başarılı mesajının çıkması engellendi.
     • 22H2 altı sürümlerde Toolbox'ın açılma sorunu giderildi.
 
-</details><details><B><summary> Versiyon 4.0.3 ►  19.08.2023</B></summary>
+</details><details><summary><B> Versiyon 4.0.3 ►  19.08.2023</B></summary>
 
     • Ana menü içinde yer alan X işlemli kapatma işlevi aktifleştirildi.
     • İngilizce dil desteği yeniden eklendi.
     • Sistem varsayılan dilinden toolbox dili otomatik seçilecek şekilde düzenlendi. 
     • Dil seçeneğini manuel değiştirmek için Ana menüye "Dil değiştirme" bölümü eklendi.
 
-</details><details><B><summary> Versiyon 4.0.2 ►  18.08.2023</B></summary>
+</details><details><summary><B> Versiyon 4.0.2 ►  18.08.2023</B></summary>
 
     • "Sistem hakkında" bölümünde yer alan Monitör bilgileri kaldırılmıştır. Hatalar giderildikten sonra yeniden eklenecektir.
 
-</details><details><B><summary> Versiyon 4.0.1 ►  18.08.2023</B></summary>
+</details><details><summary><B> Versiyon 4.0.1 ►  18.08.2023</B></summary>
 
     • "Sistem optimizasyonu" bölümüne Edge silme işlemi için yeni komutlar eklendi.
     • Hizmet yönetimi bölümündeki kod hatası giderildi.
 
-</details><details><B><summary> Versiyon 4.0 ►  18.08.2023 - Return</B></summary>
+</details><details><summary><B> Versiyon 4.0 ►  18.08.2023 - Return</B></summary>
 
     • Toolbox tamamen yeniden yazıldı. Bütün bölümleri optimize edildi.
     • Uygulama indirme listesi güncellendi. Uygulamaları tek tıkla güncelleme işlemi eklendi.
@@ -787,17 +787,17 @@
     • "All in One Runtimes" bölümü optimize edilip güncellendi.
     • 7-zip ve Jpegview gibi programlar kurulurken varsayılan olarak ayarlanacak şekilde düzenlendi.
 
-</details><details><B><summary> Versiyon 3.9 ►  09.03.2023 - DEV</B></summary>
+</details><details><summary><B> Versiyon 3.9 ►  09.03.2023 - DEV</B></summary>
 
     • Toolbox yeniden yazılmaya başlandı.
     • Detaylı hizmet yönetimi bölümü oluşturuldu.
     • İndirme işlemleri ağırlıklı olarak Chocolatey'e üzerine aktarıldı.
 
-</details><details><B><summary> Versiyon 3.8.1 ►  08.12.2022 - THE END</B></summary>
+</details><details><summary><B> Versiyon 3.8.1 ►  08.12.2022 - THE END</B></summary>
 
     • Genel olarak son düzenlemeler yapılıp, bir kaç bug giderildi.
 
-</details><details><B><summary> Versiyon 3.8 ►  29.11.2022 - THE END</B></summary>
+</details><details><summary><B> Versiyon 3.8 ►  29.11.2022 - THE END</B></summary>
 
     • Çoklu dil desteği için altyapı oluşturuldu.
         • Dil seçimini sistem açılışınd otomatik yapmaktadır. Açıldıktan sonra bu "Dil ayarları" bölümünden değiştirilebilir.
@@ -817,12 +817,12 @@
     • Hizmet yönetimi bölümündeki kontrol komutları düzenlendi. Olası hata mesajları önlendi. Hatasız içerik kontrol ayarları yapıldı.
     • Hizmet yönetimi bölümüne ilk açılışta yedekleme komutları eklendi.
 
-</details><details><B><summary> Versiyon 3.7.1 ►  06.10.2022</B></summary>
+</details><details><summary><B> Versiyon 3.7.1 ►  06.10.2022</B></summary>
 
     • Kaldırılamayan uygulamalar bölümünde Python komutları düzenlendi.
     • Katılımsız program / ayar ekle > klavye - mouse optimizasyonu bölümündeki kod hatası giderildi.
 
-</details><details><B><summary> Versiyon 3.7 ►  01.10.2022</B></summary>
+</details><details><summary><B> Versiyon 3.7 ►  01.10.2022</B></summary>
 
     • x64 sistem uyarısı eklendi.
     • Yönetici yetki uyarısı kaldırıldı. Düzenlenen komutlar ile doğrudan yönetici yetkisi alınacak.
@@ -884,7 +884,7 @@
         •Settings.ini üzerinden düzenlenecek şekilde ayarlama yapıldı.
     • Extra\UpdateAfter.bat dosyası içindeki komutları OgnitorenKs.Toolbox.bat 'UpdateAfter' bölümüne eklendi.
 
-</details><details><B><summary> Versiyon 3.6.1 ►  04.09.2022</B></summary>
+</details><details><summary><B> Versiyon 3.6.1 ►  04.09.2022</B></summary>
 
     • Performans Optimizasyonu > Nihai Performans güç seçeneği bölümünün durumunu gösteren komutdaki hata giderildi.
     • Windows Edit > Katılımsız Program / Ayar Ekle > Masaüstüne dosya ekle bölümüne dosyalarınızı ekleyeceğiniz klasör dizini açılacak şekilde ayarlandı.
@@ -915,7 +915,7 @@
     • Windows 10 Edit > Gpedit.msc bölümü kaldırıldı. Son güncellemelerde yükleme işleme rağmen aktif olmuyordu.
     • Kullanım deneyimini arttırmak için Sağ üstten kapatılacak şekilde düzenlenmiş bölümlere X tuşu kapat olarak eklendi.
     
-</details><details><B><summary> Versiyon 3.6 ►  26.08.2022</B></summary>
+</details><details><summary><B> Versiyon 3.6 ►  26.08.2022</B></summary>
 
     • Windows Düzenleme > 'Katılımsız Program / Ayar Ekle' bölümü eklendi.
         • Düzenleme yapacağınız imajların ilk açılış ekranına katılımsız kurulum ekleyebileceksiniz.
@@ -925,7 +925,7 @@
         • Yerine Nihai performans ekle getirildi.
     • Windows Düzenleme > Menülere uyarı mesajları eklendi.
     
-</details><details><B><summary> Versiyon 3.5.3 ►  20.08.2022</B></summary>
+</details><details><summary><B> Versiyon 3.5.3 ►  20.08.2022</B></summary>
 
     • Toolbox, internet kontrol durumunu kapatacak ayarlama yapıldı.
         • Bazı durumlarda internet olmasına rağmen bağlantı olmadığına dair uyarı verdiği için eklendi.
@@ -939,7 +939,7 @@
     • Windows Düzenleme > 'OgnitorenKs Toolbox ekle' bölümü eklendi. İmaja toolbox'ı zahmetsiz bir şekilde entegre edebilirsiniz.
     • Windows Düzenleme > Program çakışmalarını önlemek için bazı işlemlerde uyarı mesajı eklendi.
     
-</details><details><B><summary> Versiyon 3.5.2 ►  18.08.2022</B></summary>
+</details><details><summary><B> Versiyon 3.5.2 ►  18.08.2022</B></summary>
 
     • Hizmetleri Yönet > Windows Search bölümüne yeni paramatre eklendi.
         • Ayarlar > Gelişmiş arama dizin oluşturma hatası giderildi.
@@ -947,11 +947,11 @@
     • Ana menüye tarih bilgisi eklendi.
     • Discord sessiz kurulum sonrası uygulamanın açılmama hatası giderildi.
     
-</details><details><B><summary> Versiyon 3.5.1 ►  03.08.2022 - QuickFix</B></summary>
+</details><details><summary><B> Versiyon 3.5.1 ►  03.08.2022 - QuickFix</B></summary>
 
     • Uygulama indir bölümündeki kapanma sorunu giderildi.
     
-</details><details><B><summary> Versiyon 3.5   ►  03.08.2022</B></summary>
+</details><details><summary><B> Versiyon 3.5   ►  03.08.2022</B></summary>
 
     • Güncelleme sonrası temizlik bölümüne yeni parametreler eklendi. EdgeWebView2 engelleme parametresi kaldırıldı.
     • PowerChoice (Güç Seçenekleri) kaldırıldı.
@@ -973,7 +973,7 @@
         • 1M tuşlayarak bu menüye ulabilirsiniz. 1M ile yapacağınız işlemde diğer çoklu seçmeler iptal olur.
         • All In One Runtimes bölümünü toplu kurmak istiyorsanız yalnızca 1 tuşlamanız gerekmektedir.
 
-</details><details><B><summary> Versiyon 3.4.2 ►  14.07.2022</B></summary>
+</details><details><summary><B> Versiyon 3.4.2 ►  14.07.2022</B></summary>
 
     • Kaldırılamayan Uygulamalar bölümü Windows 11'de çalışmadığı için uyarı mesajı eklendi.
         • İşlem yapılamayacağı için Windows 11'de Python kurulması engellendi.
@@ -984,7 +984,7 @@
     • Hizmetleri Yönet > Sistem geri yükleme bölümünde volsnap hizmeti kaldırıldı.
     • Hizmetleri Yönet > Bitlocker hizmeti bölümünden fvevol hizmeti kaldırıldı.
 
-</details><details><B><summary> Versiyon 3.4.1 ►  08.07.2022</B></summary>
+</details><details><summary><B> Versiyon 3.4.1 ►  08.07.2022</B></summary>
 
     • Windows 10/11 Edit > Telemetri/Reklam engelli hosts ekle bölümünde veri kaybını önlemek için mevcut dosya hosts.bak olarak değiştirilmesi için komutlar eklendi.
         • [quanqx]'a geri bildirimi için teşekkür ederim.
@@ -993,7 +993,7 @@
     • Araç Yükleyici > NVCleanstall indirme hatası giderildi.
     • Uygulama Yükleyici > Gimp indirme hatası giderildi.
 
-</details><details><B><summary> Versiyon 3.4   ►  06.07.2022</B></summary>
+</details><details><summary><B> Versiyon 3.4   ►  06.07.2022</B></summary>
 
     • Araç Yükleyici > Snappy Driver Installer eklendi
     • Araç Yükleyici > Spotify Adblocker eklendi.
@@ -1009,7 +1009,7 @@
     • Hizmetleri Yönet > Sistem Geri Yükleme hizmetindeki komut hatası giderildi.
     • Windows 10/11 Edit > Telemetri/Reklam engelli hosts dosyası ekle bölümü getirildi.
 
-</details><details><B><summary> Versiyon 3.3   ►  01.07.2022</B></summary>
+</details><details><summary><B> Versiyon 3.3   ►  01.07.2022</B></summary>
 
     • Chocolatey indirme sistemi alternatif olarak eklendi.
       • Varsayılan olarak kapalı gelir. Toolbox ayarlarından açılıp, kapatılabilir.
@@ -1059,7 +1059,7 @@
         • Radeon Software Slimmer
         • NVCleanstall
 
-</details><details><B><summary> Versiyon 3.2.2 ►  12.06.2022</B></summary>
+</details><details><summary><B> Versiyon 3.2.2 ►  12.06.2022</B></summary>
 
     • Hizmet Yönetimi > Xbox hizmeti için üst düzey yetki kaldırıldı.
     • Hizmet Yönetimi > Hyper-V'nin Home sürümlerine kurulmasını sağlayan komutlar kaldırıldı. 
@@ -1067,11 +1067,11 @@
     • Windows 10 Edit > Simge değiştir bölümündeki komut hatası giderildi.
     • Desktop Runtime 6 sürümü AIO bölümünden kaldırıldı.
 
-</details><details><B><summary> Versiyon 3.2.1 ►  10.06.2022</B></summary>
+</details><details><summary><B> Versiyon 3.2.1 ►  10.06.2022</B></summary>
 
     • Hizmet Yönetimi > Xbox hizmeti için üst düzey yetki verildi.
     
-</details><details><B><summary> Versiyon 3.2   ►  08.06.2022</B></summary>
+</details><details><summary><B> Versiyon 3.2   ►  08.06.2022</B></summary>
 
     • Online Katılımsız bölümündeki değişiklikler;
       • Recuva kaldırıldı
@@ -1097,16 +1097,16 @@
     • Windows Editör > Katılımsız Program/Ayar Ekle kaldırıldı.
       • Güncelleme, hata giderme durumlarını sürekli takip edemediğim için kaldırdım.
 
-</details><details><B><summary> Versiyon 3.1.2 ►  29.05.2022</B></summary>
+</details><details><summary><B> Versiyon 3.1.2 ►  29.05.2022</B></summary>
 
     • Optimizasyon aracındaki NVIDA ekran kartı bölümündeki yedekleme hatası giderildi.
      • Kaldırılamayan uygulamalar bölümünde Python yükleme ekranı düzeltildi.
 
-</details><details><B><summary> Versiyon 3.1.1 ►  29.05.2022</B></summary>
+</details><details><summary><B> Versiyon 3.1.1 ►  29.05.2022</B></summary>
 
     • Güncelleme sonrası bölümündeki bazı uygulama kaldırma komutları iptal edildi.
 
-</details><details><B><summary> Versiyon 3.1   ►  28.05.2022</B></summary>
+</details><details><summary><B> Versiyon 3.1   ►  28.05.2022</B></summary>
 
     • Windows Store Onar bölümüne yeni paremetreler eklendi.
     • Windows Editör > Setup düzenleme > Setup dosyaları yenilendi. 
@@ -1124,18 +1124,18 @@
     • Bu bölümün sorunsuz çalışması için sisteme Python kurulması gerekmektedir. Yüklü değil ise katılımsız yükleyecektir.
     • Bazı regedit kayıtları düzenlendi.
 
-</details><details><B><summary> Versiyon 3.0.2 ►  11.05.2022</B></summary>
+</details><details><summary><B> Versiyon 3.0.2 ►  11.05.2022</B></summary>
 
     • Simge hatalarını onar bölümü yeniden eklendi. [Legnica'nın isteğiyle]
 
-</details><details><B><summary> Versiyon 3.0.1 ►  10.05.2022</B></summary>
+</details><details><summary><B> Versiyon 3.0.1 ►  10.05.2022</B></summary>
 
     • Windows Editör > Setup Edit bölümündeki hata giderildi.
     • Windows Editör > Regedit Topla bölümündeki komut hatası giderildi.
     • PC Temizle bölümü yeniden eklendi. [Joker'in isteğiyle yeniden eklendi.]
     • Temizle ve Kapat bölümündeki hata giderildi. [CadyMeow'a geri bildirimi için teşekkür ederim]
 
-</details><details><B><summary> Versiyon 3.0   ►  10.05.2022</B></summary>
+</details><details><summary><B> Versiyon 3.0   ►  10.05.2022</B></summary>
 
     • 'Update.ini' dosyası 'Settings.ini' olarak değiştirildi.
     •  Admin yetkili girişi manuel ve otomatik olarak ayarlanması için Settings.ini dosyasına yönetim bölümü eklendi.
@@ -1168,7 +1168,7 @@
     •  Windows Update dosyası güncellemelerde oluşan sorunları önleme için güncelleme öncesi indirilecek şekilde düzenlendi. Extra klasöründen silindi.
     •  Tüm çalışmalar üzerinden yapılan düzenlemelerden sonra Toolbox içerisinden 1000 civarında satır gereksiz komut silinmiştir.
 
-</details><details><B><summary> Versiyon 2.9   ►  26.04.2022</B></summary>
+</details><details><summary><B> Versiyon 2.9   ►  26.04.2022</B></summary>
 
     • Hizmetler Yönetimi > Dokunmatik servis bölümünde Windows 10 / 11 için ayrı servis bölümleri oluşturuldu.
     • Hizmetler Yönetimi > Hizmetlerin durumu hakkında bilgi alırken olası hata mesajlarının engellenmesi için yeni parametreler eklendi.
@@ -1178,7 +1178,7 @@
                  • [YMuratK] tavsiyesiyle FileConverter programı eklendi.
     • Toolbox İngilizce > Hizmetleri yönet bölümündeki dil hatası giderildi.
     
-</details><details><B><summary> Versiyon 2.8   ►  21.04.2022</B></summary>
+</details><details><summary><B> Versiyon 2.8   ►  21.04.2022</B></summary>
 
     • Icon fix bölümüne yeni parametreler eklendi.
     • Icon fix bölümü "Simge Önbelleğini Temizle" olarak değiştirildi.
@@ -1189,7 +1189,7 @@
      • AnyDesk uygulaması, Teamviewer altına alındı.
      • Windows Editör > Dism Update Online bölümünde güncelleme yükleme sonrası gelen restart sorgusu kaldırıldı.
 
-</details><details><B><summary> Versiyon 2.7.1 ►  18.04.2022</B></summary>
+</details><details><summary><B> Versiyon 2.7.1 ►  18.04.2022</B></summary>
 
     • Icon Fix bölümüne Search App önbelliğini temizleyen komutlar eklendi. Bu komut ile arama bölümünde oluşan simge hataları giderilebilecek
     • Bu konuda tüm çözüm önerilerini deneyip çözümü bulan; "Legnica" ya teşekkür ederim.
@@ -1197,14 +1197,14 @@
      • AnyDesk uygulaması toolbox'a eklendi.
     • Windows Editör > Dism Update Online bölümünde güncelleme sonrası restart sorgusunu iptal etmek için parametre eklendi.
     
-</details><details><B><summary> Versiyon 2.7   ►  18.04.2022</B></summary>
+</details><details><summary><B> Versiyon 2.7   ►  18.04.2022</B></summary>
 
     • Hizmetleri Yönet > Windows Media Player yaşanan sorunlardan dolayı kaldırıldı.
     • Toolbox oto güncelleme sistemi getirildi. Bu özelliği OgnitorenKs.Toolbox klasörü içinde yer alan Update.ini'den kapatabilirsiniz.
     • Links.bat dosyası Links.txt olarak değiştirildi. Güncelleme işlemini hızlıca gerçekleştirmek için.
     • PowerChoice simgesi değiştirildi.
 
-</details><details><B><summary> Versiyon 2.6.3 ►  16.04.2022</B></summary>
+</details><details><summary><B> Versiyon 2.6.3 ►  16.04.2022</B></summary>
 
     • Windows Editör > 24 - Katılımsız Program/Ayar ekle [Offline] bölümü kaldırıldı.
     • [Online] bölümü içindeki tüm komutlar yenilendi. Toolbox içindeki tüm programlar eklendi.
@@ -1221,7 +1221,7 @@
     • Hizmet Yönetimi > Xbox bölümüne kısayol engelleyici parametre eklendi.
     • Hizmet Yönetimi > Windows Media player bölümüne yeni parametre eklendi.
 
-</details><details><B><summary> Versiyon 2.6.2 ►  13.04.2022</B></summary>
+</details><details><summary><B> Versiyon 2.6.2 ►  13.04.2022</B></summary>
 
     • Güncelleme sonrası temizlik bölümündeki hata giderildi.
     • Toolbox İngilizce sürümü Türkçe sürümü ile senkronize gelişecek şekilde yeniden düzenlendi.
@@ -1231,7 +1231,7 @@
     • Güncelleştirme sonrası temizlik bölümündeki hizmetler "Extra\Update.After.bat" dosyasından toplandı.
     • PowerRun yazılımıyla tek bir işlem yapmak için tek bir .bat dosyasında topladım. 
 
-</details><details><B><summary> Versiyon 2.6.1 ►  12.04.2022</B></summary>
+</details><details><summary><B> Versiyon 2.6.1 ►  12.04.2022</B></summary>
 
     • Hizmetleri Yönet > Hizmetlerin açık veya kapalı olma durumları menü içinde belirtildi.
     • Hizmetleri Yönet > Baskı hizmetini aç kapat kaldırıldı.
@@ -1242,7 +1242,7 @@
     • PowerRun yazılımının yeninden indirme bölümünde yer alan komut hatası giderildi.
     • Hizmetleri Yönet bölümünde fazla işlem yapılınca antivirüs programı PowerRun yazılımdan huylanabiliyor.
 
-</details><details><B><summary> Versiyon 2.6   ►  10.04.2022</B></summary>
+</details><details><summary><B> Versiyon 2.6   ►  10.04.2022</B></summary>
 
     • Ana menüde ve bazı iç bölümlerde farklı bölümlere açılan kısımlar için ifadeler yerleştirildi.
     • Menü bölümlerine [M] / Uygulama olarak açılan bölüme [APP] / ayrı pencere olarak açılacak bölüme [*] işareti bıraktım
@@ -1274,20 +1274,20 @@
     • Ping Ölçer bölümünün teması düzenlendi. Değişken bölümüne bilgilendirici metinler bırakıldı.
         • Yeni site ve dns adressleri eklendi.
 
-</details><details><B><summary> Versiyon 2.5.2 ►  03.04.2022</B></summary>
+</details><details><summary><B> Versiyon 2.5.2 ►  03.04.2022</B></summary>
 
     • Hizmetleri Yönet > Uzak Masaüstü/Akış/Ağ hizmetleri bölümüne Windows Search hizmetini açmak için parametre eklendi.
     • Hizmetleri Yönet > Windows Search hizmetini açıp kapatmaya yarayacak bölüm eklendi.
     • "Güncelleme Sonrası Temizlik" bölümünde düzenlemeler yapıldı. "Hizmetleri Yönet" bölümünde açılacak hizmetleri tekrar kapatmaması için düzenlendi.
 
-</details><details><B><summary> Versiyon 2.5.1 ►  01.04.2022</B></summary>
+</details><details><summary><B> Versiyon 2.5.1 ►  01.04.2022</B></summary>
 
     • Toolbox içindeki regedit komutlarında düzenleme yapıldı.
     • Blitz uygulaması kurulum sorunlarından dolayı kaldırıldı.
     • Hizmetleri Yönet > Hyper-V bölümünde bilgi ekranındaki değişken hatası giderildi. Yeni parametre eklendi.
     • Taraycı eklentileri bölümündeki kod hatası giderildi.
 
-</details><details><B><summary> Versiyon 2.5   ►  30.03.2022</B></summary>
+</details><details><summary><B> Versiyon 2.5   ►  30.03.2022</B></summary>
 
     • Güncelleme sonrası temizlik bölümündeki regedit kayıtları düzenlendi. 
     • Kilitlenme sorununa neden olan regedit kayıtları kaldırıldı.
@@ -1302,7 +1302,7 @@
     • "Windows 10-11 Edit" bölümünde yer alan yönlendirme hatası giderildi.
     • "Windows 10-11 Edit" bölümüne "Güncelleştirmeleri 2050 yılına kadar ertele" bölümü eklendi.
 
-</details><details><B><summary> Versiyon 2.4   ►  19.03.2022</B></summary>
+</details><details><summary><B> Versiyon 2.4   ►  19.03.2022</B></summary>
 
     • Zaman ayarlı PC kapat bölümü eklendi.
     • Windows düzenleme bölümünden kaldırılanlar.
@@ -1326,7 +1326,7 @@
     • Komutlar optimize edildi. Değişim esnasında bekleme süresi azaltıldı.
     • Fat32 to NTFS bölümünde, X tuşu geri dönüş olarak belirtildi.
 
-</details><details><B><summary> Versiyon 2.3   ►  08.02.2022</B></summary>
+</details><details><summary><B> Versiyon 2.3   ►  08.02.2022</B></summary>
 
     • İndirme linkleriyle ilgili bilgi güncellemesi artık yapılmayacaktır. Linkler düzenli olarak güncellenecektir.
     • Windows Düzenleme > ISO oluşturma bölümünde komutlar düzenlendi. Sanal makinalarda oluşan hata giderildi.
@@ -1336,7 +1336,7 @@
     • All in One Runtimes bölümüne Net Framework 3.5/4.8/DirectPlay hizmetlerini aktifleştirmesi için komutlar eklendi.
     • Windows Düzenleme > Katılımsız program ve ayar ekle [Online] bölümündeki komut hatası giderildi.
 
-</details><details><B><summary> Versiyon 2.2   ►  26.01.2022</B></summary>
+</details><details><summary><B> Versiyon 2.2   ►  26.01.2022</B></summary>
 
     • Windows Düzenleme > Setup düzenleme bölümünde Windows 11 Bypass aracında bilgi vermeden kapanma sorunu giderildi.
     • ISLC bölümündeki yol hatası giderildi. [Kick Furkanowski'e geri bildirimi için teşekkür ederim]
@@ -1349,7 +1349,7 @@
     • İndirme bölümüne Shotcut uygulaması eklendi.
     • İndirme bölümüne Openshot uygulaması eklendi.
 
-</details><details><B><summary> Versiyon 2.1   ►  21.01.2022</B></summary>
+</details><details><summary><B> Versiyon 2.1   ►  21.01.2022</B></summary>
 
     • "Kapatılan Servisleri Yönet" bölümünde değişiklikler yapıldı.
     • Kod okunaklığını arttırmak için yorum satırları eklendi.
@@ -1366,7 +1366,7 @@
     • "Güncelleme sonrası temizlik" bölümünde yorum satırları arttırıldı. Bazı eklemeler yapıldı.
     • Yeni simge dosyaları güncellendi. Windows 11 sürümü içindeki dosyalar alındı.
 
-</details><details><B><summary> Versiyon 2.0   ►  18.01.2022</B></summary>
+</details><details><summary><B> Versiyon 2.0   ►  18.01.2022</B></summary>
 
     • Windows Düzenleme > "Yeni simgeleri yükle" bölümündeki yol hatası giderildi. 
     • Windows Düzenkene > "Katılımsız program ve ayar ekle [Online/Offline]" > Simge önbelleğini temizle seçeneği eklendi.
@@ -1379,7 +1379,7 @@
     • Signal indirme linki yenilendi. (5.27.1 > 5.28.0) 
     • Python indirme linki yenilendi. (3.10.1 > 3.10.2)
 
-</details><details><B><summary> Versiyon 1.9   ►  11.01.2022</B></summary>
+</details><details><summary><B> Versiyon 1.9   ►  11.01.2022</B></summary>
 
     • Gpedit.msc bölümündeki kod hatası giderildi. (Archley'e geri bildirimi için teşekkür ederim.)
     • Çoklu seçme bölümlerindeki kod hatası giderildi. (Geri dönüş kodları toolbox'ın kapanmasına neden oluyordu)
@@ -1396,7 +1396,7 @@
     • Microsoft Office bölümünde yaşanan sorundan dolayı Office uygulaması kaldırıldı. 
           • Adobe Reader yazılımı tekrar eklendi.
 
-</details><details><B><summary> Versiyon 1.8   ►  08.01.2022</B></summary>
+</details><details><summary><B> Versiyon 1.8   ►  08.01.2022</B></summary>
 
     • Wifi Crack bölümü eklendi.
           • Bu bölümde sisteme girdiğiniz Wifi liste ve şifrelerini görebilirsiniz.
@@ -1428,7 +1428,7 @@
     • K-Lite indirme linki yenilendi. (16.6.5 > 16.7.0)
     • Hibit Uninstaller indirme linki yenilendi. (2.7.15 > 2.7.35)
 
-</details><details><B><summary> Versiyon 1.7   ►  01.01.2022</B></summary>
+</details><details><summary><B> Versiyon 1.7   ►  01.01.2022</B></summary>
 
     • Toolbox Kullanım.md dosyası hazırlandı. (Toolbox'ın kullanımıyla ilgili tüm detaylar içinde yer almaktadır.)
     • Tekli bilgi mesajları menüden görüntelenecek şekilde düzenlendi.
@@ -1446,7 +1446,7 @@
     • Notepad++ indirme linki yenilendi. (8.1.9.3 > 8.2)
     • TaskbarX indirme linki yenilendi. (1.7.4.0 > 1.7.6.0)
 
-</details><details><B><summary> Versiyon 1.6   ►  29.12.2021</B></summary>
+</details><details><summary><B> Versiyon 1.6   ►  29.12.2021</B></summary>
 
     • Windows Düzenleme > "Wim /Delete" çoklu seçme özelliği kaldırıldı. (İndex numaraları kaydığı için ilk silme işleminden sonra hatalı işlem yapıyordu)
     • Windows Düzenleme > Yol tanımlama bölümlerinde gereksiz komutlar kaldırıldı.
@@ -1459,7 +1459,7 @@
     • İndirme işlemlerinde internet durum kontrolü eklendi.
     • Toolbox.bat içinde yorum satırları arttırıldı. 
 
-</details><details><B><summary> Versiyon 1.5   ►  27.12.2021</B></summary>
+</details><details><summary><B> Versiyon 1.5   ►  27.12.2021</B></summary>
 
     • Windows Düzenleme > ISO hazırlama bölümüne etiket ve ISO isim verme özelliği eklendi.
     • Setup düzenleme bölümünde duraklamaya neden olan komut kaldırıldı.
@@ -1469,7 +1469,7 @@
     • İndirme işlemlerinde ilerleme çubuğu eklendi. [KaanBeyhan'a (DOGGEST) verdiği bilgi için teşekkür ederim]
     • TaskbarX indirme linki yenilendi. (1.7.3.0 > 1.7.4.0)
 
-</details><details><B><summary> Versiyon 1.4   ►  23.12.2021</B></summary>
+</details><details><summary><B> Versiyon 1.4   ►  23.12.2021</B></summary>
 
     • OgnitorenKs Toolbox Update aracına internet ve toolbox dosya kontrol sistemi getitirildi.
     • Windows edit bölümünde bazı bölümlerde yer alan buglar giderildi.
@@ -1482,7 +1482,7 @@
     • Gimp indirme linki yenilendi. (2.10.28 > 2.10.30)
     • Audacity indirme linki yenilendi. (3.1.2 > 3.1.3)
 
-</details><details><B><summary> Versiyon 1.3   ►  22.12.2021</B></summary>
+</details><details><summary><B> Versiyon 1.3   ►  22.12.2021</B></summary>
 
     • İndirmeye devam et özelliği eklendi.
           • Bu özellik ile indirilmiş olan dosyalar tekrar indirilmeyecek. 
@@ -1543,7 +1543,7 @@
     • Katılımsız program ve ayar ekle[Offline] eklendi.
     • Katılımsız program ve ayar ekle[Online] eklendi.
 
-</details><details><B><summary> Versiyon 1.2   ►  03.12.2021</B></summary>
+</details><details><summary><B> Versiyon 1.2   ►  03.12.2021</B></summary>
 
     • "Sahiplik al" ekleme bölümündeki kod hatası giderildi.
     • Hibit Uninstaller indirme linki yenilendi. (2.6.25 > 2.7.10)
@@ -1557,7 +1557,7 @@
     • Katılımsız güncelleştirme sistemi eklenmiştir.
           • OgnitorenKs.Toolbox klasörü içerisinde yer alan Toolbox.Update.bat dosyasını çalıştırarak güncelleme işlemini yapabilirsiniz.
 
-</details><details><B><summary> Versiyon 1.1   ►  26.11.2021</B></summary>
+</details><details><summary><B> Versiyon 1.1   ►  26.11.2021</B></summary>
 
     • Sunduğum diğer sistemlerde kapattığım bazı hizmetlerin yeniden açılması için Windows 10 ve Windows 11 edit bölümlerine eklemeler yaptım.
           • Bu bölüm ilk sürümde yer alan "Laptop hizmetlerini aç" "Yazıcı aktifleştir" bölümlerini de kapsamaktadır.
@@ -1577,5 +1577,5 @@
           • Alternatif olarak SSDBooster yazılımı eklendi. Portable bir yazılımdır ve masaüstüne indirilmektedir.
     • Sürüm notları Toolbox içine kısayol olarak eklendi.
  
-</details><details><B><summary> Versiyon 1.0   ►  23.11.2021</B></summary>
+</details><details><summary><B> Versiyon 1.0   ►  23.11.2021</B></summary>
 </details>
