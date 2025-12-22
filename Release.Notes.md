@@ -4,7 +4,14 @@
 -   Site: [https://ognitorenks.blospot.com](https://ognitorenks.blospot.com)
 
 
-<details><B><summary> Versiyon 4.6.1 ► 07.10.2025 </B></summary>
+<details><B><summary> Versiyon 4.6.2 ► 22.12.2025 </B></summary>
+
+    ▼ Genel değişiklikler;
+	    • Sistem Hakkında bölümünde Ram bilgi bölümündeki kodlarda güncelleme yapıldı.
+		• Sistem Düzenleme [Playbook] bölümüne "Privacy_Setting_70" ayarı eklendi. Recall özelliğini kapat (Yapay zeka için sürekli ekran görüntüsü alınıp kayıt ediliyor)
+		• Sistem Düzenleme [Playbook] bölümüne "Internet_Setting_8" ayarı eklendi. RSS aktifleştir. İnternet bağlantısını tek bir çekirdek yerine tüm çekirdeklere eşit şekilde paylaştırır.
+
+</details><details><B><summary> Versiyon 4.6.1 ► 07.10.2025 </B></summary>
 
     ▼ Sistem Düzenleme [Playbook] bölümündeki değişiklikler;
 	    • "Explorer_Setting_37_" ayarı eklendi. "Ayarlar uygulamasının bildirimlerini kapat [Windows 11]"

@@ -32,7 +32,7 @@ setlocal enabledelayedexpansion
 REM Başlık
 title 🤖 OgnitorenKs Toolbox 🤖
 REM Toolbox versiyon
-set Version=4.6.1
+set Version=4.6.2
 REM Pencere ayarı
 mode con cols=100 lines=23
 
@@ -918,6 +918,14 @@ chcp 65001 > NUL 2>&1
 goto :eof
 
 REM -------------------------------------------------------------
+:Powershell_C
+REM chcp 65001 kullanıldığında Powershell komutları ekranı kompakt görünüme sokuyor. Bunu önlemek için bu bölümde uygun geçişi sağlıyorum.
+chcp 437 > NUL 2>&1
+Powershell -C %*
+chcp 65001 > NUL 2>&1
+goto :eof
+
+REM -------------------------------------------------------------
 :Upper
 REM Gönderilen kelime, cümle veya herhangi bir tanımın içerisindeki tüm harfler büyük olarak değiştirilir.
 chcp 437 > NUL 2>&1
@@ -1680,7 +1688,7 @@ REM ─────────────────────────�
 REM RAM Bellekler
 echo  %R%[90m├────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤%R%[0m
 DEL /F /Q /A "%Konum%\Log\RamDetail" > NUL 2>&1
-Call :PowerShell "Get-CimInstance -ClassName Win32_PhysicalMemory | Select-Object -Property Manufacturer,PartNumber,Capacity,Speed,SMBIOSMemoryType | Format-List" > %Konum%\Log\RamDetailAll
+Call :PowerShell "Get-CimInstance Win32_PhysicalMemory | Select-Object SMBIOSMemoryType, Manufacturer, PartNumber, Speed, @{Name='Capacity'; Expression={ [math]::Round( ($_.Capacity / 1GB), 0) }} | Format-List" > %Konum%\Log\RamDetailAll
 set Count=0
 FOR /F "tokens=3" %%a in ('Findstr /i "Manufacturer" %Konum%\Log\RamDetailAll 2^>NUL') do (
     set /a Count+=1
@@ -1712,7 +1720,6 @@ Call :Dil B 2 EE_9_
 Call :Dil C 2 EE_17_
 Call :Dil D 2 EE_15_
 Call :Dil E 2 EE_10_
-set RAM_Check=0
 FOR /L %%a in (1,1,!Count!) do (
     FOR /F "delims=> tokens=2" %%b in ('Findstr /i "Brand_%%a_" %Konum%\Log\RamDetail 2^>NUL') do (
         FOR /F "delims=> tokens=2" %%c in ('Findstr /i "Model_%%a_" %Konum%\Log\RamDetail 2^>NUL') do (
@@ -1720,34 +1727,24 @@ FOR /L %%a in (1,1,!Count!) do (
                 FOR /F "delims=> tokens=2" %%e in ('Findstr /i "Speed_%%a_" %Konum%\Log\RamDetail 2^>NUL') do (
                     FOR /F "delims=> tokens=2" %%f in ('Findstr /i "Type_%%a_" %Konum%\Log\RamDetail 2^>NUL') do (
                         Call :Ram_Type "%%f"
-                        set Value=%%d
-                        Call :Uzunluk 1 !Value!
-                        if !Uzunluk1! EQU 10 (set Value=!Value:~0,1!)
-                        if !Uzunluk1! EQU 11 (set Value=!Value:~0,2!)
-                        if !Uzunluk1! EQU 12 (set Value=!Value:~0,3!)
-                        set /a RAM_Check+=!Value!
-                        echo   ►%R%[36m !LA2!:%R%[33m %%b %R%[90m│%R%[36m !LB2!:%R%[33m %%c %R%[90m│%R%[36m !LC2!:%R%[33m !Value!%R%[37m GB %R%[90m│%R%[36m !LD2!:%R%[33m %%e%R%[37m MT/s %R%[90m│%R%[36m !LE2!:%R%[33m !Value_R! %R%[0m
+                        echo   ►%R%[36m !LA2!:%R%[33m %%b %R%[90m│%R%[36m !LB2!:%R%[33m %%c %R%[90m│%R%[36m !LC2!:%R%[33m %%d %R%[37mGB %R%[90m│%R%[36m !LD2!:%R%[33m %%e %R%[37mMT/s %R%[90m│%R%[36m !LE2!:%R%[33m !Value_R! %R%[0m
                     )
                 )
             )
         )
     )
 )
-set Value=
-set Uzunluk=1
 Call :Dil A 2 EE_19_
 Call :Dil B 2 EE_18_
-FOR /F "tokens=4" %%a in ('systeminfo ^| Find "Total Physical Memory"') do (
-    FOR /F "delims=. tokens=1" %%b in ('echo %%a') do (
-        set Ram_Info=%%b
-        if "!RAM_Check!" GTR "!Ram_Info!" (set RAM_Info=!RAM_Check!)
-        echo   ►%R%[36m !LA2! !LB2!:%R%[33m !RAM_Info!%R%[37m GB %R%[0m
-    )
-)
+chcp 437 > NUL
+FOR /F %%a in ('Powershell -C "Get-CimInstance Win32_PhysicalMemory | Measure-Object -Property Capacity -Sum | ForEach-Object {[math]::Round((($_.Sum / 1GB)), 0)}"') do (set ToplamRAM=%%a)
+chcp 65001 > NUL
+echo   ►%R%[36m !LA2! !LB2!:%R%[33m !ToplamRAM!%R%[37m GB %R%[0m
 REM ──────────────────────────────────────
 REM Ekran Kartı (GPU)
 echo  %R%[90m├────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤%R%[0m
-Call :PowerShell "Get-CimInstance -ClassName win32_videocontroller | Select-Object -Property Name,CurrentHorizontalResolution,CurrentVerticalResolution,CurrentRefreshRate,AdapterRAM,DriverDate,DriverVersion | Format-List" > %Konum%\Log\GPUAll
+Call :PowerShell "Get-CimInstance -ClassName win32_videocontroller | Select-Object -Property Name, CurrentHorizontalResolution, CurrentVerticalResolution, CurrentRefreshRate, DriverDate, DriverVersion, @{Name='AdapterRAM'; Expression={$ram=$_.AdapterRAM; if ($ram -ge 1GB) { '{0:N0} GB' -f ($ram / 1GB) } elseif ($ram -ge 1MB) { '{0:N0} MB' -f ($ram / 1MB) } else { '{0:N0} KB' -f ($ram / 1KB) }}} | Format-List" > %Konum%\Log\GPUAll
+REM Call :PowerShell "Get-CimInstance -ClassName win32_videocontroller | Select-Object -Property Name,CurrentHorizontalResolution,CurrentVerticalResolution,CurrentRefreshRate,AdapterRAM,DriverDate,DriverVersion | Format-List" > %Konum%\Log\GPUAll
 DEL /F /Q /A "%Konum%\Log\GPUDetail" > NUL 2>&1
 set Count=0
 FOR /F "delims=: tokens=2" %%a in ('Findstr /i "Name" %Konum%\Log\GPUAll 2^>NUL') do (
@@ -1758,6 +1755,11 @@ set Count=0
 FOR /F "tokens=3" %%a in ('Findstr /i "AdapterRAM" %Konum%\Log\GPUAll 2^>NUL') do (
     set /a Count+=1
     echo RAM_!Count!_^>%%a^> >> %Konum%\Log\GPUDetail
+)
+set Count=0
+FOR /F "tokens=4" %%a in ('Findstr /i "AdapterRAM" %Konum%\Log\GPUAll 2^>NUL') do (
+    set /a Count+=1
+    echo RAN_!Count!_^>%%a^> >> %Konum%\Log\GPUDetail
 )
 set Count=0
 FOR /F "tokens=3" %%a in ('Findstr /i "DriverDate" %Konum%\Log\GPUAll 2^>NUL') do (
@@ -1780,15 +1782,9 @@ FOR /L %%a in (1,1,!Count!) do (
         FOR /F "delims=> tokens=2" %%c in ('Findstr /i "RAM_%%a_" %Konum%\Log\GPUDetail 2^>NUL') do (
             FOR /F "delims=> tokens=2" %%d in ('Findstr /i "DriverDate_%%a_" %Konum%\Log\GPUDetail 2^>NUL') do (
                 FOR /F "delims=> tokens=2" %%e in ('Findstr /i "DriverVersion_%%a_" %Konum%\Log\GPUDetail 2^>NUL') do (
-                    set Value=%%c
-                    Call :Uzunluk 1 !Value!
-                    if !Uzunluk1! EQU 7 (set Value=!Value:~0,1!%R%[37m MB)
-                    if !Uzunluk1! EQU 8 (set Value=!Value:~0,2!%R%[37m MB)
-                    if !Uzunluk1! EQU 9 (set Value=!Value:~0,3!%R%[37m MB)
-                    if !Uzunluk1! EQU 10 (set Value=!Value:~0,1!%R%[37m GB)
-                    if !Uzunluk1! EQU 11 (set Value=!Value:~0,2!%R%[37m GB)
-                    if !Uzunluk1! EQU 12 (set Value=!Value:~0,3!%R%[37m GB)
-                    echo   ►%R%[36m !LC2!-!LD2!:%R%[33m%%b %R%[90m│%R%[36m !LE2!:%R%[33m !Value! %R%[90m│%R%[36m !LA2!:%R%[33m %%e %R%[90m│%R%[36m !LA2! !LB2!:%R%[33m %%d %R%[0m
+                    FOR /F "delims=> tokens=2" %%f in ('Findstr /i "RAN_%%a_" %Konum%\Log\GPUDetail 2^>NUL') do (
+                        echo   ►%R%[36m !LC2!-!LD2!:%R%[33m%%b %R%[90m│%R%[36m !LE2!:%R%[33m %%c %R%[37m%%f %R%[90m│%R%[36m !LA2!:%R%[33m %%e %R%[90m│%R%[36m !LA2! !LB2!:%R%[33m %%d %R%[0m
+                    )
                 )
             )
         )
@@ -2761,6 +2757,12 @@ Call :Playbook_Reader Privacy_Setting_69_
                                                   Call :RegDel "HKLM\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy" /v "LetAppsRunInBackground_ForceDenyTheseApps"
                                                  )
 )
+REM Recall özelliğini kapat (Yapay zeka için sürekli ekran görüntüsü alıp kayıt ediyor)
+Call :Playbook_Reader Privacy_Setting_70_
+    if "!Playbook!" EQU "1" (Call :RegAdd "HKLM\SOFTWARE\Microsoft\PolicyManager\default\WindowsAI\DisableAIDataAnalysis" "value" REG_DWORD 1
+	                         Call :RegAdd "HKCU\Software\Policies\Microsoft\Windows\WindowsAI" DisableAIDataAnalysis REG_DWORD 1
+	                         Call :RegAdd "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsAI" DisableAIDataAnalysis REG_DWORD 1
+)
 REM Qos paket zamanlayıcı sınırını kaldır
 Call :Playbook_Reader Internet_Setting_1_
     if "!Playbook!" EQU "1" (Call :RegAdd "HKLM\SOFTWARE\Policies\Microsoft\Windows\Psched" "NonBestEffortLimit" REG_DWORD "0"
@@ -2800,6 +2802,10 @@ Call :Playbook_Reader Internet_Setting_6_
 REM Ağ daraltma mekanizmasını kapat [Oyun için ayarlanmıştır]
 Call :Playbook_Reader Internet_Setting_7_
     if "!Playbook!" EQU "1" (Call :RegAdd "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" "NetworkThrottlingIndex" REG_DWORD "0xfffffff"
+)
+REM RSS aktifleştir. İnternet bağlantısını tek bir çekirdek yerine tüm çekirdeklere eşit şekilde paylaştırır.
+Call :Playbook_Reader Internet_Setting_8_
+    if "!Playbook!" EQU "1" (netsh int tcp set global rss=enable > NUL 2>&1
 )
 REM Önbellekleme kapat - Prefetch
 Call :Playbook_Reader Explorer_Setting_1_
