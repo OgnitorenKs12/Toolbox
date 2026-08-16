@@ -218,7 +218,7 @@ SL_4_>Tarayıcı ve Kamera>İhtiyaç: OBS>
 SL_5_>Kalem ve Dokunmatik> >
 SL_6_>Bitlocker Sürücü Şifreleme> >
 SL_7_>Tarifeli Ağlar>Sınırlı internetler için kota yönetici>
-SL_8_>IP Yardımcısı [IPV6]>ISS şirketiniz IPV6 altyapısı sunuyorsa hizmeti kapatmayın>
+SL_8_>IP Yardımcısı [IPV6]>İhtiyaç: TailScale, IPV6>
 SL_9_>Mobil Etkin Nokta>İnternet paylaşımı │ İhtiyaç: Miracast>
 SL_10_>Radyo ve Uçak Modu>Laptop hizmeti>
 SL_11_>Windows Şimdi Bağlan [WPS]>İhtiyaç: WiFi>

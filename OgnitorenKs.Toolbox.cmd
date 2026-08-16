@@ -32,7 +32,7 @@ setlocal enabledelayedexpansion
 REM Başlık
 title 🤖 OgnitorenKs Toolbox 🤖
 REM Toolbox versiyon
-set Version=4.6.2
+set Version=4.6.3
 REM Pencere ayarı
 mode con cols=100 lines=23
 
@@ -2304,7 +2304,7 @@ Call :Playbook_Reader Taskbar_Setting_4_
 )
 REM Görev çubuğu kişiler simgesini gizle
 Call :Playbook_Reader Taskbar_Setting_5_
-    if "!Playbook!" EQU "1" (Call :RegAdd "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People" "PeopleBand" REG_DWORD 0
+    if "!Playbook!" EQU "1" (if %Win% EQU 10 (Call :RegAdd "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People" "PeopleBand" REG_DWORD 0)
 )
 REM Görev çubuğu - arama simgesini gizle
 Call :Playbook_Reader Taskbar_Setting_6_
@@ -2313,18 +2313,17 @@ Call :Playbook_Reader Taskbar_Setting_6_
 )
 REM Görev çubuğu - hava durumunu gizle
 Call :Playbook_Reader Taskbar_Setting_7_
-    if "!Playbook!" EQU "1" (Call :RegAdd "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Feeds" "ShellFeedsTaskbarViewMode" REG_DWORD 2
-                             Call :RegAdd "HKLM\SOFTWARE\Policies\Microsoft\Dsh" "AllowNewsAndInterests" REG_DWORD 0
-                             Call :RegAdd "HKLM\SOFTWARE\Microsoft\PolicyManager\default\NewsAndInterests\AllowNewsAndInterests" "value" REG_DWORD 0
-                             Call :RegAdd "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Feeds" "EnableFeeds" REG_DWORD 0
+    if "!Playbook!" EQU "1" (if %Win% EQU 10 (Call :RegAdd "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Feeds" "ShellFeedsTaskbarViewMode" REG_DWORD 2
+	                                          Call :RegAdd "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Feeds" "EnableFeeds" REG_DWORD 0)
+                             if %Win% EQU 11 (Call :RegAdd "HKLM\SOFTWARE\Policies\Microsoft\Dsh" "AllowNewsAndInterests" REG_DWORD 0)
 )
 REM Görev çubuğu - widget simgesini gizle
 Call :Playbook_Reader Taskbar_Setting_8_
-    if "!Playbook!" EQU "1" (Call :RegAdd "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" "TaskbarDa" REG_DWORD 0
+    if "!Playbook!" EQU "1" (if %Win% EQU 11 (Call :RegAdd "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" "TaskbarDa" REG_DWORD 0)
 )
 REM Görev çubuğu - Cortana simgesini gizle
 Call :Playbook_Reader Taskbar_Setting_9_
-    if "!Playbook!" EQU "1" (Call :RegAdd "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" "ShowCortanaButton" REG_DWORD 0
+    if "!Playbook!" EQU "1" (if %Win% EQU 10 (Call :RegAdd "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" "ShowCortanaButton" REG_DWORD 0)
 )
 REM Görev çubuğu - sohbet/anında toplantı simgesini gizle
 Call :Playbook_Reader Taskbar_Setting_10_
@@ -2333,7 +2332,7 @@ Call :Playbook_Reader Taskbar_Setting_10_
 )
 REM Windows Ink[kalem] çalışma alanı kapat
 Call :Playbook_Reader Taskbar_Setting_11_
-    if "!Playbook!" EQU "1" (Call :RegAdd "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" "SubscribedContent-280813Enabled" REG_DWORD 0
+    if "!Playbook!" EQU "1" (if %Win% EQU 10 (Call :RegAdd "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" "SubscribedContent-280813Enabled" REG_DWORD 0)
 )
 REM Görev çubuğu - başlat simgesini sola hizala
 Call :Playbook_Reader Taskbar_Setting_12_
@@ -2343,39 +2342,35 @@ REM Görev görünümü simgesini gizle
 Call :Playbook_Reader Taskbar_Setting_13_
     if "!Playbook!" EQU "1" (Call :RegAdd "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" "ShowTaskViewButton" REG_DWORD 0
 )
-REM Başlat menüsü - Önerilenler bölümünü kaldır
+REM Başlat menüsü - En çok kullanılanlar bölümünü kapat
 Call :Playbook_Reader Taskbar_Setting_14_
-    if "!Playbook!" EQU "1" (Call :RegDel "HKCU\Software\Policies\Microsoft\Windows\Explorer" /v "HideRecommendedSection"
-                             Call :RegAdd "HKLM\SOFTWARE\Policies\Microsoft\Windows\Explorer" "HideRecommendedSection" REG_DWORD 1
+    if "!Playbook!" EQU "1" (Call :RegAdd "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" "Start_TrackProgs" REG_DWORD 0
 )
 REM Başlangıç menüsü - ipuçları, kısayollar, yeni uygulamalar ve daha fazlası için önerileri kapat
 Call :Playbook_Reader Taskbar_Setting_15_
-    if "!Playbook!" EQU "1" (Call :RegAdd "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" "Start_IrisRecommendations" REG_DWORD 0
+    if "!Playbook!" EQU "1" (if %Win% EQU 11 (Call :RegAdd "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" "Start_IrisRecommendations" REG_DWORD 0)
 )
 REM Görev çubuğu - Copilot simgesini gizle
 Call :Playbook_Reader Taskbar_Setting_16_
-    if "!Playbook!" EQU "1" (Call :RegAdd "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" "ShowCopilotButton" REG_DWORD 0
-                             Call :RegAdd "HKCU\Software\Policies\Microsoft\Windows\WindowsCopilot" "TurnOffWindowsCopilot" REG_DWORD 1
-                             Call :RegAdd "HKLM\Software\Policies\Microsoft\Windows\WindowsCopilot" "TurnOffWindowsCopilot" REG_DWORD 1
-                             Call :RegAdd "HKLM\SOFTWARE\Policies\Microsoft\Edge" "HubsSidebarEnabled" REG_DWORD 0
-                             Call :RegAdd "HKCU\Software\Policies\Microsoft\Windows\Explorer" "DisableSearchBoxSuggestions" REG_DWORD 1
-                             Call :RegAdd "HKLM\Software\Policies\Microsoft\Windows\Explorer" "DisableSearchBoxSuggestions" REG_DWORD 1
-                             Call :RegAdd "HKCU\SOFTWARE\Microsoft\Windows\Shell\Copilot\BingChat" "IsUserEligible" REG_DWORD 0
-                             Call :RegAdd "HKLM\SOFTWARE\Microsoft\Windows\Shell\Copilot\BingChat" "IsUserEligible" REG_DWORD 0
-                             Call :RegAdd "HKCU\SOFTWARE\Microsoft\Windows\Shell\Copilot\BingChat" "IsCopilotAvailable" REG_DWORD 0
-                             Call :RegAdd "HKLM\SOFTWARE\Microsoft\Windows\Shell\Copilot\BingChat" "IsCopilotAvailable" REG_DWORD 0
-							 Call :RegAdd "HKCU\Software\Policies\Microsoft\Windows\WindowsAI" "DisableAIDataAnalysis" REG_DWORD 1
-							 Call :RegAdd "HKLM\Software\Policies\Microsoft\Windows\WindowsAI" "DisableAIDataAnalysis" REG_DWORD 1
-							 Call :RegAdd "HKLM\Policies\Microsoft\Windows\WindowsAI" "DisableAIDataAnalysis" REG_DWORD 1
-							 Call :RegAdd "HKCU\Policies\Microsoft\Windows\WindowsAI" "DisableAIDataAnalysis" REG_DWORD 1
+    if "!Playbook!" EQU "1" (if %Win% EQU 10 (Call :RegAdd "HKCU\Software\Policies\Microsoft\Windows\WindowsCopilot" "TurnOffWindowsCopilot" REG_DWORD 1
+	                                          Call :RegAdd "HKCU\SOFTWARE\Microsoft\Windows\Shell\Copilot\BingChat" "IsUserEligible" REG_DWORD 0
+	                                          Call :RegAdd "HKLM\SOFTWARE\Microsoft\Windows\Shell\Copilot\BingChat" "IsUserEligible" REG_DWORD 0
+	                                          Call :RegAdd "HKCU\SOFTWARE\Microsoft\Windows\Shell\Copilot\BingChat" "IsCopilotAvailable" REG_DWORD 0
+	                                          Call :RegAdd "HKLM\SOFTWARE\Microsoft\Windows\Shell\Copilot\BingChat" "IsCopilotAvailable" REG_DWORD 0)
+	                         if %Win% EQU 11 (Call :RegAdd "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" "ShowCopilotButton" REG_DWORD 0
+							                  Call :RegAdd "HKCU\Software\Policies\Microsoft\Windows\WindowsCopilot" "TurnOffWindowsCopilot" REG_DWORD 1)
 )
 REM Başlat Menüsü - Microsoft hesabıyla ilgili bildirimleri gösterme
 Call :Playbook_Reader Taskbar_Setting_17_
-    if "!Playbook!" EQU "1" (Call :RegAdd "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" "Start_AccountNotifications" REG_DWORD 0
+    if "!Playbook!" EQU "1" (if %Win% EQU 11 (Call :RegAdd "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" "Start_AccountNotifications" REG_DWORD 0)
 )
 REM Görev çubuğu - Sağ-tık görevi sonlandır seçeneğini aktifleştir
 Call :Playbook_Reader Taskbar_Setting_18_
     if "!Playbook!" EQU "1" (if %Win% EQU 11 (Call :RegAdd "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\TaskbarDeveloperSettings" "TaskbarEndTask" REG_DWORD 1)
+)
+REM Baslat menüsü - Tum Uygulamalar listesini kaldır
+Call :Playbook_Reader Taskbar_Setting_19_
+    if "!Playbook!" EQU "1" (Call :RegAdd "HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Start" "HideAppList" REG_DWORD 3
 )
 REM ContentDeliveryManager - Ayarlar uygulamasında önerilen içeriği kapat
 Call :Playbook_Reader Privacy_Setting_1_
@@ -2416,7 +2411,7 @@ Call :Playbook_Reader Privacy_Setting_7_
 )
 REM ContentDeliveryManager - Zaman çizelgesi önerilerini kapat
 Call :Playbook_Reader Privacy_Setting_8_
-    if "!Playbook!" EQU "1" (Call :RegAdd "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" "SubscribedContent-353698Enabled" REG_DWORD 0
+    if "!Playbook!" EQU "1" (if %Win% EQU 10 (Call :RegAdd "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" "SubscribedContent-353698Enabled" REG_DWORD 0)
 )
 REM ContentDeliveryManager - Kilit ekranı ipuçlarını kapat
 Call :Playbook_Reader Privacy_Setting_9_
@@ -2425,7 +2420,7 @@ Call :Playbook_Reader Privacy_Setting_9_
 )
 REM Harita uygulamasını yükleme
 Call :Playbook_Reader Privacy_Setting_10_
-    if "!Playbook!" EQU "1" (Call :RegAdd "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" "SubscribedContent-338381Enabled" REG_DWORD 0
+    if "!Playbook!" EQU "1" (if %Win% EQU 10 (Call :RegAdd "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" "SubscribedContent-338381Enabled" REG_DWORD 0)
 )
 REM Windows'un etkinlikleri toplamasını engelle
 Call :Playbook_Reader Privacy_Setting_11_
@@ -2464,7 +2459,7 @@ Call :Playbook_Reader Privacy_Setting_17_
 )
 REM Göz atma verilerinin Microsoft'a gönderilmesini engelle
 Call :Playbook_Reader Privacy_Setting_18_
-    if "!Playbook!" EQU "1" (Call :RegAdd "HKLM\SOFTWARE\Microsoft\Internet Explorer\FlipAhead" "FPEnabled" REG_DWORD 0
+    if "!Playbook!" EQU "1" (if %Win% EQU 10 (Call :RegAdd "HKLM\SOFTWARE\Microsoft\Internet Explorer\FlipAhead" "FPEnabled" REG_DWORD 0)
 )
 REM Web sitelerinin kullanıcı dil verisine erişimini engelle
 Call :Playbook_Reader Privacy_Setting_19_
@@ -2477,13 +2472,9 @@ Call :Playbook_Reader Privacy_Setting_20_
 							 Call :RegDel "HKCU\Software\Microsoft\Windows\CurrentVersion\AdvertisingInfo" /v "Id"
 							 Call :RegDel "HKLM\Software\Microsoft\Windows\CurrentVersion\AdvertisingInfo" /v "Id"
 )
-REM Uygulama envanterini toplamayı kapatın
-Call :Playbook_Reader Privacy_Setting_21_
-    if "!Playbook!" EQU "1" (Call :RegAdd "HKLM\SOFTWARE\Policies\Microsoft\Windows\AppCompat" "DisableInventory" REG_DWORD 1
-)
 REM Windows Media Player istatistiklerinin gönderilmesini engelle
 Call :Playbook_Reader Privacy_Setting_22_
-    if "!Playbook!" EQU "1" (Call :RegAdd "HKLM\SOFTWARE\Microsoft\MediaPlayer\Preferences" "UsageTracking" REG_DWORD 0 
+    if "!Playbook!" EQU "1" (if %Win% EQU 10 (Call :RegAdd "HKLM\SOFTWARE\Microsoft\MediaPlayer\Preferences" "UsageTracking" REG_DWORD 0)
 )
 REM Wifi sıcak nokta raporlamayı kapat
 Call :Playbook_Reader Privacy_Setting_23_
@@ -2504,7 +2495,7 @@ Call :Playbook_Reader Privacy_Setting_26_
 )
 REM Skype'ın adres defterine erişimini engelle
 Call :Playbook_Reader Privacy_Setting_27_
-    if "!Playbook!" EQU "1" (Call :RegAdd "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OOBE\AppSettings" "Skype-UserConsentAccepted" REG_DWORD 0
+    if "!Playbook!" EQU "1" (if %Win% EQU 10 (Call :RegAdd "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OOBE\AppSettings" "Skype-UserConsentAccepted" REG_DWORD 0)
 )
 REM Cihazlar arası deneyimi kapat
 Call :Playbook_Reader Privacy_Setting_28_
@@ -2518,11 +2509,11 @@ Call :Playbook_Reader Privacy_Setting_29_
 )
 REM Ücretli ağları tespit etmek için geçici erişim noktalarına bağlanmayı kapat
 Call :Playbook_Reader Privacy_Setting_30_
-    if "!Playbook!" EQU "1" (Call :RegAdd "HKLM\SOFTWARE\Microsoft\WcmSvc\wifinetworkmanager\features" "PaidWifi" REG_DWORD 0
+    if "!Playbook!" EQU "1" (if %Win% EQU 10 (Call :RegAdd "HKLM\SOFTWARE\Microsoft\WcmSvc\wifinetworkmanager\features" "PaidWifi" REG_DWORD 0)
 )
 REM Önerilen açık sıcak Wifi noktalarına bağlanmayı kapat
 Call :Playbook_Reader Privacy_Setting_31_
-    if "!Playbook!" EQU "1" (Call :RegAdd "HKLM\SOFTWARE\Microsoft\WcmSvc\wifinetworkmanager\features" "WiFiSenseOpen" REG_DWORD 0
+    if "!Playbook!" EQU "1" (if %Win% EQU 10 (Call :RegAdd "HKLM\SOFTWARE\Microsoft\WcmSvc\wifinetworkmanager\features" "WiFiSenseOpen" REG_DWORD 0)
 )
 REM Konuşma tanıma hizmetini kapat
 Call :Playbook_Reader Privacy_Setting_32_
@@ -2533,12 +2524,11 @@ Call :Playbook_Reader Privacy_Setting_33_
     if "!Playbook!" EQU "1" (Call :RegAdd "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer" "NoRecentDocsHistory" REG_DWORD 1
                              Call :RegAdd "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer" "NoRecentDocsHistory" REG_DWORD 1 
                              Call :RegAdd "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" "Start_TrackDocs" REG_DWORD 0
-                             Call :RegAdd "HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Start" "HideAppList" REG_DWORD 3
 )
 REM Sık kullanılanları hızlı erişimden kaldır
 Call :Playbook_Reader Privacy_Setting_34_
-    if "!Playbook!" EQU "1" (Call :RegAdd "HKCR\CLSID\{323CA680-C24D-4099-B94D-446DD2D7249E}\ShellFolder" "Attributes" REG_DWORD 2696937728
-                             Call :RegAdd "HKCR\WOW6432Node\CLSID\{323CA680-C24D-4099-B94D-446DD2D7249E}\ShellFolder" "Attributes" REG_DWORD 2696937728
+    if "!Playbook!" EQU "1" (if %Win% EQU 10 (Call :RegAdd "HKCR\CLSID\{323CA680-C24D-4099-B94D-446DD2D7249E}\ShellFolder" "Attributes" REG_DWORD 2696937728
+                                              Call :RegAdd "HKCR\WOW6432Node\CLSID\{323CA680-C24D-4099-B94D-446DD2D7249E}\ShellFolder" "Attributes" REG_DWORD 2696937728)
 )
 REM Önceki oturumlar hakkında bilgi vermeyi kapat
 Call :Playbook_Reader Privacy_Setting_35_
@@ -2591,7 +2581,7 @@ Call :Playbook_Reader Privacy_Setting_46_
 )
 REM Diğer cihazlardaki uygulamaların bu cihazdaki uygulamaları açmasını engelle
 Call :Playbook_Reader Privacy_Setting_47_
-    if "!Playbook!" EQU "1" (Call :RegAdd "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\SmartGlass" "UserAuthPolicy" REG_DWORD 0
+    if "!Playbook!" EQU "1" (if %Win% EQU 10 (Call :RegAdd "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\SmartGlass" "UserAuthPolicy" REG_DWORD 0)
 )
 REM Arama geçmişini kapat
 Call :Playbook_Reader Privacy_Setting_48_
@@ -2599,9 +2589,9 @@ Call :Playbook_Reader Privacy_Setting_48_
 )
 REM Yardım ve Destek ipuçlarını kapat
 Call :Playbook_Reader Privacy_Setting_49_
-    if "!Playbook!" EQU "1" (Call :RegAdd "HKLM\SOFTWARE\Policies\Microsoft\Windows\EdgeUI" "DisableHelpSticker" REG_DWORD 1
-                             Call :RegAdd "HKLM\SOFTWARE\Policies\Microsoft\PCHealth\HelpSvc" "Headlines" REG_DWORD 0
-                             Call :RegAdd "HKLM\SOFTWARE\Policies\Microsoft\PCHealth\HelpSvc" "MicrosoftKBSearch" REG_DWORD 0
+    if "!Playbook!" EQU "1" (if %Win% EQU 10 (Call :RegAdd "HKLM\SOFTWARE\Policies\Microsoft\Windows\EdgeUI" "DisableHelpSticker" REG_DWORD 1
+                                              Call :RegAdd "HKLM\SOFTWARE\Policies\Microsoft\PCHealth\HelpSvc" "Headlines" REG_DWORD 0
+                                              Call :RegAdd "HKLM\SOFTWARE\Policies\Microsoft\PCHealth\HelpSvc" "MicrosoftKBSearch" REG_DWORD 0)
 )
 REM Yeni uygulama yüklendi uyarısını kapat
 Call :Playbook_Reader Privacy_Setting_50_
@@ -2632,6 +2622,7 @@ Call :Playbook_Reader Privacy_Setting_53_
 REM Teslim en iyileştirme indirmelerini kapat
 Call :Playbook_Reader Privacy_Setting_54_
     if "!Playbook!" EQU "1" (Call :RegAdd "HKU\S-1-5-20\Software\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Settings" "DownloadMode" REG_DWORD 0
+	                         Call :RegAdd "HKLM\SOFTWARE\Policies\Microsoft\Windows\DeliveryOptimization" "DODownloadMode" REG_DWORD 0
 )
 REM Cihazımı bul devre dışı bırak
 Call :Playbook_Reader Privacy_Setting_55_
@@ -2639,15 +2630,16 @@ Call :Playbook_Reader Privacy_Setting_55_
 )
 REM Cihaz meta verisi toplamayı kapat
 Call :Playbook_Reader Privacy_Setting_56_
-    if "!Playbook!" EQU "1" (Call :RegAdd "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Device Metadata" "DeviceMetadataServiceURL" REG_SZ 0
-                             Call :RegAdd "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Device Metadata" "PreventDeviceMetadataFromNetwork" REG_DWORD 1
+    if "!Playbook!" EQU "1" (if %Win% EQU 10 (Call :RegAdd "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Device Metadata" "DeviceMetadataServiceURL" REG_SZ 0
+                                              Call :RegAdd "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Device Metadata" "PreventDeviceMetadataFromNetwork" REG_DWORD 1)
 )
 REM Telemetri devre dışı bırak
 Call :Playbook_Reader Privacy_Setting_57_
     if "!Playbook!" EQU "1" (Call :RegAdd "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection" "AllowTelemetry" REG_DWORD 0
                              Call :RegAdd "HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection" "AllowTelemetry" REG_DWORD 0
-                             Call :RegAdd "HKCU\Policies\Microsoft\Windows\CloudContent" "DisableTailoredExperiencesWithDiagnosticData" REG_DWORD 1
+                             Call :RegAdd "HKCU\SOFTWARE\Policies\Microsoft\Windows\CloudContent" "DisableTailoredExperiencesWithDiagnosticData" REG_DWORD 1
                              Call :RegAdd "HKLM\SOFTWARE\Policies\Microsoft\Windows\AppCompat" "AITEnable" REG_DWORD 0
+							 Call :RegAdd "HKLM\SOFTWARE\Policies\Microsoft\Windows\AppCompat" "DisableInventory" REG_DWORD 1
                              Call :RegAdd_CCS "Control\WMI\Autologger\AutoLogger-Diagtrack-Listener" "Start" REG_DWORD 0
                              Call :RegAdd "HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection" "AllowTelemetry" REG_DWORD 0
                              Call :RegAdd_CCS "Control\CrashControl\StorageTelemetry" "DeviceDumpEnabled" REG_DWORD 0
@@ -2657,8 +2649,8 @@ Call :Playbook_Reader Privacy_Setting_57_
                              Call :RegAdd "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\ClientTelemetry" "DontRetryOnError" REG_DWORD 1
                              Call :RegAdd "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\ClientTelemetry" "TaskEnableRun" REG_DWORD 1
                              Call :RegAdd "HKLM\SOFTWARE\Microsoft\DataCollection" "AllowTelemetry" REG_DWORD 0
-                             Call :RegAdd "HKCU\Policies\Microsoft\Windows\DataCollection" "AllowTelemetry" REG_DWORD 0
-                             Call :RegAdd "HKCU\Policies\Microsoft\Assistance\Client\1.0" "NoExplicitFeedback" REG_DWORD 1
+                             Call :RegAdd "HKCU\SOFTWARE\Policies\Microsoft\Windows\DataCollection" "AllowTelemetry" REG_DWORD 0
+                             Call :RegAdd "HKCU\SOFTWARE\Policies\Microsoft\Assistance\Client\1.0" "NoExplicitFeedback" REG_DWORD 1
                              Call :RegAdd "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\WINEVT\Channels\Microsoft-Windows-Application-Experience/Program-Telemetry" "Enabled" REG_DWORD 0
                              Call :RegAdd "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\WINEVT\Channels\Microsoft-Windows-Application-Experience/Program-Compatibility-Assistant" "Enabled" REG_DWORD 0
                              Call :RegAdd "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\WINEVT\Channels\Microsoft-Windows-Application-Experience/Program-Compatibility-Troubleshooter" "Enabled" REG_DWORD 0
@@ -2733,39 +2725,32 @@ Call :Playbook_Reader Privacy_Setting_64_
 )
 REM Uzaktan yardım - Windows Messenger'ı devre dışı bırak
 Call :Playbook_Reader Privacy_Setting_65_
-    if "!Playbook!" EQU "1" (Call :RegAdd "HKLM\SOFTWARE\Policies\Microsoft\Messenger\Client" "PreventAutoRun" REG_DWORD 1
-                             Call :RegAdd "HKLM\SOFTWARE\Policies\Microsoft\Messenger\Client" "PreventRun" REG_DWORD 1
+    if "!Playbook!" EQU "1" (if %Win% EQU 10 (Call :RegAdd "HKLM\SOFTWARE\Policies\Microsoft\Messenger\Client" "PreventAutoRun" REG_DWORD 1
+                                              Call :RegAdd "HKLM\SOFTWARE\Policies\Microsoft\Messenger\Client" "PreventRun" REG_DWORD 1)
 )
 REM Windows Search - Cortana'nın cihaz geçmişini kullanmasını devre dışı bırak
 Call :Playbook_Reader Privacy_Setting_66_
-    if "!Playbook!" EQU "1" (Call :RegAdd "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Search" "DeviceHistoryEnabled" REG_DWORD "0"
-                             Call :RegAdd "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Search" "HistoryViewEnabled" REG_DWORD "0"
+    if "!Playbook!" EQU "1" (if %Win% EQU 10 (Call :RegAdd "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Search" "DeviceHistoryEnabled" REG_DWORD "0"
+                                              Call :RegAdd "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Search" "HistoryViewEnabled" REG_DWORD "0")
 )
 REM Dosya gezgini arama kutusu geçmişini görüntelemeyi devre dışı bırak
 Call :Playbook_Reader Privacy_Setting_67_
     if "!Playbook!" EQU "1" (Call :RegAdd "HKCU\Software\Policies\Microsoft\Windows\Explorer" "DisableSearchBoxSuggestions" REG_DWORD 1
+	                         Call :RegAdd "HKLM\Software\Policies\Microsoft\Windows\Explorer" "DisableSearchBoxSuggestions" REG_DWORD 1
 )
 REM Program uyumluluk asistanını kapat
 Call :Playbook_Reader Privacy_Setting_68_
     if "!Playbook!" EQU "1" (Call :RegAdd "HKCU\Software\Policies\Microsoft\Windows\AppCompat" "DisablePCA" REG_DWORD 1
 )
-REM Arkaplan uygulamalarını devre dışı bırakın
-Call :Playbook_Reader Privacy_Setting_69_
-    if "!Playbook!" EQU "1" (if "%Win%" EQU "11" (Call :RegAdd "HKLM\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy" "LetAppsRunInBackground" REG_DWORD 2
-                                                  Call :RegDel "HKLM\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy" /v "LetAppsRunInBackground_UserInControlOfTheseApps"
-                                                  Call :RegDel "HKLM\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy" /v "LetAppsRunInBackground_ForceAllowTheseApps"
-                                                  Call :RegDel "HKLM\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy" /v "LetAppsRunInBackground_ForceDenyTheseApps"
-                                                 )
-)
 REM Recall özelliğini kapat (Yapay zeka için sürekli ekran görüntüsü alıp kayıt ediyor)
-Call :Playbook_Reader Privacy_Setting_70_
+Call :Playbook_Reader Privacy_Setting_69_
     if "!Playbook!" EQU "1" (Call :RegAdd "HKLM\SOFTWARE\Microsoft\PolicyManager\default\WindowsAI\DisableAIDataAnalysis" "value" REG_DWORD 1
 	                         Call :RegAdd "HKCU\Software\Policies\Microsoft\Windows\WindowsAI" DisableAIDataAnalysis REG_DWORD 1
 	                         Call :RegAdd "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsAI" DisableAIDataAnalysis REG_DWORD 1
 )
 REM Qos paket zamanlayıcı sınırını kaldır
 Call :Playbook_Reader Internet_Setting_1_
-    if "!Playbook!" EQU "1" (Call :RegAdd "HKLM\SOFTWARE\Policies\Microsoft\Windows\Psched" "NonBestEffortLimit" REG_DWORD "0"
+    if "!Playbook!" EQU "1" (if %Win% EQU 10 (Call :RegAdd "HKLM\SOFTWARE\Policies\Microsoft\Windows\Psched" "NonBestEffortLimit" REG_DWORD "0")
 )
 REM Sınırlı ağ kontrol sınamasını kapat
 Call :Playbook_Reader Internet_Setting_2_
@@ -2789,11 +2774,11 @@ REM Negatif DNS önbelliği optimizasyonu
 Call :Playbook_Reader Internet_Setting_5_
     if "!Playbook!" EQU "1" (Call :RegAdd "HKLM\System\CurrentControlSet\Services\Dnscache\Parameters" "maxnegativecachettl" REG_DWORD 0
                              Call :RegAdd "HKLM\System\CurrentControlSet\Services\Dnscache\Parameters" "maxcachettl" REG_DWORD "0x2a30"
-                             Call :RegAdd "HKLM\System\CurrentControlSet\Services\Dnscache\Parameters" "maxcacheentryttllimit" REG_DWORD "0x2a30"
-                             Call :RegAdd "HKLM\System\CurrentControlSet\Services\Dnscache\Parameters" "netfailurecachetime" REG_DWORD 0
-                             Call :RegAdd "HKLM\System\CurrentControlSet\Services\Dnscache\Parameters" "negativesoacachetime" REG_DWORD 0
+                             REM Call :RegAdd "HKLM\System\CurrentControlSet\Services\Dnscache\Parameters" "maxcacheentryttllimit" REG_DWORD "0x2a30"
+                             REM Call :RegAdd "HKLM\System\CurrentControlSet\Services\Dnscache\Parameters" "netfailurecachetime" REG_DWORD 0
+                             REM Call :RegAdd "HKLM\System\CurrentControlSet\Services\Dnscache\Parameters" "negativesoacachetime" REG_DWORD 0
 )
-REM Ağ iletim ayarlarının optimizasyonu [Stabillik sağlar ancak gecikme arttırabilir]
+REM Ağ iletim ayarlarının optimizasyonu
 Call :Playbook_Reader Internet_Setting_6_
     if "!Playbook!" EQU "1" (Call :RegAdd "HKLM\System\CurrentControlSet\Services\Tcpip\Parameters" "Tcp1323Opts" REG_DWORD 1
                              Call :RegAdd "HKLM\System\CurrentControlSet\Services\Tcpip\Parameters" "SackOpts" REG_DWORD 1
@@ -2943,7 +2928,7 @@ Call :Playbook_Reader Explorer_Setting_25_
 )
 REM Sağ-tık bölümünden Terminal kaldır [Windows11]
 Call :Playbook_Reader Explorer_Setting_26_
-    if "!Playbook!" EQU "1" (if "%Win%" EQU "11" (Call :RegDel "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Shell Extensions\Blocked")
+    if "!Playbook!" EQU "1" (if "%Win%" EQU "11" (Call :RegDel "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Shell Extensions\Blocked" "{9F156763-7844-4DC4-B2B1-901F640F5155}" REG_SZ "")
 )
 REM Bu bilgisayara kullanıcı klasörlerini ekle [Windows11]
 Call :Playbook_Reader Explorer_Setting_27_
@@ -3174,21 +3159,12 @@ REM Sistem RAM miktarına göre Svchost işlemini optimize et [İşlemci işlem 
 Call :Playbook_Reader Optimization_Setting_14_
     if "!Playbook!" EQU "1" (FOR /F "tokens=4" %%a in ('systeminfo ^| find "Total Physical Memory"') do (
                                 FOR /F "delims=. tokens=1" %%b in ('echo %%a') do (
-                                    set /a RAM=%%b * 1024 * 1024 + 1024000
+                                    set /a RAM=%%b * 1024 * 1024 + 1048576
                                 )
                              )
-                             Call :RegAdd "HKLM\SYSTEM\CurrentControlSet\Control" "SvcHostSplitThresholdInKB" REG_DWORD "0x!RAM!"
+                             Call :RegAdd "HKLM\SYSTEM\CurrentControlSet\Control" "SvcHostSplitThresholdInKB" REG_DWORD "!RAM!"
 )
 set RAM=
-REM Farklı işlemci markasına ait hizmetleri devre dışı bırak
-Call :Playbook_Reader Optimization_Setting_15_
-    if "!Playbook!" EQU "1" (Call :Powershell "Get-CimInstance -ClassName Win32_Processor | Select-Object -Property Name | format-list" > %Konum%\Log\Brand
-                             FOR /F "tokens=3" %%a in ('Findstr /i "Name" %Konum%\Log\Brand') do (
-                                if "%%a" EQU "AMD" (FOR %%b in (intelpep Telemetry iai2c iaLPSS2i_I2C iaLPSS2i_I2C_BXT_P iaLPSS2i_I2C_CNL iaLPSS2i_I2C_GLK iaLPSS2i_GPIO2_GLK iaLPSS2i_GPIO2_CNL iaLPSS2i_GPIO2_BXT_P iaLPSS2i_GPIO2 iaLPSSi_GPIO intelpmax iagpio iaStorV intelppm) do (Call :Service_Admin "%%b" 4))
-                                if "%%a" NEQ "AMD" (FOR %%b in (amdgpio2 amdi2c AmdPPM AmdK8 amdsata amdsbs amdxata) do (Call :Service_Admin "%%b" 4))
-                             )
-                             Call :DEL_Direct "%Konum%\Log\Brand"
-)
 REM Yüksek hassasiyetli olay zamanlayıcısı [HPET] devre dışı bırak [BIOS üzerinde ayar mevcut ise kapatmayı unutmayın]
 Call :Playbook_Reader Optimization_Setting_16_
     if "!Playbook!" EQU "1" (bcdedit /deletevalue useplatformclock > NUL 2>&1
@@ -3242,16 +3218,6 @@ REM Görev çubuğu ön izleme görünteleme hızını artır
 Call :Playbook_Reader Optimization_Setting_25_
     if "!Playbook!" EQU "1" (Call :RegAdd "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" "DesktopLivePreviewHoverTime" REG_DWORD 0
 )
-REM Bellek varsayılan ayarını optimize et
-Call :Playbook_Reader Optimization_Setting_26_
-    if "!Playbook!" EQU "1" (FOR /F "tokens=4" %%a in ('systeminfo ^| find "Total Physical Memory"') do (
-                                FOR /F "delims=. tokens=1" %%b in ('echo %%a') do (
-                                    set /a RAM=%%b * 1024 * 1024 * 128
-                                )
-                             )
-                             Call :RegAdd "HKLM\System\CurrentControlSet\Control\Session Manager\Memory Management" "IoPageLockLimit" REG_DWORD "!RAM!"
-                             set RAM=
-)
 REM Hata ayıklayıcıyı devre dışı bırak
 Call :Playbook_Reader Optimization_Setting_27_
     if "!Playbook!" EQU "1" (Call :RegAdd "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\AeDebug" "Auto" REG_SZ 0
@@ -3296,7 +3262,7 @@ Call :Playbook_Reader Security_Setting_6_
                              Call :RegAdd_CCS "Control\Lsa\MSV1_0" "RestrictSendingNTLMTraffic" REG_DWORD 2
                              Call :RegAdd_CCS "Services\LanmanServer\Parameters" "SMB1" REG_DWORD 0
 )
-REM Uzaktan yardımı devre dışı bırak
+REM Uzak masaüstü asistanını devre dışı bırak
 Call :Playbook_Reader Security_Setting_7_
     if "!Playbook!" EQU "1" (Call :RegAdd_CCS "Control\Remote Assistance" "fAllowToGetHelp" REG_DWORD 0
                              Call :RegAdd_CCS "Control\Remote Assistance" "fAllowFullControl" REG_DWORD 0
@@ -3393,11 +3359,6 @@ REM Sorun gidericileri devre dışı bırak
 Call :Playbook_Reader Feature_Setting_11_
     if "!Playbook!" EQU "1" (Call :RegAdd "HKLM\SOFTWARE\Microsoft\WindowsMitigation" "UserPreference" REG_DWORD 1
 )
-REM Uzak masaüstü asistanını devre dışı bırak
-Call :Playbook_Reader Feature_Setting_12_
-    if "!Playbook!" EQU "1" (Call :RegAdd_CCS "Control\Remote Assistance" "fAllowToGetHelp" REG_DWORD 0
-                             Call :RegAdd_CCS "Control\Remote Assistance" "fAllowFullControl" REG_DWORD 0
-)
 REM Sistem açılışında otomatik onarım modunu devre dışı bırak
 Call :Playbook_Reader Feature_Setting_13_
     if "!Playbook!" EQU "1" (bcdedit /set {current} recoveryenabled no > NUL 2>&1
@@ -3441,6 +3402,7 @@ Call :Playbook_Reader Update_Setting_3_
                              Call :RegAdd "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Device Metadata" "PreventDeviceMetadataFromNetwork" REG_DWORD 1
 							 Call :RegDel "HKLM\Microsoft\Windows\CurrentVersion\DriverSearching" /v "SearchOrderConfig"
 							 Call :RegDel "HKCU\Microsoft\Windows\CurrentVersion\DriverSearching" /v "SearchOrderConfig"
+							 Call :RegAdd "HKLM\SOFTWARE\Policies\Microsoft\Windows\DriverSearching" "DontSearchWindowsUpdate" REG_DWORD 1
 )
 REM Konuşma modellerinin otomatik güncellemesini kapat
 Call :Playbook_Reader Update_Setting_4_
@@ -3468,9 +3430,9 @@ Call :Playbook_Reader Update_Setting_8_
                              Call :Schtasks "Disable" "\Microsoft\Windows\Maps\MapsToastTask"
                              Call :Schtasks "Disable" "\Microsoft\Windows\Maps\MapsUpdateTask"
 )
-REM Küçük güncelleştirmeleri otomatik yüklemeyi devre dışı bırak
+REM Küçük güncelleştirmeleri otomatik yüklemeyi devre dışı bırak [Windows 8 döneminden kalma]
 Call :Playbook_Reader Update_Setting_9_
-    if "!Playbook!" EQU "1" (Call :RegAdd "HKLM\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings" "AutoInstallMinorUpdates" REG_DWORD 1
+    if "!Playbook!" EQU "1" (Call :RegAdd "HKLM\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings" "AutoInstallMinorUpdates" REG_DWORD 0
                              Call :RegAdd "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" "AutoInstallMinorUpdates" REG_DWORD 1
                              Call :RegAdd "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate\Auto Update" "AutoInstallMinorUpdates" REG_DWORD 1
 )
@@ -3485,8 +3447,8 @@ Call :Playbook_Reader Update_Setting_11_
     if "!Playbook!" EQU "1" (Call :RegAdd "HKLM\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings" "AllowAutoWindowsUpdateDownloadOverMeteredNetwork" REG_DWORD 0
                              Call :RegAdd "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" "AllowAutoWindowsUpdateDownloadOverMeteredNetwork" REG_DWORD 0
                              Call :RegAdd "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate\Auto Update" "AllowAutoWindowsUpdateDownloadOverMeteredNetwork" REG_DWORD 0
-							 Call :RegAdd "HKCU\Microsoft\WindowsUpdate\UX\StateVariables" "AlwaysAllowMeteredNetwork" REG_DWORD 1
-							 Call :RegAdd "HKLM\Microsoft\WindowsUpdate\UX\StateVariables" "AlwaysAllowMeteredNetwork" REG_DWORD 1
+							 Call :RegAdd "HKCU\Microsoft\WindowsUpdate\UX\StateVariables" "AlwaysAllowMeteredNetwork" REG_DWORD 0
+							 Call :RegAdd "HKLM\Microsoft\WindowsUpdate\UX\StateVariables" "AlwaysAllowMeteredNetwork" REG_DWORD 0
 )
 REM Windows güncellemeleri yükseltme bildirimlerini devre dışı bırak
 Call :Playbook_Reader Update_Setting_12_
@@ -3539,7 +3501,7 @@ Call :Playbook_Reader Update_Setting_15_
 )
 REM Windows aygıt meta verilerini internetten almayı devre dışı bırak
 Call :Playbook_Reader Update_Setting_16_
-    if "!Playbook!" EQU "1" (Call :RegAdd "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Device Metadata" PreventDeviceMetadataFromNetwork REG_DWORD 0
+    if "!Playbook!" EQU "1" (Call :RegAdd "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Device Metadata" PreventDeviceMetadataFromNetwork REG_DWORD 1
 )
 REM Güncelleme bildirimlerini devre dışı bırak
 Call :Playbook_Reader Update_Setting_17_

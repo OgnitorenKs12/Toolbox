@@ -218,7 +218,7 @@ SL_4_>Scanner and Camera>Need: OBS>
 SL_5_>Pen and Touch> >
 SL_6_>Bitlocker Drive Encryption> >
 SL_7_>Tariffed Networks>Quota manager for limited internet>
-SL_8_>IP Assistant [IPV6]>If your ISP offers IPV6 infrastructure, don't turn it off>
+SL_8_>IP Assistant [IPV6]>Need: TailScale, IPV6>
 SL_9_>Mobile Hotspot>Internet sharing │ Need: Miracast>
 SL_10_>Radio and Airplane Mode> >
 SL_11_>Windows Connect Now [WPS]>Need: WiFi>

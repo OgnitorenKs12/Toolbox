@@ -4,7 +4,46 @@
 -   Site: [https://ognitorenks.blospot.com](https://ognitorenks.blospot.com)
 
 
-<details><summary><B> Versiyon 4.6.2 ► 22.12.2025 </B></summary>
+<details><summary><B> Versiyon 4.6.3 ► 16.08.2026 </B></summary>
+
+    ▼ Genel değişiklikler;
+		• Hizmet Yönetimi - IPV6 hizmet grubu açıklaması güncellendi. TailScale programının ihtiyacı var.
+	▼ Sistem Optimizasyonu değişiklikleri;
+		• "Optimization_Setting_14" ayarı revize edildi.
+		• "Optimization_Setting_26" ayarı kaldırıldı. XP döneminden kalma ayar.
+		• "Taskbar_Setting_14" içindeki ayarlar Taskbar_Setting_2 içinde yer aldığı için aktarıldı. Taskbar_Setting_2 içindeki bir ayar Taskbar_Setting_14'e aktarıldı. Artık burası "Başlat Menüsü - En çok kullanılanlar bölümünü kapat" olarak düzenlendi.
+		• "Taskbar_Setting_5" ayarı Windows 10'da uygulanacak şekilde ayarlandı.
+		• "Taskbar_Setting_7" ayarı Windwos 10 ve 11 için ayrı uygulanacak şekilde düzenlendi.
+		• "Taskbar_Setting_8" ayarı Windows 11'de uygulanacak şekilde düzenlendi.
+		• "Taskbar_Setting_9" ayarı Windows 11'de uygulanacak şekilde düzenlendi.
+		• "Taskbar_Setting_11" ayarı Windows 11'de uygulanacak şekilde düzenlendi.
+		• "Taskbar_Setting_16" ayarı Windows 11 ve Windows'da ayrı uygulanacak şekilde düzenlendi. Bir kaç ayar burası ile bağlantılı olmadığı için kaldırılıp özel bölümlere aktarıldı.
+		• "Privacy_Setting_8" ayarı Windows 10'da uygulanacak şekilde düzenlendi.
+		• "Privacy_Setting_10" ayarı Windows 10'da uygulanacak şekilde düzenlendi.
+		• "Privacy_Setting_18" ayarı Windows 10'da uygulanacak şekilde düzenlendi.
+		• "Privacy_Setting_22" ayarı Windows 10'da uygulanacak şekilde düzenlendi.
+		• "Privacy_Setting_27" ayarı Windows 10'da uygulanacak şekilde düzenlendi.
+		• "Privacy_Setting_30" ayarı Windows 10'da uygulanacak şekilde düzenlendi.
+		• "Privacy_Setting_31" ayarı Windows 10'da uygulanacak şekilde düzenlendi.
+		• "Privacy_Setting_33" içindeki bir regedit kaydı "Taskbar_Setting_19_" olarak eklendi.
+		• "Privacy_Setting_34" ayarı Windows 10'da uygulanacak şekilde düzenlendi.
+		• "Privacy_Setting_47" ayarı Windows 10'da uygulanacak şekilde düzenlendi.
+		• "Privacy_Setting_49" ayarı Windows 10'da uygulanacak şekilde düzenlendi.
+		• "Privacy_Setting_54" ayarına ekleme yapıldı.
+		• "Privacy_Setting_56" ayarı Windows 10'da uygulanacak şekilde düzenlendi.
+		• "Privacy_Setting_21" içindeki ayar "Privacy_Setting_57" içine aktarıldı.
+		• "Privacy_Setting_65" ayarı Windows 10'da uygulanacak şekilde düzenlendi.
+		• "Privacy_Setting_66" ayarı Windows 10'da uygulanacak şekilde düzenlendi.
+		• "Privacy_Setting_69" ayarı silindi, "Optimization_Setting_5" ayarı ile aynıydı. "Privacy_Setting_70" ayarı "Privacy_Setting_69" olarak kayıt edildi.
+		• "Internet_Setting_1" ayarı Windows 10'da uygulanacak şekilde düzenlendi.
+		• "Internet_Setting_5" bazı ayarlar çıkarıldı.
+		• "Optimization_Setting_15" ayarı kaldırıldı.
+		• "Security_Setting_7" ayarının açıklaması güncellendi. "Feature_Setting_12" ayarı ile içeriği aynı olduğu için "Feature_Setting_12" ayarı kaldırıldı.
+		• "Update_Setting_11" ayarları revize edildi.
+		• "Update_Setting_16" ayarları revize edildi.
+		• "Privacy_Setting_21" ayarı kaldırıldı.
+
+</details><details><summary><B> Versiyon 4.6.2 ► 22.12.2025 </B></summary>
 
     ▼ Genel değişiklikler;
 	    • Sistem Hakkında bölümünde Ram bilgi bölümündeki kodlarda güncelleme yapıldı.
